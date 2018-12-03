@@ -1,6 +1,7 @@
 class CreateFixtures < ActiveRecord::Migration[5.2]
   def change
     create_table :fixtures do |t|
+      t.string :fixture_id
       t.string :charterer
       t.sting :vessel_name
       t.integer :voyage_number
