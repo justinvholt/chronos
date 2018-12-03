@@ -1,0 +1,2 @@
+class CargoEventsController < ApplicationController
+end
