@@ -41,14 +41,13 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="386" y="193" name="fixtures">
+</datatypes><table x="822" y="195" name="fixtures">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="id_demurrage_calculation" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="demurrage_calculation" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="charterer" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
@@ -68,11 +67,20 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="fixure_clauses" row="id" />
 </row>
+<row name="laytime_used" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="total_demurrage" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="calculation_status" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="45" y="285" name="clauses">
+<table x="81" y="294" name="clauses">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -95,7 +103,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="200" y="353" name="fixure_clauses">
+<table x="312" y="351" name="fixure_clauses">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -107,7 +115,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1109" y="123" name="events">
+<table x="92" y="45" name="events">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -130,7 +138,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="657" y="76" name="fixture_cargoes">
+<table x="562" y="83" name="fixture_cargoes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -166,7 +174,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="885" y="120" name="cargo_events">
+<table x="317" y="75" name="cargo_events">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -176,26 +184,11 @@
 </row>
 <row name="id_demurrage_calculation" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="demurrage_calculation" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="id_events" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="events" row="id" />
 </row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="637" y="410" name="demurrage_calculation">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="laytime_used" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="total_demurrage" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
