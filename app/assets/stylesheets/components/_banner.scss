@@ -1,6 +1,7 @@
-/* Your banner CSS file */
+/* Banner CSS file */
 .banner {
-  color: white;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), image-url("ocean2.jpeg");
+  color: ivory;
   text-align: center;
   height: 100vh;
   background-size: cover;
@@ -19,7 +20,7 @@
   height: 100vh;
 }
 
-.banner-content{
+.banner-content {
   background-size: cover;
   letter-spacing: 4px;
 }
@@ -27,7 +28,7 @@
 .banner-content p {
   font-weight: lighter;
   margin-bottom: 50px;
-  }
+}
 
 /*hourglass image original*/
 /* https://www.kisspng.com/png-hourglass-water-stock-photography-bladder-4329045/ */

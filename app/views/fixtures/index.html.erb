@@ -1,6 +1,8 @@
 <!-- Begin page content -->
 <div class="container-fluid px-6">
-  <button type="button" class="btn btn-primary btn-lg mt-5 mb-3">ADD VOYAGE</button>
+  <%= link_to "fixtures/new", class: "btn btn-primary btn-lg mt-5 mb-3" do %>
+    ADD FIXTURE
+  <% end %>
 
   <table class="table table-striped">
     <thead>
@@ -55,7 +57,7 @@
 
 
 <!--       <% @fixtures.each do |fixture| %>
-        <%= render "shared/fixture_row" %>
+        <%= render "fixture_row" %>
       <% end %> -->
 
 

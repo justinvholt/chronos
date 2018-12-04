@@ -1,14 +1,9 @@
 <!-- Fixed navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <%= image_link_to("hourglass_logo.png", root_path, { id: "logo", class: "d-inline-block align-top", alt: "Logo", style: "width: 60; height: 60px" }, { class: "navbar-brand" }) %>
- <span class="navbar-brand font-weight-bold">CHRONOS</span>
 
+  <span class="navbar-brand font-weight-bold">CHRONOS</span>
 
-
-<!--   <a class="navbar-brand" href="#">
-    <img id="logo" class="d-inline-block align-top" alt="Logo" src="/app/assets/images/ship02.jpg" width="30" height="30">
-    <span>CHRONOS</span>
-  </a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -16,15 +11,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto pl-4">
       <li class="nav-item active pl-5">
-        <a class="nav-link" href="#">Voyages <span class="sr-only">(current)</span></a>
+        <%= link_to "/fixtures", class: "nav-link" do %>
+          Fixtures <span class="sr-only">(current)</span>
+        <% end %>
       </li>
       <li class="nav-item pl-5">
         <a class="nav-link" href="#">COA</a>
+<!--         For future reference when COA model is created
+        <%= link_to "***coa_path***", class: "nav-link" do %>
+          COA
+        <% end %> -->
       </li>
       <li class="nav-item pl-5">
-        <a class="nav-link" href="#">Clauses</a>
+        <%= link_to "clauses", class: "nav-link" do %>
+          Clauses
+        <% end %>
       </li>
       <li class="nav-item pl-5">
+<!--         For future reference when Data model is created
+        <%= link_to "***data_path***", class: "nav-link" do %>
+          Data
+        <% end %> -->
         <a class="nav-link" href="#">Data</a>
       </li>
 
