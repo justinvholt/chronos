@@ -1,5 +1,39 @@
 class FixturesController < ApplicationController
+  before_action :get_fixture, only: %i[edit update]
+
   def index
     @fixtures = Fixture.all
+  end
+
+  def new
+    @fixture = Fixture.new
+  end
+
+  def create
+    @fixture = Fixture.new(fixture_params)
+    # @fixture.save!
+    
+    # redirect_to edit_fixture_path(@fixture)
+  end
+
+  def edit
+  end
+
+  def update
+    @fixture.update(fixture_params)
+
+    redirect_to edit_fixture_path(@fixture)
+  end
+
+  private
+
+  def set_fixture
+    @fixture = Fixture.find(params[:id])
+  end
+
+  def fixture_params
+    params.require(:fixture).permit(:charterer, :vessel_name, :voyage_number, :demurrage_rate, :allowed_laytime,
+      # Used for cocoon nesting forms to pass all FixtureCargo attributes and destroy method in params
+      fixture_cargos_attributes: FixtureCargo.attribute_names.map(&:to_sym).push(:_destroy))
   end
 end
