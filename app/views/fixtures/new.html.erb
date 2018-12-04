@@ -3,6 +3,9 @@
   <%= simple_form_for :fixture, url: fixtures_path, :method => :post do |f| %>
     <%= f.error_notification %>
     <div class="form-group">
+        <%= f.button :button, class: "btn btn-primary" do %>
+           Add Voyage
+        <% end %>
         <%= f.input :vessel_name,
                     input_html: {class: ""},
                     label: "Vessel Name",
@@ -29,9 +32,6 @@
                     input_html: {class: ""},
                     label: "Clause Group ID",
                     required: true %>
-        <%= f.button :button, class: "btn btn-primary" do %>
-           Post listing
-        <% end %>
     </div>
   <% end %>
 </div>
