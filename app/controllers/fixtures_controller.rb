@@ -13,9 +13,6 @@ class FixturesController < ApplicationController
     @fixture = Fixture.new(fixture_params)
     @fixture.save!
 
-    # Add fixture_cargoes
-    # add_cargo()
-
     redirect_to edit_fixture_path(@fixture)
   end
 
@@ -39,14 +36,6 @@ class FixturesController < ApplicationController
   end
 
   def cargo_params
-    params.require(:fixture_cargos).permit(:name, :load_port, :load_terminal, :load_berth, :disch_port, :disch_berth, :disch_terminal)
+    params.require(:fixture_cargos).permit(:name, :quantity_mts, :load_port, :load_terminal, :load_berth, :disch_port, :disch_berth, :disch_terminal)
   end
-
-  # def add_cargo
-  #   cargoes = []
-  #   cargoes.each do |cargo|
-  #   cargo = FixtureCargo.new(cargo_params)
-  #   cargo.fixture_id = @fixture
-  #   cargo.save!
-  # end
 end
