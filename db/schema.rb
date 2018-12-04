@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 2018_12_03_163807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cargo_events", force: :cascade do |t|
-    t.bigint "fixture_cargo_id"
-    t.bigint "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_cargo_events_on_event_id"
-    t.index ["fixture_cargo_id"], name: "index_cargo_events_on_fixture_cargo_id"
-  end
-
   create_table "clause_groups", force: :cascade do |t|
     t.bigint "clause_id"
     t.datetime "created_at", null: false
@@ -42,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_163807) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.bigint "fixture_cargo_id"
     t.string "title"
     t.datetime "datetime"
     t.string "port"
@@ -94,8 +86,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_163807) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "cargo_events", "events"
-  add_foreign_key "cargo_events", "fixture_cargos"
+  add_foreign_key "events", "fixture_cargos"
   add_foreign_key "clause_groups", "clauses"
   add_foreign_key "fixture_cargos", "fixtures"
   add_foreign_key "fixtures", "clause_groups"

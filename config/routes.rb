@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   resources :fixtures do
     resources :fixture_cargos, only: [:create]
-    resources :demurrage, only: [:edit, :update] do
-      resources :cargo_events, only: [:new, :create]
-    end
+    resources :events, only: [:index, :new, :create]
   end
 end

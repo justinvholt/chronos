@@ -1,6 +1,4 @@
 class Fixture < ApplicationRecord
-  belongs_to :demurrage_calculation
-  belongs_to :fixture_clause
   has_many :fixture_cargos, inverse_of: :fixture
 
   # Required for cocoon nested forms gem
