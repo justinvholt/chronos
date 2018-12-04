@@ -40,7 +40,7 @@ class ClausesController < ApplicationController
     # if a bloc is added this should only be accessible by an administrator. users are not allowed to edit/delete clauses
     # before a bloc is added, the user can delete
     @clause.destroy
-    redirect_to fixture_path
+    redirect_to fixtures_path
   end
 
   private
