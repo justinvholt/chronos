@@ -7,4 +7,5 @@ Rails.application.routes.draw do
       resources :cargo_events, only: [:new, :create]
     end
   end
+  resources :clauses, only: [:index, :show, :create, :new]
 end
