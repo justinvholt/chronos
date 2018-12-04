@@ -1,61 +1,70 @@
-<div class="new-fixture__form">
-  <h2>Voyage Details</h2>
-  <%= simple_form_for @fixture, url: fixtures_path, :method => :post do |f| %>
-    <%= f.error_notification %>
-        <%= f.button :button, class: "btn btn-primary" do %>
-           Add Voyage
-        <% end %>
-        <div class="row">
-          <div class='col-lg-2'>
-            <%= f.input :vessel_name,
-                        input_html: {class: ""},
-                        label: "Vessel Name",
-                        required: true %>
+<div class="container-fluid px-6">
+  <div class="new-fixture__form">
+    <h2>Voyage Details</h2>
+    <%= simple_form_for @fixture, url: fixtures_path, :method => :post do |f| %>
+      <%= f.error_notification %>
+          <%= f.button :button, class: "btn btn-primary" do %>
+             Add Voyage
+          <% end %>
+          <div class="row">
+            <div class='col-lg-2'>
+              <%= f.input :vessel_name,
+                          input_html: {class: ""},
+                          label: "Vessel Name",
+                          required: true %>
+            </div>
+            <div class='col-lg-2'>    
+              <%= f.input :charterer,
+                          input_html: {class: ""},
+                          label: 'Charterer',
+                          required: true %>
+            </div>
+            <div class='col-lg-2'>    
+              <%= f.input :voyage_number,
+                          input_html: {class: ""},
+                          label: "Voyage Number",
+                          label_html: {class: ""},
+                          required: true %>
+            </div>
           </div>
-          <div class='col-lg-2'>    
-            <%= f.input :charterer,
-                        input_html: {class: ""},
-                        label: 'Charterer',
-                        required: true %>
+          <div class="row">
+            <div class='col-lg-2'>    
+              <%= f.input :demurrage_rate,
+                          input_html: {class: ""},
+                          label: "Demurrage Rate",
+                          label_html: {class: ""},
+                          required: false %>
+            </div>
+            <div class='col-lg-2'>    
+              <%= f.input :allowed_laytime,
+                           input_html: {class: ""},
+                           label: "Allowed Laytime",
+                           required: false %>
+            </div>
+            <div class='col-lg-2'>    
+              <%= f.input :clause_group_id,
+                          input_html: {class: ""},
+                          label: "Clause Group ID",
+                          required: false %>
+            </div>
           </div>
-          <div class='col-lg-2'>    
-            <%= f.input :voyage_number,
-                        input_html: {class: ""},
-                        label: "Voyage Number",
-                        label_html: {class: ""},
-                        required: true %>
-          </div>
-        </div>
-        <div class="row">
-          <div class='col-lg-2'>    
-            <%= f.input :demurrage_rate,
-                        input_html: {class: ""},
-                        label: "Demurrage Rate",
-                        label_html: {class: ""},
-                        required: false %>
-          </div>
-          <div class='col-lg-2'>    
-            <%= f.input :allowed_laytime,
-                         input_html: {class: ""},
-                         label: "Allowed Laytime",
-                         required: false %>
-          </div>
-          <div class='col-lg-2'>    
-            <%= f.input :clause_group_id,
-                        input_html: {class: ""},
-                        label: "Clause Group ID",
-                        required: false %>
-          </div>
-        </div>
 
 
-    <div class="form-group">
-        <%= link_to_add_association 'Add Cargo', f, :fixture_cargos, class: "btn btn-primary", data: { association_insertion_node: '.new-fixture__add-cargos', association_insertion_method: :append } %>
-    </div>
-    
-  <h2>Loading</h2>
+      <div class="new-fixture__add-cargo-button">
+          <%= link_to_add_association 'Add Cargo', f, :fixture_cargos, class: "btn btn-primary", data: {  association_insertion_node: '.new-fixture__add-cargos', association_insertion_method: :append } %>
+      </div>
 
-    <%# Add additional FixtureCargo fields for user input %>
+  <div class="fixture-view__loading">   <%# JavaScript uses this class to append new loading entries %>
+    <h2>Loading</h2>
+  </div>
+
+  <div class="fixture-view__discharge"> <%# JavaScript uses this class to append new discharge entries %>
+    <h2>Discharge</h2>
+  </div>
+
+    <%# Add additional FixtureCargo fields for user input  %>
+    <%# partial _fixture_cargo_fields is appended to       %>
+    <%# div.new-fixture__add-cargos                        %>
     <div class="new-fixture__add-cargos">
   <%= f.simple_fields_for :fixture_cargos do |builder| %>
     <%= render 'fixture_cargo_fields', f: builder %>
@@ -63,4 +72,5 @@
     </div>
 
   <% end %>
+  </div>
 </div>
