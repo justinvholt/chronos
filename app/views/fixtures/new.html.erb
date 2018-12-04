@@ -23,16 +23,18 @@
                     input_html: {class: ""},
                     label: "Demurrage Rate",
                     label_html: {class: ""},
-                    required: true %>
+                    required: false %>
         <%= f.input :allowed_laytime,
                      input_html: {class: ""},
                      label: "Allowed Laytime",
-                     required: true %>
+                     required: false %>
         <%= f.input :clause_group_id,
                     input_html: {class: ""},
                     label: "Clause Group ID",
-                    required: true %>
+                    required: false %>
     </div>
+
+    <%# Add additional FixtureCargo fields for user input %>
     <div class="new-fixture__add-cargos">
   <%= f.simple_fields_for :fixture_cargos do |builder| %>
     <%= render 'fixture_cargo_fields', f: builder %>
