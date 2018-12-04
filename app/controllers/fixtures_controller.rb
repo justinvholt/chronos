@@ -11,12 +11,9 @@ class FixturesController < ApplicationController
 
   def create
     @fixture = Fixture.new(fixture_params)
-    @fixture.save!
-
-    # Add fixture_cargoes
-    # add_cargo()
-
-    redirect_to edit_fixture_path(@fixture)
+    # @fixture.save!
+    
+    # redirect_to edit_fixture_path(@fixture)
   end
 
   def edit
@@ -35,18 +32,8 @@ class FixturesController < ApplicationController
   end
 
   def fixture_params
-    params.require(:fixture).permit(:charter, :vessel_name, :voyage_number, :demurrage_rate, :allowed_laytime)
+    params.require(:fixture).permit(:charterer, :vessel_name, :voyage_number, :demurrage_rate, :allowed_laytime,
+      # Used for cocoon nesting forms to pass all FixtureCargo attributes and destroy method in params
+      fixture_cargos_attributes: FixtureCargo.attribute_names.map(&:to_sym).push(:_destroy))
   end
-
-  def cargo_params
-    params.require(:fixture_cargos).permit(:name, :load_port, :load_terminal, :load_berth, :disch_port, :disch_berth, :disch_terminal)
-  end
-
-  # def add_cargo
-  #   cargoes = []
-  #   cargoes.each do |cargo|
-  #   cargo = FixtureCargo.new(cargo_params)
-  #   cargo.fixture_id = @fixture
-  #   cargo.save!
-  # end
 end
