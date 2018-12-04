@@ -1,0 +1,17 @@
+$footer-height: 60px;
+
+#site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#wrap {
+  flex: 1;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: $footer-height;
+  background-color: #f5f5f5;
+}
