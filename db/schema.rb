@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_163807) do
   end
 
   create_table "fixtures", force: :cascade do |t|
-    t.string "fixture_id"
+    t.string "reference_no"
     t.string "charterer"
     t.string "vessel_name"
     t.integer "voyage_number"
