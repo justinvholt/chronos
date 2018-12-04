@@ -54,11 +54,11 @@
           <%= link_to_add_association 'Add Cargo', f, :fixture_cargos, class: "btn btn-primary", data: {  association_insertion_node: '.new-fixture__add-cargos', association_insertion_method: :append } %>
       </div>
 
-    <div class="fixture-view__loading">
-      <h2>Loading</h2>
-    </div>
+  <div class="fixture-view__loading">   <%# JavaScript uses this class to append new loading entries %>
+    <h2>Loading</h2>
+  </div>
 
-  <div class="fixture-view__discharge">
+  <div class="fixture-view__discharge"> <%# JavaScript uses this class to append new discharge entries %>
     <h2>Discharge</h2>
   </div>
 
