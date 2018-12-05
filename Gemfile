@@ -18,8 +18,6 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'time_difference'
-# gem 'csv'
-# gem 'time'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -1,48 +1,49 @@
 class EventsController < ApplicationController
-  before_action :set_fixture, only: [:run_chronos]
+  before_action :set_fixture, only: [:run_chronos, :parse_sof]
 
-  def import_sof(csv_file_path)
-    @events = []
-
-    CSV.foreach(@csv_file_path) do |row|
-      port = row[0]
-      terminal = row[1]
-      berth = row[2]
-      obl = row[6]
-
-      arguments = {
-        port: port,
-        terminal: terminal,
-        berth: berth,
-        title: row[3],
-        datetime: Time.parse("#{row[4]}, #{row[5]}:00, 0"),
-        fixture_cargo: append_cargoes(port, terminal, berth, obl),
-        counting: "",
-        laytime: Hash.new
-        }
-      @events << Event.new(arguments)
-    end
-  end
-
-  def append_cargoes(port, terminal, berth, obl)
-    if obl.nil? == false
-      Fixture_cargo.where(obl: obl)
-    elsif berth.nil? == false
-      Fixture_cargo.where(berth: berth)
-    elsif terminal.nil? == false
-      Fixture_cargo.where(terminal: terminal)
-    else
-      Fixture_cargo.where(port: port)
-    end
+  def import
+    Event.import(params[:file])
+    redirect_to fixture_events_path(@fixture), notice: "SOF data imported"
   end
 
   def run_chronos
-
+    index
   end
+
+  def index
+    @events
+  end
+
+  def order_events
+    #sort and group!!
+    # @events.sort_by! {|event| event.datetime }
+  end
+
+  # def assess_terms(contract)
+  #   #maybe better to make @events a hash and pass that an argument to the block_call?
+  #   #set this based on fixture instead of contract @fixture.clause_group
+  #   @events.each do |event|
+  #     contract.each do |term|
+  #       if term.block_call(event).class == Event
+  #         @events << term.block_call(event)
+  #       else
+  #         event.counting = term.block_call(event) unless term.block_call(event).nil?
+  #       end
+  #     end
+  #   end
+  # end
+
+  # def calculate_laytime
+  #   @events.each do |event|
+  #     @start_datetime = event.datetime if event.counting == "Laytime starts"
+  #     @end_datetime = event.datetime if event.counting == "Laytime stops"
+  #     event.laytime = TimeDifference.between(@end_datetime, @start_datetime).in_general if event.counting == "Laytime stops"
+  #   end
+  # end
 
   private
 
   def set_fixture
-    @fixture = Fixture.find(params[:id])
+    @fixture = Fixture.find(params[:fixture_id])
   end
 end
