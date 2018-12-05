@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
-  before_action :set_fixture, only: [:run_chronos, :parse_sof]
+  before_action :set_fixture, only: [:run_chronos, :import]
 
   def import
-    Event.import(params[:file])
+    ImportSOFJob.perform_now(params[:file], @fixture)
     redirect_to fixture_events_path(@fixture), notice: "SOF data imported"
   end
 
