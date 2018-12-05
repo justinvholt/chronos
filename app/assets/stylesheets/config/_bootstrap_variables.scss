@@ -25,6 +25,157 @@ $border-radius-small: 0.125rem;
 // Navbar
 $navbar-height: 60px;
 
+// Table stripes
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: $colombia-blue; // Choose your own color here
+ }
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+   background-color: ivory; // Choose your own color here
+ }
+
+// btn-ship-cove
+
+.btn-ship-cove {
+  color: #FFFFFF;
+  background-color: #808A9F;
+  border-color: #808A9F;
+}
+
+.btn-ship-cove:hover,
+.btn-ship-cove:focus,
+.btn-ship-cove:active,
+.btn-ship-cove.active,
+.open .dropdown-toggle.btn-ship-cove {
+  color: #FFFFFF;
+  background-color: #808A9F;
+  border-color: #808A9F;
+}
+
+.btn-ship-cove:active,
+.btn-ship-cove.active,
+.open .dropdown-toggle.btn-ship-cove {
+  background-image: none;
+}
+
+.btn-ship-cove.disabled,
+.btn-ship-cove[disabled],
+fieldset[disabled] .btn-ship-cove,
+.btn-ship-cove.disabled:hover,
+.btn-ship-cove[disabled]:hover,
+fieldset[disabled] .btn-ship-cove:hover,
+.btn-ship-cove.disabled:focus,
+.btn-ship-cove[disabled]:focus,
+fieldset[disabled] .btn-ship-cove:focus,
+.btn-ship-cove.disabled:active,
+.btn-ship-cove[disabled]:active,
+fieldset[disabled] .btn-ship-cove:active,
+.btn-ship-cove.disabled.active,
+.btn-ship-cove[disabled].active,
+fieldset[disabled] .btn-ship-cove.active {
+  background-color: #808A9F;
+  border-color: #808A9F;
+}
+
+// btn-niagara
+
+.btn-niagara {
+  color: #FFFFFF;
+  background-color: #23967F;
+  border-color: #23967F;
+}
+
+.btn-niagara:hover,
+.btn-niagara:focus,
+.btn-niagara:active,
+.btn-niagara.active,
+.open .dropdown-toggle.btn-niagara {
+  color: #FFFFFF;
+  background-color: #23967F;
+  border-color: #23967F;
+}
+
+.btn-niagara:active,
+.btn-niagara.active,
+.open .dropdown-toggle.btn-niagara {
+  background-image: none;
+}
+
+.btn-niagara.disabled,
+.btn-niagara[disabled],
+fieldset[disabled] .btn-niagara,
+.btn-niagara.disabled:hover,
+.btn-niagara[disabled]:hover,
+fieldset[disabled] .btn-niagara:hover,
+.btn-niagara.disabled:focus,
+.btn-niagara[disabled]:focus,
+fieldset[disabled] .btn-niagara:focus,
+.btn-niagara.disabled:active,
+.btn-niagara[disabled]:active,
+fieldset[disabled] .btn-niagara:active,
+.btn-niagara.disabled.active,
+.btn-niagara[disabled].active,
+fieldset[disabled] .btn-niagara.active {
+  background-color: #23967F;
+  border-color: #23967F;
+}
+
+.btn-niagara .badge {
+  color: #23967F;
+  background-color: #FFFFFF;
+}
+
+// btn-curious-blue
+
+.btn-curious-blue {
+  color: #FFFFFF;
+  background-color: #3383A9;
+  border-color: #3383A9;
+}
+
+.btn-curious-blue:hover,
+.btn-curious-blue:focus,
+.btn-curious-blue:active,
+.btn-curious-blue.active,
+.open .dropdown-toggle.btn-curious-blue {
+  color: #FFFFFF;
+  background-color: #3383A9;
+  border-color: #3383A9;
+}
+
+.btn-curious-blue:active,
+.btn-curious-blue.active,
+.open .dropdown-toggle.btn-curious-blue {
+  background-image: none;
+}
+
+.btn-curious-blue.disabled,
+.btn-curious-blue[disabled],
+fieldset[disabled] .btn-curious-blue,
+.btn-curious-blue.disabled:hover,
+.btn-curious-blue[disabled]:hover,
+fieldset[disabled] .btn-curious-blue:hover,
+.btn-curious-blue.disabled:focus,
+.btn-curious-blue[disabled]:focus,
+fieldset[disabled] .btn-curious-blue:focus,
+.btn-curious-blue.disabled:active,
+.btn-curious-blue[disabled]:active,
+fieldset[disabled] .btn-curious-blue:active,
+.btn-curious-blue.disabled.active,
+.btn-curious-blue[disabled].active,
+fieldset[disabled] .btn-curious-blue.active {
+  background-color: #3383A9;
+  border-color: #3383A9;
+}
+
+.btn-curious-blue .badge {
+  color: #3383A9;
+  background-color: #FFFFFF;
+}
+
+
+
 // Patch to make simple_form compatible with bootstrap 3
 .invalid-feedback {
   display: none;
