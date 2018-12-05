@@ -1,4 +1,4 @@
-  <div class="row">
+  <div class="row" id="loading">
           <div class="col col1">
                   <%= f.input :load_port,
                               input_html: {class: ""},
@@ -33,7 +33,7 @@
           </div>
   </div>
 
-  <div class="row">
+  <div class="row" id="discharge">
           <div class="col col1">
                   <%= f.input :disch_port,
                               input_html: {class: ""},
@@ -58,13 +58,13 @@
           </div>
           <div class="col col4">
                   <%= f.input :disch_name, as: :fake,
-                              input_html: {class: ""},
+                              input_html: {value: 'pending model update', class: ""},
                               label: "Name",
                               required: true %>
           </div>
           <div class="col col5">
                   <%= f.input :disch_quantity_mts, as: :fake,
-                              input_html: {class: ""},
+                              input_html: {value: 'pending model update', class: ""},
                               label: "Qty - Mts",
                               required: true %>
           </div>
