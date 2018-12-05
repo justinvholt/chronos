@@ -1,5 +1,5 @@
 class FixturesController < ApplicationController
-  before_action :get_fixture, only: %i[edit update]
+  before_action :set_fixture, only: %i[edit update]
 
   def index
     @fixtures = Fixture.all
@@ -13,7 +13,7 @@ class FixturesController < ApplicationController
     @fixture = Fixture.new(fixture_params)
     @fixture.save!
     
-    # redirect_to edit_fixture_path(@fixture)
+    redirect_to edit_fixture_path(@fixture)
   end
 
   def edit
