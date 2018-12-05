@@ -2,7 +2,6 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 
-puts "------------------------------------------------------------"
 puts "seeding user"
 user_count = 0
 
