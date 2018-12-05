@@ -16,7 +16,7 @@
         <% end %>
       </li>
       <li class="nav-item pl-5">
-        <a class="nav-link" href="#">COA</a>
+        <a class="nav-link">COA</a>
 <!--         For future reference when COA model is created
         <%= link_to "***coa_path***", class: "nav-link" do %>
           COA
@@ -32,7 +32,7 @@
         <%= link_to "***data_path***", class: "nav-link" do %>
           Data
         <% end %> -->
-        <a class="nav-link" href="#">Data</a>
+        <a class="nav-link">Data</a>
       </li>
 
       <li class="nav-item dropdown pl-5">
@@ -43,8 +43,13 @@
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+            <%= link_to "#" do %>
+              <i class="fa fa-cog dropdown-item"> <%= t(".settings", default: "Settings") %></i>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out dropdown-item"><%= t(".sign_out", default: "Log out") %></i>
+            <% end %>
+         </div>
       </li>
     </ul>
   </div>

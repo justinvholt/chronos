@@ -21,7 +21,7 @@
     <tbody>
 
       <% @fixtures.each do |fixture| %>
-        <%= render partial: "fixture_row", locals: { fixture: fixture } %>
+        <%= render "fixture_row", fixture: fixture %>
       <% end %>
 
     </tbody>
