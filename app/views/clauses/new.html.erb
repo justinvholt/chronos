@@ -1,49 +1,45 @@
 <h1>Hi there</h1>
 
 <div class="container-fluid px-6">
-  <div class="new-single-clause__form">
-    <h2 class="mt-5 mb-3">Clause Details</h2>
 
-    <div class="row">
-      <div class='col-xs-12 col-sm-4'>
-
-        <%= f.input :title,
+<div class="table-responsive">
+ <table class="table-striped table borderless">
+   <tbody>
+    <%= simple_form_for @clause, url: clauses_path, :method => :post do |f| %>
+     <tr>
+      <td>
+        <%= f.input :cp_form,
         input_html: {class: ""},
-        label: "Title",
+        label: "cp form",
         required: true %>
-      </div>
-      <div class='col-xs-12 col-sm-4'>
+      </td>
+
+      <td>
         <%= f.input :paragraph,
         input_html: {class: ""},
         label: 'Paragraph',
         required: true %>
-      </div>
-      <div class='col-xs-12 col-sm-4'>
+        </td>
+      <td>
         <%= f.input :wording,
         input_html: {class: ""},
-        label: "Wording",
-        label_html: {class: ""},
+        label: 'wording',
         required: true %>
-      </div>
-    </div>
-    <div class="row">
-      <div class='col-xs-12 col-sm-4'>
-        <%= f.input :bloc,
-        input_html: {class: ""},
-        label: "Bloc",
-        label_html: {class: ""},
-        required: false %>
-      </div>
-      <div class='col-xs-12 col-sm-4'>
-        <%= f.input :proc_service,
-        input_html: {class: ""},
-        label: "Proc Service",
-        required: false %>
-      </div>
+      </td>
+      <td>Label 1</td>
+      <td>
+          <%= f.button :button, class: "btn btn-primary mt-3 mb-3" do %>
+            Add Single Clause
+          <% end %>
+    </td>
+  </tr>
+  <% end %>
 
-    </div>
-      <%= f.button :button, class: "btn btn-primary mt-3 mb-3" %>
-    Add Single Clause
 
-  </div>
+
+</tbody>
+</table>
+</div>
+
+
 </div>

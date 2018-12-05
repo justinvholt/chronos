@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_12_05_140359) do
 
   create_table "clauses", force: :cascade do |t|
     t.string "title"
-    t.integer "paragraph"
+    t.string "paragraph"
     t.text "wording"
     t.string "bloc"
     t.string "proc_service"
@@ -36,14 +36,15 @@ ActiveRecord::Schema.define(version: 2018_12_05_140359) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.bigint "fixture_cargo_id"
     t.string "title"
     t.datetime "datetime"
     t.string "port"
     t.string "terminal"
     t.string "berth"
+    t.bigint "fixture_cargo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["fixture_cargo_id"], name: "index_events_on_fixture_cargo_id"
   end
 
   create_table "fixture_cargos", force: :cascade do |t|
