@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_163807) do
+ActiveRecord::Schema.define(version: 2018_12_05_140359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_163807) do
     t.bigint "clause_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["clause_id"], name: "index_clause_groups_on_clause_id"
   end
 
@@ -30,6 +31,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_163807) do
     t.string "proc_service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cp_form"
+    t.string "parent_relation"
   end
 
   create_table "events", force: :cascade do |t|
@@ -71,6 +74,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_163807) do
     t.string "calculation_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "obl"
     t.index ["clause_group_id"], name: "index_fixtures_on_clause_group_id"
   end
 
@@ -86,8 +90,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_163807) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "events", "fixture_cargos"
   add_foreign_key "clause_groups", "clauses"
+  add_foreign_key "events", "fixture_cargos"
   add_foreign_key "fixture_cargos", "fixtures"
   add_foreign_key "fixtures", "clause_groups"
 end
