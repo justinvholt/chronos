@@ -4,7 +4,7 @@
   <%# Form to create new Fixture %> 
   <div class="new-fixture__form">
     <h2 class="mt-5 mb-3">Fixture Details</h2>
-      <%= simple_form_for @fixture, url: fixtures_path, :method => :patch do |f| %>
+      <%= simple_form_for @fixture, url: fixture_path, :method => :patch do |f| %>
       <%= f.error_notification %>
       
       <%# Edit voyage button %> 
