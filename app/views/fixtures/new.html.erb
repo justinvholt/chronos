@@ -18,13 +18,13 @@
                           label: "Vessel Name",
                           required: true %>
             </div>
-            <div class='col-xs-12 col-sm-4'>
+            <div class="col-xs-12 col-sm-4">
               <%= f.input :charterer,
                           input_html: {class: ""},
-                          label: 'Charterer',
+                          label: "Charterer",
                           required: true %>
             </div>
-            <div class='col-xs-12 col-sm-4'>
+            <div class="col-xs-12 col-sm-4">
               <%= f.input :voyage_number,
                           input_html: {class: ""},
                           label: "Voyage Number",
@@ -33,20 +33,20 @@
             </div>
           </div>
           <div class="row">
-            <div class='col-xs-12 col-sm-4'>
+            <div class="col-xs-12 col-sm-4">
               <%= f.input :demurrage_rate,
                           input_html: {class: ""},
                           label: "Demurrage Rate",
                           label_html: {class: ""},
                           required: false %>
             </div>
-            <div class='col-xs-12 col-sm-4'>
+            <div class="col-xs-12 col-sm-4">
               <%= f.input :allowed_laytime,
                            input_html: {class: ""},
                            label: "Allowed Laytime",
                            required: false %>
             </div>
-            <div class='col-xs-12 col-sm-4'>
+            <div class="col-xs-12 col-sm-4">
               <%= f.input :clause_group_id,
                           input_html: {class: ""},
                           label: "Clause Group ID",
@@ -74,7 +74,7 @@
     <%# to the Loading/Discharge header                    %>
     <div class="new-fixture__add-cargos">
   <%= f.simple_fields_for :fixture_cargos do |builder| %>
-    <%= render 'fixture_cargo_fields', f: builder %>
+    <%= render "fixture_cargo_fields", f: builder %>
   <% end %>
     </div>
 
