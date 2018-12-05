@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-
+puts "------------------------------------------------------------"
 puts "seeding fixtures"
 count = 0
 
@@ -29,3 +29,10 @@ end
 
 puts "succesfully seeded #{count} fixtures"
 puts "#{Fixture.all.length} fixtures in database"
+puts "------------------------------------------------------------"
+puts "seeding clauses"
+count = 0
+
+
+
+
