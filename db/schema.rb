@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_12_05_140359) do
 
   create_table "clauses", force: :cascade do |t|
     t.string "title"
-    t.integer "paragraph"
+    t.string "paragraph"
     t.text "wording"
     t.string "bloc"
     t.string "proc_service"

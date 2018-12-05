@@ -1,1 +1,45 @@
 <h1>Hi there</h1>
+
+<div class="container-fluid px-6">
+
+<div class="table-responsive">
+ <table class="table-striped table borderless">
+   <tbody>
+    <%= simple_form_for @clause, url: clauses_path, :method => :post do |f| %>
+     <tr>
+      <td>
+        <%= f.input :cp_form,
+        input_html: {class: ""},
+        label: "cp form",
+        required: true %>
+      </td>
+
+      <td>
+        <%= f.input :paragraph,
+        input_html: {class: ""},
+        label: 'Paragraph',
+        required: true %>
+        </td>
+      <td>
+        <%= f.input :wording,
+        input_html: {class: ""},
+        label: 'wording',
+        required: true %>
+      </td>
+      <td>Label 1</td>
+      <td>
+          <%= f.button :button, class: "btn btn-primary mt-3 mb-3" do %>
+            Add Single Clause
+          <% end %>
+    </td>
+  </tr>
+  <% end %>
+
+
+
+</tbody>
+</table>
+</div>
+
+
+</div>
