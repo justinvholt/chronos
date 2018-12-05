@@ -1,6 +1,18 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
+
+puts "------------------------------------------------------------"
+puts "seeding user"
+user_count = 0
+
+User.create(email: "UserOne@gmail.com", password: "password")
+user_count += 1
+User.create(email: "UserTwo@gmail.com", password: "password")
+user_count += 1
+
+puts "succesfully seeded #{user_count} users"
+puts "#{User.all.length} users in database"
 puts "------------------------------------------------------------"
 puts "seeding fixtures"
 fixture_count = 0
@@ -213,4 +225,3 @@ end
 puts "succesfully seeded #{clause_count} fixtures, should be: "
 puts "#{Clause.all.length} fixtures in database"
 puts "------------------------------------------------------------"
-
