@@ -11,7 +11,7 @@ class FixturesController < ApplicationController
 
   def create
     @fixture = Fixture.new(fixture_params)
-    # @fixture.save!
+    @fixture.save!
     
     # redirect_to edit_fixture_path(@fixture)
   end

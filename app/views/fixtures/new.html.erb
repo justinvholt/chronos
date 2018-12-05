@@ -50,12 +50,8 @@
             </div>
           </div>
 
-      <div class="form-group">
-          <%= link_to_add_association 'Add Cargo', f, :fixture_cargos, class: "btn btn-primary mt-3 mb-3", data: { association_insertion_node: '.new-fixture__add-cargos', association_insertion_method: :append } %>
-      </div>
-
       <div class="new-fixture__add-cargo-button">
-          <%= link_to_add_association 'Add Cargo', f, :fixture_cargos, class: "btn btn-primary", data: {  association_insertion_node: '.new-fixture__add-cargos', association_insertion_method: :append } %>
+          <%= link_to_add_association 'Add Cargo', f, :fixture_cargos, class: "btn btn-primary mt-3 mb-3", data: {  association_insertion_node: '.new-fixture__add-cargos', association_insertion_method: :append } %>
       </div>
 
   <div class="fixture-view__loading">   <%# JavaScript uses this class to append new loading entries %>
@@ -78,4 +74,3 @@
   <% end %>
   </div>
 </div>
->>>>>>> master
