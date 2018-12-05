@@ -41,6 +41,85 @@ end
 puts "succesfully seeded #{fixture_count} fixtures"
 puts "#{Fixture.all.length} fixtures in database"
 puts "------------------------------------------------------------"
+puts "seeding fixture_cargoes"
+
+cargo_count = 0
+
+  Fixture.all.each do |fixture|
+    FixtureCargo.create!(
+      name: "Xylene",
+      quantity_mts: 400,
+      obl: 10,
+      load_port: "Santos",
+      load_terminal: "Petrochem",
+      load_berth: "H",
+      disch_port: "Houston",
+      disch_terminal: "Chevron",
+      disch_berth: "4",
+      fixture: fixture
+    )
+    cargo_count += 1
+
+    FixtureCargo.create!(
+      name: "Toluene",
+      quantity_mts: 900,
+      obl: 20,
+      load_port: "Santos",
+      load_terminal: "Petrochem",
+      load_berth: "H",
+      disch_port: "New Orleans",
+      disch_terminal: "Stolthaven",
+      disch_berth: "B",
+      fixture: fixture
+    )
+    cargo_count += 1
+
+    FixtureCargo.create!(
+      name: "Solvanol",
+      quantity_mts: 400,
+      obl: 30,
+      load_port: "Santos",
+      load_terminal: "Petrochem",
+      load_berth: "H",
+      disch_port: "New Orleans",
+      disch_terminal: "Stolthaven",
+      disch_berth: "B",
+      fixture: fixture
+    )
+    cargo_count += 1
+
+    FixtureCargo.create!(
+      name: "Luboil 40A",
+      obl: 40,
+      quantity_mts: 2000,
+      load_port: "Santos",
+      load_terminal: "Petrochem",
+      load_berth: "H",
+      disch_port: "New Orleans",
+      disch_terminal: "Stolthaven",
+      disch_berth: "B",
+      fixture: fixture
+    )
+    cargo_count += 1
+
+    FixtureCargo.create!(
+      name: "Syrene Monomer",
+      obl: 50,
+      quantity_mts: 1500,
+      load_port: "Santos",
+      load_terminal: "Petrochem",
+      load_berth: "H",
+      disch_port: "New Orleans",
+      disch_terminal: "Stolthaven",
+      disch_berth: "B",
+      fixture: fixture
+    )
+    cargo_count += 1
+  end
+
+puts "succesfully seeded #{cargo_count} fixtures, should be #{Fixture.all.length * 5}"
+puts "#{FixtureCargo.all.length} fixture_cargoes in database"
+puts "------------------------------------------------------------"
 puts "seeding clauses"
 
 clause_count = 0
@@ -221,6 +300,6 @@ end
   clause_count += 1
 end
 
-puts "succesfully seeded #{clause_count} fixtures, should be: "
-puts "#{Clause.all.length} fixtures in database"
+puts "succesfully seeded #{clause_count} clauses, should be: "
+puts "#{Clause.all.length} clauses in database"
 puts "------------------------------------------------------------"
