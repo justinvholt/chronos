@@ -5,26 +5,39 @@ class EventsController < ApplicationController
     @events = []
 
     CSV.foreach(@csv_file_path) do |row|
+      port = row[0]
+      terminal = row[1]
+      berth = row[2]
+      obl = row[6]
+
       arguments = {
-        port: row[0],
-        terminal: row[1],
-        berth: row[2],
+        port: port,
+        terminal: terminal,
+        berth: berth,
         title: row[3],
         datetime: Time.parse("#{row[4]}, #{row[5]}:00, 0"),
-        fixture_cargo: #find based on OBL number,
-        counting: "", #add this to model
-        laytime: Hash.new #add this to model
+        fixture_cargo: append_cargoes(port, terminal, berth, obl),
+        counting: "",
+        laytime: Hash.new
         }
       @events << Event.new(arguments)
-      order_events
+    end
+  end
+
+  def append_cargoes(port, terminal, berth, obl)
+    if obl.nil? == false
+      Fixture_cargo.where(obl: obl)
+    elsif berth.nil? == false
+      Fixture_cargo.where(berth: berth)
+    elsif terminal.nil? == false
+      Fixture_cargo.where(terminal: terminal)
+    else
+      Fixture_cargo.where(port: port)
     end
   end
 
   def run_chronos
-    order_events
-    assess_terms(@clause_group)
-    order_events
-    calculate_laytime
+
   end
 
   private
