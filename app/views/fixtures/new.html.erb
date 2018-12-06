@@ -1,9 +1,9 @@
 <div class="container-fluid px-4">
 
-  <%# Form for new Fixture %> 
+  <%# Form for new Fixture %>
   <h4>Fixture Details</h4>
 
-  <%= simple_form_for @fixture, url: new_fixture_path, :method => :post do |f| %>
+  <%= simple_form_for @fixture, url: fixture_path, :method => :post do |f| %>
 
   <div class="row">
     <div class="col-md-6">
@@ -14,7 +14,7 @@
                       label: "Reference No.",
                       required: true %>
         </div>
-      <%# New voyage button %> 
+      <%# New voyage button %>
         <div class="edit-fixture__button">
           <div class='col-md-4'>
             <%= f.button :button, class: "btn btn-sm btn-primary" do %>
@@ -107,14 +107,14 @@
                       required: false %>
         </div>
         <div class="col-md-4">
-          <%= f.input :reversable, as: :fake, 
+          <%= f.input :reversable, as: :fake,
                       input_html: {class: "form-control-sm"},
                       label: "Reversable / Not Reversable*",
                       required: false %>
         </div>
       </div>
-    </div>  
-  </div>  
+    </div>
+  </div>
 
   <div class="col-md-12">
 
@@ -124,7 +124,7 @@
         data: {  association_insertion_node: '.new-fixture__add-cargos', association_insertion_method: :append } %>
     </div>
 
-    <%# Loading and Discharge sub-headers  %>      
+    <%# Loading and Discharge sub-headers  %>
     <div class="fixture-view__loading">   <%# JavaScript uses this class to append new loading entries %>
       <h4 class="mt-3 mb-3">Loading</h4>
     </div>
