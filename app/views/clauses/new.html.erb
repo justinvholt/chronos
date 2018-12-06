@@ -45,14 +45,18 @@
         </td>
       <td>
         <%= f.input :wording,
-        input_html: {class: ""},
+        input_html: {class: "form-control input-lg"},
         label: 'wording',
         required: true %>
       </td>
-      <td>Label 1</td>
       <td>
-          <%= f.button :button, class: "btn btn-primary align-middle" do %>
-            Add Single Clause
+        <div class="id-positioning">
+        1
+      </div>
+    </td>
+      <td>
+          <%= f.button :button, class: "btn btn-primary btn-curious-blue button-positioning" do %>
+            Submit Single Clause
           <% end %>
     </td>
   </tr>

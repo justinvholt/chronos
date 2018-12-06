@@ -1,8 +1,12 @@
 class ClausesController < ApplicationController
   before_action :set_clause, only: [:show, :assign, :edit, :update]
 
-  def index
-    @clauses = Clause.all
+ def index
+    if params[:query].present?
+      @clauses = Clause.search_by_cp_form_and_paragraph_and_wording(params[:query])
+    else
+      @clauses = Clause.all
+    end
   end
 
   def new
