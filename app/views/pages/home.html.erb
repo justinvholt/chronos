@@ -21,7 +21,7 @@
               <%= f.input :email, input_html: { autocomplete: 'email' } %>
               <%= f.input :password, input_html: { autocomplete: 'current-password' } %>
               <%= f.input :remember_me, as: :boolean, label: "Remember me", inline_label: true if Devise.mappings[:user] %>
-              <%= link_to "Forgot your password?", new_password_path(:user) %>
+              <%= link_to "Forgot your password?", "#", id: "flip1" %>
           </div>
           <div class="modal-footer">
               <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
