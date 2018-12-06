@@ -4,14 +4,17 @@ class EventsController < ApplicationController
   def import
     ImportSOFJob.perform_now(params[:file], @fixture)
     redirect_to fixture_events_path(@fixture), notice: "SOF data imported"
-    index
   end
 
   def run_chronos
   end
 
   def index
-    @events = Event.where(fixture: @fixture).all
+    @port_events = Event.all.group_by(&:port)
+  end
+
+  def port_events
+    @port_events = Event.all.group_by(&:port)
   end
 
   def order_events
