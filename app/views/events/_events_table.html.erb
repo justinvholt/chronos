@@ -1,0 +1,34 @@
+<div class="port-events">
+ <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>title</th>
+        <th>date</th>
+        <th>time</th>
+        <th>counting</th>
+        <th>laytime</th>
+        <th>comments</th>
+        <th>..</th>
+        <th>.. Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- title -->
+        <td class="align-middle"><%= event.title %></td>
+        <!-- date -->
+        <td class="align-middle"><%= event.datetime.to_date %></td>
+        <!-- time -->
+        <td class="align-middle"><%= event.time.to_time %></td>
+        <!-- counting -->
+        <td class="align-middle"><%= event.counting %></td>
+        <!-- Fixture (Ref. No) -->
+        <td class="align-middle"><%= event.laytime %> </td>
+        <!-- optional -->
+        <td class="align-middle"> .. </td>
+        <!-- optional -->
+        <td class="align-middle"> .. </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
