@@ -1,5 +1,5 @@
 /* Banner CSS file */
-.banner {
+.home-container {
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), image-url("ocean2.jpeg");
   color: ivory;
   text-align: center;
@@ -9,6 +9,8 @@
   align-items: center;
   justify-content: center;
   height: 100vh; /* 1vh => 1% of viewport height */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .banner-watermark {
@@ -28,6 +30,27 @@
 .banner-content p {
   font-weight: lighter;
   margin-bottom: 50px;
+}
+
+.banner-btn {
+  background-color: ivory;
+}
+
+.hamburger {
+  top: 0 !important;
+  right: 0 !important;
+  padding-right: 0.5rem;
+  padding-top: 1rem;
+  font-size: 32px;
+}
+
+.fa-1x {
+  color: #003C5F;
+  font-size: 2rem;
+}
+
+.home-modal {
+  color: black;
 }
 
 /*hourglass image original*/
