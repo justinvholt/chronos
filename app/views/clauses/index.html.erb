@@ -48,7 +48,7 @@
           <td>
            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
            <div class="dropdown-menu" role="menu">
-            <%= link_to "Amend details", new_clause_path, class: "dropdown-item" %>
+            <%= link_to "Amend details", edit_clause_path(clause), class: "dropdown-item" %>
             <%= link_to 'Delete',
             clause_path(clause),
             method: :delete,
