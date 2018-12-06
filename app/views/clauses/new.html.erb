@@ -1,24 +1,47 @@
-<h1>Hi there</h1>
 
 <div class="container-fluid px-6">
 
 <div class="table-responsive">
  <table class="table-striped table borderless">
+
+   <thead>
+         <tr>
+           <th>Parent</th>
+           <th>Title</th>
+           <th>Wording</th>
+           <th class="adjust-width">Chronos ID</th>
+           <th>Actions</th>
+         </tr>
+       </thead>
+
    <tbody>
     <%= simple_form_for @clause, url: clauses_path, :method => :post do |f| %>
      <tr>
       <td>
         <%= f.input :cp_form,
         input_html: {class: ""},
-        label: "cp form",
+        label: "CP-Form",
         required: true %>
       </td>
 
       <td>
-        <%= f.input :paragraph,
+        <div class="row">
+          <div class="col">
+        <%= f.input :title,
+        input_html: {class: ""},
+        label: 'Title',
+        required: true %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+           <%= f.input :paragraph,
         input_html: {class: ""},
         label: 'Paragraph',
         required: true %>
+        </div>
+        </div>
+            </div>
         </td>
       <td>
         <%= f.input :wording,
@@ -28,7 +51,7 @@
       </td>
       <td>Label 1</td>
       <td>
-          <%= f.button :button, class: "btn btn-primary mt-3 mb-3" do %>
+          <%= f.button :button, class: "btn btn-primary align-middle" do %>
             Add Single Clause
           <% end %>
     </td>
