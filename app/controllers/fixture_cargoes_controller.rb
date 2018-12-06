@@ -12,11 +12,7 @@ class FixtureCargoesController < ApplicationController
   def create
     @fixture_cargo = FixtureCargo.new(fixture_cargo_params)
     @fixture_cargo.fixture_id = @fixture
-    if @fixture_cargo.save
-      redirect_to fixture_path
-    else
-      redirect_to fixture_path
-    end
+    @fixture_cargo.save!
   end
 
   def edit
@@ -24,12 +20,10 @@ class FixtureCargoesController < ApplicationController
 
   def update
     @fixture_cargo.update(fixture_cargo_params)
-    redirect_to fixture_path
   end
 
   def destroy
     @fixture_cargo.destroy
-    redirect_to fixture_path
   end
 
   private
