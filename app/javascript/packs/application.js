@@ -1,5 +1,7 @@
 //=require bootstrap
 import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
 
 import {
   createNewCargoItemForm,
@@ -24,3 +26,17 @@ $(function() {
   });
 
 });
+
+$(function() {
+    $('.toggle').on('click', function() {
+      if ($(this).hasClass('on')) {
+         $(this).removeClass('on');
+         $(".edit-input").prop('readonly', true);
+      } else {
+         $(this).addClass('on');
+         $(".edit-input").prop('readonly', false);
+      }
+    });
+  });
+
+document.getElementByClass(".toggle.on")
