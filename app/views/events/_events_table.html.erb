@@ -1,22 +1,11 @@
 <div class="port-events">
  <table class="table table-striped">
   <h2><%= port %></h2>
-    <thead>
-      <tr>
-        <th>title</th>
-        <th>date</th>
-        <th>time</th>
-        <th>counting</th>
-        <th>laytime</th>
-        <th>comments</th>
-        <th>..</th>
-        <th>.. Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% events.each do |event| %>
-        <%= render "event_row", event: event %>
-      <% end %>
-    </tbody>
+    <% terminals.each do |terminal, events| %>
+      <h3><%= terminal %></h3>
+      <%= render "events_table_body", events: events %>
+    <% end %>
   </table>
 </div>
+
+

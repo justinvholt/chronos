@@ -10,8 +10,8 @@
   </div>
   <div class="events-tables">
     <% unless @port_events.nil? %>
-      <% @port_events.each do |port, events| %>
-        <%= render "events_table", port: port, events: events %>
+      <% @port_events.each do |port, terminals| %>
+        <%= render "events_table", port: port, terminals: terminals %>
       <% end %>
     <% end %>
   </div>

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_fixture, only: [:run_chronos, :import, :index]
+  before_action :set_fixture, only: [:run_chronos, :import, :index, :all_fixture_events]
 
   def import
     ImportSOFJob.perform_now(params[:file], @fixture)
@@ -10,17 +10,32 @@ class EventsController < ApplicationController
   end
 
   def index
-    @port_events = Event.all.group_by(&:port)
-  end
-
-  def port_events
-    @port_events = Event.all.group_by(&:port)
+    all_fixture_events
+    group_events
+    @port_events
   end
 
   def order_events
     #sort and group!!
     # @events.sort_by! {|event| event.datetime }
   end
+
+  def group_events
+    @port_events = @events.group_by(&:port).transform_values do |events|
+      events.group_by(&:terminal)
+    end
+  end
+
+  def all_fixture_events
+    @handlings = []
+    @events = []
+    @cargos = FixtureCargo.where(fixture: @fixture)
+
+    @cargos.each { |cargo| @handlings << cargo.cargo_handlings }
+    @handlings.flatten!.each { |handling| @events << handling.event }
+  end
+
+
 
   # def assess_terms(contract)
   #   #maybe better to make @events a hash and pass that an argument to the block_call?
