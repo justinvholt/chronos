@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_fixture, only: [:run_chronos, :import]
+  before_action :set_fixture, only: [:run_chronos, :import, :index]
 
   def import
     ImportSOFJob.perform_now(params[:file], @fixture)
@@ -7,11 +7,14 @@ class EventsController < ApplicationController
   end
 
   def run_chronos
-    index
   end
 
   def index
-    @events
+    @port_events = Event.all.group_by(&:port)
+  end
+
+  def port_events
+    @port_events = Event.all.group_by(&:port)
   end
 
   def order_events
