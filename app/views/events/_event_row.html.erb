@@ -1,0 +1,16 @@
+<tr>
+  <!-- title -->
+  <td class="align-middle"><%= event.title %></td>
+  <!-- date -->
+  <td class="align-middle"><%= event.datetime.to_date %></td>
+  <!-- time -->
+  <td class="align-middle"><%= event.datetime.to_time.strftime "%M:%S" %></td>
+  <!-- counting -->
+  <td class="align-middle"><%= event.counting %></td>
+  <!-- Fixture (Ref. No) -->
+  <td class="align-middle"><%= event.laytime %></td>
+  <!-- optional -->
+  <td class="align-middle"> .. </td>
+  <!-- optional -->
+  <td class="align-middle"> .. </td>
+</tr>
