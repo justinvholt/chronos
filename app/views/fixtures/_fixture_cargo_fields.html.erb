@@ -22,12 +22,18 @@
                               required: true %>
           </div>
           <div class="col col4">
+                  <%= f.input :obl,
+                              input_html: {readonly: read_only, class: ""},
+                              label: "Obl",
+                              required: true %>
+          </div>
+          <div class="col col5">
                   <%= f.input :name,
                               input_html: {readonly: read_only, class: ""},
                               label: "Name",
                               required: true %>
           </div>
-          <div class="col col5">
+          <div class="col col6">
                   <%= f.input :quantity_mts,
                               input_html: {readonly: read_only, class: ""},
                               label: "Qty - Mts",
@@ -59,14 +65,20 @@
                               required: true %>
           </div>
           <div class="col col4">
+                  <%= f.input :disch_obl, as: :fake,
+                              input_html: {value: '', readonly: true, class: ""},
+                              label: "Obl",
+                              required: true %>
+          </div>                    
+          <div class="col col5">
                   <%= f.input :disch_name, as: :fake,
-                              input_html: {value: 'pending model update', readonly: true, class: ""},
+                              input_html: {value: '', readonly: true, class: ""},
                               label: "Name",
                               required: true %>
           </div>
-          <div class="col col5">
+          <div class="col col6">
                   <%= f.input :disch_quantity_mts, as: :fake,
-                              input_html: {value: 'pending model update', readonly: true, class: ""},
+                              input_html: {value: '', readonly: true, class: ""},
                               label: "Qty - Mts",
                               required: true %>
           </div>
