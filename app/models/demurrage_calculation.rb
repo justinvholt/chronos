@@ -1,2 +1,0 @@
-class DemurrageCalculation < ApplicationRecord
-end

@@ -1,35 +1,49 @@
 class EventsController < ApplicationController
-  before_action :set_fixture, only: [:run_chronos]
+  before_action :set_fixture, only: [:run_chronos, :import]
 
-  def import_sof(csv_file_path)
-    @events = []
-
-    CSV.foreach(@csv_file_path) do |row|
-      arguments = {
-        port: row[0],
-        terminal: row[1],
-        berth: row[2],
-        title: row[3],
-        datetime: Time.parse("#{row[4]}, #{row[5]}:00, 0"),
-        fixture_cargo: #find based on OBL number,
-        counting: "", #add this to model
-        laytime: Hash.new #add this to model
-        }
-      @events << Event.new(arguments)
-      order_events
-    end
+  def import
+    ImportSOFJob.perform_now(params[:file], @fixture)
+    redirect_to fixture_events_path(@fixture), notice: "SOF data imported"
   end
 
   def run_chronos
-    order_events
-    assess_terms(@clause_group)
-    order_events
-    calculate_laytime
+    index
   end
+
+  def index
+    @events
+  end
+
+  def order_events
+    #sort and group!!
+    # @events.sort_by! {|event| event.datetime }
+  end
+
+  # def assess_terms(contract)
+  #   #maybe better to make @events a hash and pass that an argument to the block_call?
+  #   #set this based on fixture instead of contract @fixture.clause_group
+  #   @events.each do |event|
+  #     contract.each do |term|
+  #       if term.block_call(event).class == Event
+  #         @events << term.block_call(event)
+  #       else
+  #         event.counting = term.block_call(event) unless term.block_call(event).nil?
+  #       end
+  #     end
+  #   end
+  # end
+
+  # def calculate_laytime
+  #   @events.each do |event|
+  #     @start_datetime = event.datetime if event.counting == "Laytime starts"
+  #     @end_datetime = event.datetime if event.counting == "Laytime stops"
+  #     event.laytime = TimeDifference.between(@end_datetime, @start_datetime).in_general if event.counting == "Laytime stops"
+  #   end
+  # end
 
   private
 
   def set_fixture
-    @fixture = Fixture.find(params[:id])
+    @fixture = Fixture.find(params[:fixture_id])
   end
 end
