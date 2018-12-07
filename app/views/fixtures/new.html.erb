@@ -24,52 +24,85 @@
 
               <div class="container-fluid">
                 <div class="row">
-                  <div class='col-xs-12 col-sm-6'>
+                  <div class="col-xs-12 col-sm-6">
                     <%= f.input :reference_no,
+                                  input_html: {class: ""},
+                                  label: "Reference No.",
+                                  required: true %>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= f.input :voyage_number,
                                 input_html: {class: ""},
-                                label: "Reference No.",
+                                label: "Voyage No.",
+                                label_html: {class: ""},
                                 required: true %>
                   </div>
-                  <div class='col-xs-12 col-sm-6'>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= f.input :clause_group, as: :fake,
+                                input_html: {class: ""},
+                                label: "CP Form*",
+                                required: true %>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
                     <%= f.input :vessel_name,
                                 input_html: {class: ""},
                                 label: "Vessel Name",
                                 required: true %>
-                    </div>
-                    <div class='col-xs-12 col-sm-6'>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
                     <%= f.input :charterer,
                                 input_html: {class: ""},
                                 label: "Charterer",
                                 required: true %>
-                    </div>
-                    <div class='col-xs-12 col-sm-6'>
-                    <%= f.input :voyage_number,
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= f.input :contract_type, as: :fake,
                                 input_html: {class: ""},
-                                label: "Voyage Number",
+                                label: "Contract Type*",
                                 label_html: {class: ""},
                                 required: true %>
-                    </div>
-                    <div class='col-xs-12 col-sm-6'>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= f.input :vessel_dwt, as: :fake,
+                                input_html: {class: ""},
+                                label: "Vessel DWT*",
+                                label_html: {class: ""},
+                                required: false %>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
                     <%= f.input :demurrage_rate,
                                 input_html: {class: ""},
                                 label: "Demurrage Rate",
                                 label_html: {class: ""},
                                 required: false %>
-                    </div>
-                    <div class='col-xs-12 col-sm-6'>
-                    <%= f.input :allowed_laytime,
-                                 input_html: {class: ""},
-                                 label: "Allowed Laytime",
-                                 required: false %>
-                    </div>
-                    <div class='col-xs-12 col-sm-6'>
-                    <%= f.input :clause_group_id,
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= f.input :contract_terms, as: :fake,
                                 input_html: {class: ""},
-                                label: "Clause Group ID",
+                                label: "Contract Terms*",
+                                label_html: {class: ""},
                                 required: false %>
-                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= f.input :total_cargo_qty, as: :fake,
+                                input_html: {class: ""},
+                                label: "Total Cargo Qty*",
+                                required: false %>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= f.input :allowed_laytime,
+                                input_html: {class: ""},
+                                label: "Allowed Laytime",
+                                required: false %>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= f.input :reversable, as: :fake,
+                                input_html: {class: ""},
+                                label: "Reversible",
+                                required: false %>
                   </div>
                 </div>
+              </div>
           </div>
           <div class="modal-footer">
               <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
@@ -81,72 +114,9 @@
     </div>
     <hr />
 
-<!--
-  <%# Form to create new Fixture %>
-  <div class="new-fixture__form">
-    <h2 class="mt-5 mb-3">Fixture Details</h2>
-    <%= simple_form_for @fixture, url: fixtures_path, :method => :post do |f| %>
-      <%= f.error_notification %>
-
-          <%# Add voyage button %>
-          <%= f.button :button, class: "btn btn-primary mt-3 mb-3" do %>
-             Add Voyage
-          <% end %>
-
-          <div class="row">
-            <div class='col-xs-12 col-sm-4'>
-              <%= f.input :reference_no,
-                          input_html: {class: ""},
-                          label: "Reference No.",
-                          required: true %>
-            </div>
-            <div class='col-xs-12 col-sm-4'>
-              <%= f.input :vessel_name,
-                          input_html: {class: ""},
-                          label: "Vessel Name",
-                          required: true %>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <%= f.input :charterer,
-                          input_html: {class: ""},
-                          label: "Charterer",
-                          required: true %>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <%= f.input :voyage_number,
-                          input_html: {class: ""},
-                          label: "Voyage Number",
-                          label_html: {class: ""},
-                          required: true %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-4">
-              <%= f.input :demurrage_rate,
-                          input_html: {class: ""},
-                          label: "Demurrage Rate",
-                          label_html: {class: ""},
-                          required: false %>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <%= f.input :allowed_laytime,
-                           input_html: {class: ""},
-                           label: "Allowed Laytime",
-                           required: false %>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <%= f.input :clause_group_id,
-                          input_html: {class: ""},
-                          label: "Clause Group ID",
-                          required: false %>
-            </div>
-          </div>
-
--->
-
       <%# Add cargo button %>
       <div class="new-fixture__add-cargo-button">
-          <%= link_to_add_association 'Add Cargo', f, :fixture_cargos, class: "btn btn-primary mt-3 mb-3", data: {  association_insertion_node: '.new-fixture__add-cargos', association_insertion_method: :append } %>
+          <%= link_to_add_association "Add Cargo", f, :fixture_cargos, class: "btn btn-primary mt-3 mb-3", data: {  association_insertion_node: ".new-fixture__add-cargos", association_insertion_method: :append } %>
       </div>
 
   <%# Loading and Discharge sub-headers  %>
