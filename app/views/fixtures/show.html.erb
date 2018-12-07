@@ -76,6 +76,7 @@
                       input_html: {readonly: true, class: "form-control-sm edit-input"},
                       label: "Contract Terms*",
                       label_html: {class: ""},
+<<<<<<< HEAD
                       required: false %>
         </div>
       </div>
@@ -87,6 +88,19 @@
                       label: "Total Cargo Qty*",
                       required: false %>
         </div>
+=======
+                      required: false %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.input :total_cargo_qty, as: :fake,
+                      input_html: {readonly: true, class: "form-control-sm edit-input"},
+                      label: "Total Cargo Qty*",
+                      required: false %>
+        </div>
+>>>>>>> master
         <div class="col-md-2">
           <%= f.input :allowed_laytime,
                       input_html: {readonly: true, class: "form-control-sm edit-input"},
@@ -96,10 +110,16 @@
         <div class="col-md-3">
           <%= f.input :reversable, as: :fake,
                       input_html: {readonly: true, class: "form-control-sm edit-input"},
+<<<<<<< HEAD
                       label: "Reversible",
+=======
+                      label: "Reversable / Not Reversable*",
+>>>>>>> master
                       required: false %>
         </div>
       </div>
+
+
 
 <!--       <div class="modal fade" id="show_fixture_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

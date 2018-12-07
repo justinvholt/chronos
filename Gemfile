@@ -8,7 +8,6 @@ gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
 gem 'pg_search'
-gem 'searchkick', '~> 3.0'
 
 gem 'autoprefixer-rails'
 gem 'cocoon'

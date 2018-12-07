@@ -1,5 +1,5 @@
 class ClausesController < ApplicationController
-  before_action :set_clause, only: [:show, :assign, :edit, :update]
+  before_action :set_clause, only: [:show, :assign, :edit, :update, :destroy]
 
  def index
     if params[:query].present?
@@ -18,10 +18,11 @@ class ClausesController < ApplicationController
 
   def create
     @clause = Clause.new(clause_params)
-    if @fixture_cargo.save
+    @clause.parent_relation = "standard"
+    if @clause.save!
       redirect_to clauses_path
     else
-      redirect_to clauses_path
+      redirect_to new_clause_path
     end
   end
 
@@ -30,6 +31,7 @@ class ClausesController < ApplicationController
   end
 
   def edit
+     @clause = Clause.find(params[:id])
     # if a bloc is added this should only be accessible by an administrator. users are not allowed to edit/delete clauses
     # before a bloc is added, the user can delete
   end
@@ -37,14 +39,17 @@ class ClausesController < ApplicationController
   def update
     # this should only be accessible by an administrator. users are not allowed to edit/delete clauses
     @clause.update(clause_params)
-    redirect_to clause_path
+    @clause.parent_relation = "amended"
+    @clause.save!
+
+    redirect_to clauses_path
   end
 
   def destroy
     # if a bloc is added this should only be accessible by an administrator. users are not allowed to edit/delete clauses
     # before a bloc is added, the user can delete
     @clause.destroy
-    redirect_to clause_path
+    redirect_to clauses_path
   end
 
   private
@@ -54,6 +59,6 @@ class ClausesController < ApplicationController
   end
 
   def clause_params
-    params.require(:clause).permit(:title, :paragraph, :wording, :bloc)
+    params.require(:clause).permit(:title, :paragraph, :wording, :bloc, :cp_form)
   end
 end
