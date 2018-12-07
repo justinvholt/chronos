@@ -17,7 +17,7 @@ class ImportSOFJob < ApplicationJob
         terminal: @terminal,
         berth: @berth,
         title: row[:title],
-        datetime: Time.parse("#{row[6]}, #{row[7]}:00, 0"),
+        datetime: DateTime.parse("#{row[:date]} #{row[:time]}:00, 0"),
         counting: "",
         laytime: Hash.new,
         cargo_handlings: @cargo_handlings

@@ -7,23 +7,59 @@ class EventsController < ApplicationController
   end
 
   def run_chronos
+    set_clause_group
+    assess_terms
+    order_events
+    # calculate_laytime
   end
 
   def index
     all_fixture_events
     group_events
+    # run_chronos
     @port_events
   end
 
-  def order_events
-    #sort and group!!
-    # @events.sort_by! {|event| event.datetime }
+  def assess_terms
+    #maybe better to make @events a hash and pass that an argument to the bloc_call?
+    @laytime_events.each do |port, events|
+      events.each do |event|
+        @clause_group.each do |clause|
+          binding.pry
+          if clause.bloc.nil?
+            next
+          else
+            if clause.bloc_call(event).class == Event
+              @events << clause.bloc_call(event)
+            else
+              event.counting = clause.bloc_call(event) unless clause.bloc_call(event).nil?
+            end
+          end
+        end
+      end
+    end
   end
 
+  # def calculate_laytime
+  #   @events.each do |event|
+  #     @start_datetime = event.datetime if event.counting == "Laytime starts"
+  #     @end_datetime = event.datetime if event.counting == "Laytime stops"
+  #     event.laytime = TimeDifference.between(@end_datetime, @start_datetime).in_general if event.counting == "Laytime stops"
+  #   end
+  # end
+
+  private
+
   def group_events
-    @port_events = @events.group_by(&:port).transform_values do |events|
+    order_events
+    @laytime_events = @events.group_by(&:port)
+    @port_events = @laytime_events.transform_values do |events|
       events.group_by(&:terminal)
     end
+  end
+
+  def order_events
+    @events.sort_by! {|event| event.datetime }
   end
 
   def all_fixture_events
@@ -41,31 +77,10 @@ class EventsController < ApplicationController
     @events = @events_set.to_a
   end
 
-
-
-  # def assess_terms(contract)
-  #   #maybe better to make @events a hash and pass that an argument to the block_call?
-  #   #set this based on fixture instead of contract @fixture.clause_group
-  #   @events.each do |event|
-  #     contract.each do |term|
-  #       if term.block_call(event).class == Event
-  #         @events << term.block_call(event)
-  #       else
-  #         event.counting = term.block_call(event) unless term.block_call(event).nil?
-  #       end
-  #     end
-  #   end
-  # end
-
-  # def calculate_laytime
-  #   @events.each do |event|
-  #     @start_datetime = event.datetime if event.counting == "Laytime starts"
-  #     @end_datetime = event.datetime if event.counting == "Laytime stops"
-  #     event.laytime = TimeDifference.between(@end_datetime, @start_datetime).in_general if event.counting == "Laytime stops"
-  #   end
-  # end
-
-  private
+  def set_clause_group
+    @clause_group = Clause.all
+    # @clause_group = ClauseGroup.where(fixture: @fixture).clauses
+  end
 
   def set_fixture
     @fixture = Fixture.find(params[:fixture_id])
