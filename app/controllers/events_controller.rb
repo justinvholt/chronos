@@ -27,12 +27,18 @@ class EventsController < ApplicationController
   end
 
   def all_fixture_events
-    @handlings = []
-    @events = []
+    @handlings = Set.new
+    @events_set = Set.new
     @cargos = FixtureCargo.where(fixture: @fixture)
 
-    @cargos.each { |cargo| @handlings << cargo.cargo_handlings }
-    @handlings.flatten!.each { |handling| @events << handling.event }
+    @cargos.each do |cargo|
+      cargo.cargo_handlings.each { |handling| @handlings << handling }
+    end
+
+    unless @handlings.empty?
+      @handlings.each { |handling| @events_set << handling.event }
+    end
+    @events = @events_set.to_a
   end
 
 

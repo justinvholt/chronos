@@ -3,20 +3,20 @@ class ImportSOFJob < ApplicationJob
   #TODO: change rows to header
   def perform(file, fixture)
     CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
-      @port = row[2]
-      @terminal = row[3]
-      @berth = row[4]
-      @obl = row[8]
+      @port = row[:port]
+      @terminal = row[:terminal]
+      @berth = row[:berth]
+      @obl = row[:obl]
       @fixture = fixture
       generate_cargo_handlings
 
       arguments = {
-        vessel_name: row[0],
-        voyage_number: row[1],
+        vessel_name: row[:vessel],
+        voyage_number: row[:voy],
         port: @port,
         terminal: @terminal,
         berth: @berth,
-        title: row[5],
+        title: row[:title],
         datetime: Time.parse("#{row[6]}, #{row[7]}:00, 0"),
         counting: "",
         laytime: Hash.new,
