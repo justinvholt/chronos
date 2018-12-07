@@ -21,20 +21,17 @@ class EventsController < ApplicationController
   end
 
   def assess_terms
+    #TODO stack level to deep!
     #maybe better to make @events a hash and pass that an argument to the bloc_call?
     @laytime_events.each do |port, events|
       events.each do |event|
         @clause_group.each do |clause|
-          binding.pry
-          if clause.bloc.nil?
-            next
-          else
+          clause.proc_service = ProcService.new(self)
             if clause.bloc_call(event).class == Event
               @events << clause.bloc_call(event)
             else
               event.counting = clause.bloc_call(event) unless clause.bloc_call(event).nil?
             end
-          end
         end
       end
     end

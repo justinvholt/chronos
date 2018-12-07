@@ -9,6 +9,9 @@ class ProcService
     send(@clause.bloc)
   end
 
+  def ignore
+  end
+
   def nor_6_asbatankvoy
     # exp = ["force majeure"]
     commencement = ( "berthed" || "finished mooring" )

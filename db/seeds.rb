@@ -126,7 +126,7 @@ clause_count = 0
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Laydays",
@@ -138,7 +138,6 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Notice of Readiness",
@@ -151,7 +150,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Hours for loading and discharging",
@@ -163,7 +162,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Demurrage",
@@ -175,7 +174,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Safe berthing-shifting",
@@ -187,7 +186,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Pumping in and out",
@@ -199,7 +198,6 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Hoses: Moorning at sea terminals",
@@ -212,7 +210,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "ICE",
@@ -224,7 +222,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "ICE",
@@ -236,7 +234,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Two or more ports counting as one",
@@ -252,7 +250,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Quarantine",
@@ -264,7 +262,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Fumigation",
@@ -276,7 +274,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "General Exceptions",
@@ -306,7 +304,7 @@ end
 
  1.times do
   Clause.create(
-    proc_service: ProcService.new(self),
+    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Oil pollution clause",
