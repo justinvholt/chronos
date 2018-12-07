@@ -7,49 +7,35 @@ class EventsController < ApplicationController
   end
 
   def run_chronos
+    set_clause_group
+    assess_terms
+    order_events
+    # calculate_laytime
   end
 
   def index
     all_fixture_events
     group_events
+    # run_chronos
     @port_events
   end
 
-  def order_events
-    #sort and group!!
-    # @events.sort_by! {|event| event.datetime }
-  end
-
-  def group_events
-    @port_events = @events.group_by(&:port).transform_values do |events|
-      events.group_by(&:terminal)
+  def assess_terms
+    #TODO stack level to deep!
+    #maybe better to make @events a hash and pass that an argument to the bloc_call?
+    @laytime_events.each do |port, events|
+      events.each do |event|
+        @clause_group.each do |clause|
+          clause.proc_service = ProcService.new(self)
+            if clause.bloc_call(event).class == Event
+              @events << clause.bloc_call(event)
+            else
+              event.counting = clause.bloc_call(event) unless clause.bloc_call(event).nil?
+            end
+        end
+      end
     end
   end
-
-  def all_fixture_events
-    @handlings = []
-    @events = []
-    @cargos = FixtureCargo.where(fixture: @fixture)
-
-    @cargos.each { |cargo| @handlings << cargo.cargo_handlings }
-    @handlings.flatten!.each { |handling| @events << handling.event }
-  end
-
-
-
-  # def assess_terms(contract)
-  #   #maybe better to make @events a hash and pass that an argument to the block_call?
-  #   #set this based on fixture instead of contract @fixture.clause_group
-  #   @events.each do |event|
-  #     contract.each do |term|
-  #       if term.block_call(event).class == Event
-  #         @events << term.block_call(event)
-  #       else
-  #         event.counting = term.block_call(event) unless term.block_call(event).nil?
-  #       end
-  #     end
-  #   end
-  # end
 
   # def calculate_laytime
   #   @events.each do |event|
@@ -60,6 +46,38 @@ class EventsController < ApplicationController
   # end
 
   private
+
+  def group_events
+    order_events
+    @laytime_events = @events.group_by(&:port)
+    @port_events = @laytime_events.transform_values do |events|
+      events.group_by(&:terminal)
+    end
+  end
+
+  def order_events
+    @events.sort_by! {|event| event.datetime }
+  end
+
+  def all_fixture_events
+    @handlings = Set.new
+    @events_set = Set.new
+    @cargos = FixtureCargo.where(fixture: @fixture)
+
+    @cargos.each do |cargo|
+      cargo.cargo_handlings.each { |handling| @handlings << handling }
+    end
+
+    unless @handlings.empty?
+      @handlings.each { |handling| @events_set << handling.event }
+    end
+    @events = @events_set.to_a
+  end
+
+  def set_clause_group
+    @clause_group = Clause.all
+    # @clause_group = ClauseGroup.where(fixture: @fixture).clauses
+  end
 
   def set_fixture
     @fixture = Fixture.find(params[:fixture_id])
