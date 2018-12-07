@@ -3,7 +3,7 @@
   <form class="form-inline">
     <%= link_to "ADD SINGLE CLAUSE", new_clause_path, class: "btn btn-primary btn-lg form-group mt-5 mb-3 mr-6" %>
     <div class="active-cyan-3 active-cyan-4">
-        <input class="form-control form-group mt-5 mb-3" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control form-group mt-5 mb-3" type="text" placeholder="Search" aria-label="Search" name="query">
     </div>
   </form>
 
@@ -31,26 +31,24 @@
                 <div class="col">
                   <%= "#{clause.paragraph}" %>
                 </div>
-              </div>
-            </td>
-            <td><%= clause.wording %></td>
-            <td><%= clause.id %></td>
-            <td>
-              <button id="btnGroupDrop1" class="btn btn-curious-blue dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Actions
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%= link_to "Amend details", new_clause_path, class: "dropdown-item" %>
-                <%= link_to 'Delete',
-                clause_path(clause),
-                method: :delete,
-                data: { confirm: 'Are you sure you want to delete this item?' }, class: "dropdown-item" %>
-                <%= link_to "Request bloc change", new_clause_path, class: "dropdown-item" %>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
+            </div>
+          </td>
+          <td><%= clause.wording %></td>
+          <td><%= clause.id %></td>
+          <td>
+           <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+           <div class="dropdown-menu" role="menu">
+            <%= link_to "Amend details", edit_clause_path(clause), class: "dropdown-item" %>
+            <%= link_to 'Delete',
+            clause_path(clause),
+            method: :delete,
+            data: { confirm: 'Are you sure you want to delete this item?' }, class: "dropdown-item" %>
+            <%= link_to "Request bloc change", new_clause_path, class: "dropdown-item" %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+     </tbody>
     </table>
   </div>
 </div>
