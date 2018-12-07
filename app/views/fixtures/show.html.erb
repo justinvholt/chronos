@@ -80,26 +80,13 @@
     </div>
      -->
 
-<!--
-    <%= simple_form_for @fixture, url: edit_fixture_path, method: :get do |f| %>
+    <%= simple_form_for @fixture, remote: true, url: fixture_path, html: { method: :patch, id: :update_fixture } do |f| %>
 
-      <%= f.button :button, class: "btn btn-default toggle mt-3 mb-3" do %>
-        <div class='slide'>
+      <div class="btn btn-default toggle mt-3 mb-3" data-toggle="modal" data-target="#show_fixture_modal">
+        <div class="slide">
           <i class="fas fa-circle"></i>
         </div>
-      <% end %>
-
-    <% end %>
--->
-
-    <%= simple_form_for @fixture, url: fixture_path, method: :patch do |f| %>
-
-      <%= f.button :button, class: "btn btn-default toggle mt-3 mb-3" do %>
-        <div class='slide'>
-          <i class="fas fa-circle"></i>
-        </div>
-      <% end %>
-
+      </div>
 
       <div class="row">
         <div class='col-xs-12 col-sm-4'>
@@ -150,6 +137,22 @@
                       required: false %>
         </div>
       </div>
+
+<!--       <div class="modal fade" id="show_fixture_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content home-modal">
+            <div class="modal-body">
+              Is all your updated data correct?
+            </div>
+            <div class="modal-footer">
+              <%= f.button :button, "No, go back", type: "reset", class: "btn-outline-secondary" %>
+              <%= f.button :submit, "Yes, please save", class: "btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
     <hr />
 
       <%# Loading and Discharge sub-headers  %>
