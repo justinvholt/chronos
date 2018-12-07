@@ -113,9 +113,11 @@
     </div>
     <hr />
 
+    <%= simple_form_for @fixture, url: fixtures_path, :method => :post do |f| %>
+      <%= f.error_notification %>
       <%# Add cargo button %>
       <div class="new-fixture__add-cargo-button">
-          <%= link_to_add_association "Add Cargo", f, :fixture_cargos, class: "btn btn-primary mt-3 mb-3", data: {  association_insertion_node: ".new-fixture__add-cargos", association_insertion_method: :append } %>
+        <%= link_to_add_association "Add Cargo", f, :fixture_cargos, class: "btn btn-primary mt-3 mb-3", data: {  association_insertion_node: ".new-fixture__add-cargos", association_insertion_method: :append } %>
       </div>
 
   <%# Loading and Discharge sub-headers  %>
@@ -127,16 +129,14 @@
     <h2 class="mt-3 mb-3">Discharge</h2>
   </div>
 
-    <%# Add additional FixtureCargo fields for user input  %>
-    <%# partial _fixture_cargo_fields is appended to       %>
-    <%# div.new-fixture__add-cargos and dynamically moved  %>
-    <%# to the Loading/Discharge header                    %>
-    <div class="new-fixture__add-cargos">
-  <%= f.simple_fields_for :fixture_cargos do |builder| %>
-    <%= render "fixture_cargo_fields", f: builder %>
-  <% end %>
-    </div>
+  <!--
+    Add additional FixtureCargo fields for user input partial _fixture_cargo_fields is appended to div.new-fixture__add-cargos and dynamically moved to the Loading/Discharge header
+  -->
 
+    <div class="new-fixture__add-cargos">
+      <%= f.simple_fields_for :fixture_cargos do |builder| %>
+        <%= render "fixture_cargo_fields", f: builder %>
+      <% end %>
+    </div>
   <% end %>
-  </div>
 </div>
