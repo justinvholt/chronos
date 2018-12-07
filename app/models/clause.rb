@@ -6,4 +6,8 @@ class Clause < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+    def bloc_call(event)
+      self.proc_service.call(event)
+    end
 end

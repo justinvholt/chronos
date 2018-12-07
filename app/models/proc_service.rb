@@ -1,16 +1,20 @@
 class ProcService
-  def initialize(term)
-    @term = term
+  def initialize(clause)
+    @clause = clause
   end
 
   def call(event)
     @event = event
+    @event_title = @event.title.strip.downcase
     send(@clause.bloc)
+  end
+
+  def ignore
   end
 
   def nor_6_asbatankvoy
     # exp = ["force majeure"]
-    commencement = ( "all fast" || "finished mooring" )
+    commencement = ( "berthed" || "finished mooring" )
 
     # exempt?(exp, 1)
     notice_of_readiness(6)
