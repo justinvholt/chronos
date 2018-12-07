@@ -35,7 +35,7 @@ class FixturesController < ApplicationController
   end
 
   def fixture_params
-    params.require(:fixture).permit(:charterer, :clause_group_id, :vessel_name, :voyage_number, :demurrage_rate, :allowed_laytime,
+    params.require(:fixture).permit(:charterer, :clause_group_id, :vessel_name, :voyage_number, :demurrage_rate, :allowed_laytime, :reference_no,
       # Used for cocoon nesting forms to pass all FixtureCargo attributes and destroy method in params
       fixture_cargos_attributes: FixtureCargo.attribute_names.map(&:to_sym).push(:_destroy))
   end
