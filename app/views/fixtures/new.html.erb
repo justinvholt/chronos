@@ -3,6 +3,13 @@
   <%# Form for new Fixture %>
   <h4>Fixture Details</h4>
 
+  <div class="import-file">
+    <%= form_tag import_fixtures_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag 'Import fixture' %>
+    <% end %>
+  </div>
+
   <%= simple_form_for @fixture, url: fixtures_path, :method => :post do |f| %>
 
   <div class="row">

@@ -16,23 +16,24 @@ class EventsController < ApplicationController
   def index
     all_fixture_events
     group_events
-    # run_chronos
+    run_chronos
     @port_events
   end
 
   def assess_terms
     #TODO stack level to deep!
     #maybe better to make @events a hash and pass that an argument to the bloc_call?
-    @laytime_events.each do |port, events|
-      events.each do |event|
-        @clause_group.each do |clause|
-          clause.proc_service = ProcService.new(self)
-            if clause.bloc_call(event).class == Event
-              @events << clause.bloc_call(event)
-            else
-              event.counting = clause.bloc_call(event) unless clause.bloc_call(event).nil?
-            end
-        end
+    @events.each do |event|
+      @clause_group.each do |clause|
+          if clause.bloc_call(event).class == Event
+            @events << clause.bloc_call(event)
+          else
+            # !!! it returns the correct value in the proc_service but
+            # it doesnt send back !!!
+            bloc_result = clause.bloc_call(event)
+            event.counting = bloc_result unless bloc_result.nil?
+            event.save
+          end
       end
     end
   end
@@ -75,7 +76,7 @@ class EventsController < ApplicationController
   end
 
   def set_clause_group
-    @clause_group = Clause.all
+    @clause_group = Clause.all[0..1]
     # @clause_group = ClauseGroup.where(fixture: @fixture).clauses
   end
 

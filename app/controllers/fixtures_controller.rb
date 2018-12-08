@@ -1,6 +1,11 @@
 class FixturesController < ApplicationController
   before_action :set_fixture, only: %i[show edit update]
 
+  def import
+    @fixture = ImportFixtureJob.perform_now(params[:file])
+    redirect_to fixture_path(@fixture), notice: "Fixture data imported"
+  end
+
   def index
     @fixtures = Fixture.all
   end

@@ -8,6 +8,7 @@ class Clause < ApplicationRecord
     }
 
     def bloc_call(event)
-      self.proc_service.call(event)
+      @proc_service = ProcService.new(self)
+      @proc_service.call(event)
     end
 end

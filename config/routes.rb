@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :fixtures do
+    collection {post :import}
     resources :fixture_cargos, only: [:create]
     resources :events, only: [:index, :new, :create] do
       collection {post :import}
