@@ -9,11 +9,13 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
     <%= render "/shared/favicon" %>
 
   </head>
   <body id="site">
+    <%= render "shared/flashes" %>
     <% unless action_name == "home" %>
       <%= render "/shared/navbar" %>
     <% end %>
