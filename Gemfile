@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'time_difference'
+gem "roo", "~> 2.7.0"
 
 group :development do
   gem 'web-console', '>= 3.3.0'

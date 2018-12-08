@@ -8,6 +8,14 @@
     </button>
   </div>
 
+  <div class="import-file">
+    <%= form_tag import_fixtures_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag 'Import fixture' %>
+    <% end %>
+  </div>
+
+  <%= simple_form_for @fixture, url: fixtures_path, :method => :post do |f| %>
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content home-modal">

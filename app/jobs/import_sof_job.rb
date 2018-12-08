@@ -1,6 +1,6 @@
 class ImportSOFJob < ApplicationJob
   queue_as :default
-  #TODO: change rows to header
+
   def perform(file, fixture)
     CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
       @port = row[:port]

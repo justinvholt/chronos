@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_07_155819) do
+ActiveRecord::Schema.define(version: 2018_12_08_174719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2018_12_07_155819) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_cargo_handlings_on_event_id"
     t.index ["fixture_cargo_id"], name: "index_cargo_handlings_on_fixture_cargo_id"
+  end
+
+  create_table "clause_group_joins", force: :cascade do |t|
+    t.bigint "clause_id"
+    t.bigint "clause_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clause_group_id"], name: "index_clause_group_joins_on_clause_group_id"
+    t.index ["clause_id"], name: "index_clause_group_joins_on_clause_id"
   end
 
   create_table "clause_groups", force: :cascade do |t|
@@ -37,11 +46,11 @@ ActiveRecord::Schema.define(version: 2018_12_07_155819) do
     t.string "paragraph"
     t.text "wording"
     t.string "bloc"
+    t.string "proc_service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "cp_form"
     t.string "parent_relation"
-    t.jsonb "proc_service"
   end
 
   create_table "events", force: :cascade do |t|
@@ -90,15 +99,6 @@ ActiveRecord::Schema.define(version: 2018_12_07_155819) do
     t.index ["clause_group_id"], name: "index_fixtures_on_clause_group_id"
   end
 
-  create_table "pg_search_documents", force: :cascade do |t|
-    t.text "content"
-    t.string "searchable_type"
-    t.bigint "searchable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -113,6 +113,8 @@ ActiveRecord::Schema.define(version: 2018_12_07_155819) do
 
   add_foreign_key "cargo_handlings", "events"
   add_foreign_key "cargo_handlings", "fixture_cargos"
+  add_foreign_key "clause_group_joins", "clause_groups"
+  add_foreign_key "clause_group_joins", "clauses"
   add_foreign_key "clause_groups", "clauses"
   add_foreign_key "fixture_cargos", "fixtures"
   add_foreign_key "fixtures", "clause_groups"
