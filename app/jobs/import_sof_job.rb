@@ -19,7 +19,7 @@ class ImportSOFJob < ApplicationJob
         title: row[:title],
         datetime: DateTime.parse("#{row[:date]} #{row[:time]}:00, 0"),
         counting: "",
-        laytime: Hash.new,
+        laytime: 0.to_f,
         cargo_handlings: @cargo_handlings
         }
       Event.create!(arguments)
