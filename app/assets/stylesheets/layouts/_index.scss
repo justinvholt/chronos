@@ -16,3 +16,10 @@ body {
 .mr-6 {
   margin-right: 4rem;
 }
+
+.modal.modal-wide .modal-dialog {
+  max-width: 90%;
+}
+.modal-wide .modal-body {
+  overflow-y: auto;
+}
