@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_08_174719) do
+ActiveRecord::Schema.define(version: 2018_12_09_220756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2018_12_08_174719) do
     t.string "vessel_name"
     t.integer "voyage_number"
     t.string "counting"
-    t.jsonb "laytime"
+    t.float "laytime"
   end
 
   create_table "fixture_cargos", force: :cascade do |t|

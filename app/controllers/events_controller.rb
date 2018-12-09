@@ -8,9 +8,8 @@ class EventsController < ApplicationController
 
   def run_chronos
     set_clause_group
-    assess_terms
-    order_events
-    # calculate_laytime
+    assess_events_clauses
+    assess_events_laytime
   end
 
   def index
@@ -20,59 +19,75 @@ class EventsController < ApplicationController
     @port_events
   end
 
-  def assess_terms
-    #TODO stack level to deep!
-    #maybe better to make @events a hash and pass that an argument to the bloc_call?
-    @events.each do |event|
-      @clause_group.each do |clause|
-          if clause.bloc_call(event).class == Event
-            @events << clause.bloc_call(event)
-          else
-            # !!! it returns the correct value in the proc_service but
-            # it doesnt send back !!!
-            bloc_result = clause.bloc_call(event)
-            event.counting = bloc_result unless bloc_result.nil?
-            event.save
-          end
+  private
+
+  def assess_events_clauses
+    @port_events.each do |port, terminals|
+      terminals.each do |terminal, events|
+        events.each do |event|
+          @event = event
+          assess_clauses(event)
+        end
       end
     end
   end
 
-  # def calculate_laytime
-  #   @events.each do |event|
-  #     @start_datetime = event.datetime if event.counting == "Laytime starts"
-  #     @end_datetime = event.datetime if event.counting == "Laytime stops"
-  #     event.laytime = TimeDifference.between(@end_datetime, @start_datetime).in_general if event.counting == "Laytime stops"
-  #   end
-  # end
-
-  private
-
-  def group_events
-    order_events
-    @laytime_events = @events.group_by(&:port)
-    @port_events = @laytime_events.transform_values do |events|
-      events.group_by(&:terminal)
+  def assess_events_laytime
+    @port_events.each do |port, terminals|
+      terminals.each do |terminal, events|
+        events.each do |event|
+          @event = event
+          calculate_laytime(event)
+        end
+      end
     end
   end
 
-  def order_events
-    @events.sort_by! {|event| event.datetime }
+  def assess_clauses(event)
+    @clause_group.each do |clause|
+      read_response(clause.bloc_call(event))
+    end
+  end
+
+  ## TODO: Why does it run twice over this method?
+  def read_response(response)
+    case response[:message]
+    when "mutate event"
+      @event.counting = response[:mutation]
+    when "insert event"
+      @events << response[:event]
+    end
+  end
+
+  def calculate_laytime(event)
+    @start_datetime = event.datetime if event.counting == "Laytime starts"
+    @end_datetime = event.datetime if event.counting == "Laytime stops"
+    if event.counting == "Laytime stops"
+      @event.laytime = TimeDifference.between(@end_datetime, @start_datetime).in_minutes
+    end
   end
 
   def all_fixture_events
     @handlings = Set.new
     @events_set = Set.new
-    @cargos = FixtureCargo.where(fixture: @fixture)
+    @cargoes = FixtureCargo.where(fixture: @fixture)
 
-    @cargos.each do |cargo|
+    @cargoes.each do |cargo|
       cargo.cargo_handlings.each { |handling| @handlings << handling }
     end
 
-    unless @handlings.empty?
-      @handlings.each { |handling| @events_set << handling.event }
+    @handlings.each { |handling| @events_set << handling.event } if @handlings.length > 0
+    @events = order_by_time(@events_set.to_a)
+  end
+
+  def group_events
+    @port_events = @events.group_by(&:port).transform_values do |events|
+      events.group_by(&:terminal)
     end
-    @events = @events_set.to_a
+  end
+
+  def order_by_time(events_array)
+    events_array.sort_by! {|event| event.datetime }
   end
 
   def set_clause_group

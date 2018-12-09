@@ -1,11 +1,12 @@
+<% @obls = [] %>
+<% event.cargo_handlings.each do |handling| %>
+  <% @obls << handling.fixture_cargo.obl %>
+<% end %>
+
 <tr>
   <!-- title -->
   <td class="align-middle"><%= event.title %></td>
   <!-- obl -->
-  <% @obls = [] %>
-  <% event.cargo_handlings.each do |handling| %>
-    <% @obls << handling.fixture_cargo.obl %>
-  <% end %>
   <td class="align-middle"><%= @obls.join('') if @obls.length == 1 %></td>
   <!-- date -->
   <td class="align-middle"><%= event.datetime.day %> / <%= event.datetime.month %></td>
@@ -13,8 +14,11 @@
   <td class="align-middle"><%= event.datetime.to_time.strftime "%H:%M" %></td>
   <!-- counting -->
   <td class="align-middle"><%= event.counting %></td>
-  <!-- Fixture (Ref. No) -->
-  <td class="align-middle"><%= event.laytime[:hours] %>:<%= event.laytime[:minutes] %></td>
+  <!-- Laytime -->
+  <td class="align-middle">
+    <% if event.laytime > 0.to_f %>
+      <%= event.laytime.to_i / 60 %>:<%= event.laytime.to_i % 60 %></td>
+    <% end %>
   <!-- optional -->
   <td class="align-middle">  </td>
   <!-- optional -->
