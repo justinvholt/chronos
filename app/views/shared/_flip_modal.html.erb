@@ -1,0 +1,57 @@
+<div class="modal home-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+  <div class="modal-wrap">
+    <div class="modal-front is-active">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Sign in</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for(:user, url: session_path(:user)) do |f| %>
+              <%= f.input :email, input_html: { autocomplete: 'email' } %>
+              <%= f.input :password, input_html: { autocomplete: 'current-password' } %>
+              <%= f.input :remember_me, as: :boolean, label: "Remember me", inline_label: true if Devise.mappings[:user] %>
+              <%= link_to "Forgot your password?", "#", id: "flip" %>
+          </div>
+          <div class="modal-footer">
+              <%= f.button :button, "Cancel", class: "btn btn-secondary" %>
+              <%= f.button :submit, "Sign In", class: "btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-wrap">
+      <div class="modal-back">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Forget Your Password?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <%= simple_form_for(:user, url: password_path(:user), method: :post) do |f| %>
+              <%= f.error_notification %>
+
+              <%= f.input :reset_password_token, as: :hidden %>
+              <%= f.full_error :reset_password_token %>
+
+              <%= f.input :email, input_html: { autocomplete: 'email' } %>
+
+          </div>
+          <div class="modal-footer">
+              <%= f.button :button, "Go back", class: "btn btn-secondary", id: "flip" %>
+              <%= f.button :submit, "Send me reset password instructions", class: "btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

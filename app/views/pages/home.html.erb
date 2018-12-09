@@ -1,12 +1,22 @@
 <div class="home-container">
   <div class="position-absolute mt-2 mr-3 hamburger">
-    <!-- Button trigger modal -->
+
+    <!-- Button trigger modal
+    <button type="button" class="btn btn-primary position-absolute mt-2 mr-3 hamburger" data-toggle="modal" data-target="#exampleModalCenter">
+      <i class="fa fa-bars fa-1x"></i>
+    </button>
+  </div>
+
+    Sign in modal
+      <%= render partial: "shared/flip_modal" %> -->
+
+    <!-- Button trigger modal  ORIGINAL -->
     <button class="btn btn-default banner-btn" type="button" data-toggle="modal" data-target="#exampleModalCenter">
       <i class="fa fa-bars fa-2x"></i>
     </button>
   </div>
 
-    <!-- Sign in modal -->
+    <!-- Sign in modal ORIGINAL -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content home-modal">
@@ -24,13 +34,14 @@
               <%= link_to "Forgot your password?", "#", id: "flip1" %>
           </div>
           <div class="modal-footer">
-              <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+              <%= f.button :button, "Cancel", class: "btn btn-secondary" %>
               <%= f.button :submit, "Sign In", class: "btn-primary" %>
             <% end %>
           </div>
         </div>
       </div>
     </div>
+
 
   <div class="banner">
     <div class="banner-content">
