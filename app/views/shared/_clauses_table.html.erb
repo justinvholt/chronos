@@ -11,7 +11,7 @@
       </thead>
 
       <tbody>
-        <% @clauses.each do |clause| %>
+        <% @clauses.clauses.each do |clause| %>
           <tr>
             <td><%= "#{clause.cp_form.upcase}" + " " + "#{clause.parent_relation}" %></td>
             <td>
