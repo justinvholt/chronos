@@ -18,7 +18,11 @@
                 label: "CP Form*",
                 required: true %>
   </div>
-</div>
+
+  <div class="col-md-3">
+    <%= link_to "Demurrage record", fixture_events_path(@fixture), class: "btn btn-curious-blue" %>
+    </div>
+  </div>
 
 <div class="row">
   <div class='col-md-2'>
@@ -39,6 +43,18 @@
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Contract Type*",
                 required: true %>
+  </div>
+
+  <div class="col-md-3">
+    <div class="dropdown">
+      <button class="btn btn-niagara btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span id="selected">Documents</span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Incomplete</a>
+        <a class="dropdown-item" href="#">Complete</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -84,3 +100,4 @@
                 required: false %>
   </div>
 </div>
+
