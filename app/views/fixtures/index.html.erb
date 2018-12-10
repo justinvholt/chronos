@@ -1,8 +1,6 @@
 <!-- Begin page content -->
 <div class="container-fluid px-6">
-  <%= link_to new_fixture_url, class: "btn btn-primary btn-lg mt-5 mb-3" do %>
-    ADD FIXTURE
-  <% end %>
+  <%= render "fixture_new_modal" %>
 
   <table class="table table-striped">
     <thead>
