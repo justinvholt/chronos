@@ -1,6 +1,7 @@
 class FixturesController < ApplicationController
   before_action :set_fixture, only: %i[show edit update]
 
+
   def import
     @fixture = ImportFixtureJob.perform_now(params[:file])
     redirect_to fixture_path(@fixture), notice: "Fixture data imported"
@@ -13,6 +14,9 @@ class FixturesController < ApplicationController
 
   def show
     @fixture_cargo = FixtureCargo.new
+    @clause = Clause.new
+    @clauses = @fixture.clause_group.clause_group_joins
+    @clause_groups = ClauseGroup.all
   end
 
   def new
@@ -31,7 +35,7 @@ class FixturesController < ApplicationController
   def update
     @fixture.update(fixture_params)
 
-    # redirect_to fixture_path(@fixture)
+    redirect_to fixture_path(@fixture)
   end
 
   private
@@ -43,6 +47,8 @@ class FixturesController < ApplicationController
   def fixture_params
     params.fetch(:fixture, {}).permit(:charterer, :clause_group_id, :vessel_name, :voyage_number, :demurrage_rate, :allowed_laytime,
                                       # Used for cocoon nesting forms to pass all FixtureCargo attributes and destroy method in params
-                                      fixture_cargoes_attributes: FixtureCargo.attribute_names.map(&:to_sym).push(:_destroy))
+                                      fixture_cargoes_attributes: FixtureCargo.attribute_names.map(&:to_sym).push(:_destroy),
+                                      clauses_attributes: Clause.attribute_names.map(&:to_sym).push(:_destroy),
+                                      clause_groups_attributes: ClauseGroup.attribute_names.map(&:to_sym).push(:_destroy))
   end
 end

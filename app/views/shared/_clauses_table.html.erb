@@ -1,13 +1,4 @@
-<div class="container-fluid px-6">
-
-  <form class="form-inline">
-    <%= link_to "ADD SINGLE CLAUSE", new_clause_path, class: "btn btn-primary btn-lg form-group mt-5 mb-3 mr-6" %>
-    <div class="active-cyan-4">
-        <input class="form-control form-group mt-5 mb-3" type="text" placeholder="Search" aria-label="Search" name="query">
-    </div>
-  </form>
-
-<div class="table-responsive">
+  <div class="table-responsive">
     <table class="table-striped table borderless">
       <thead>
         <tr>
@@ -20,7 +11,7 @@
       </thead>
 
       <tbody>
-        <% @clauses.each do |clause| %>
+        <% @clauses.clauses.each do |clause| %>
           <tr>
             <td><%= "#{clause.cp_form.upcase}" + " " + "#{clause.parent_relation}" %></td>
             <td>
@@ -51,9 +42,3 @@
      </tbody>
     </table>
   </div>
-
-
-</div>
-
-
-

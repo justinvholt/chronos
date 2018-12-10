@@ -330,8 +330,14 @@ puts "------------------------------------------------------------"
   end
 end
 
-puts "succesfully seeded clause group: #{@clausegroup_asbatank_std.name}"
+ClauseGroup.create(name: "Shellvoy6")
+ClauseGroup.create(name: "My mom's terms")
+
+
+puts "succesfully seeded #{ClauseGroup.count} clause groups"
 puts "------------------------------------------------------------"
+
+
 
 # change first line
 # @clauses_asbatank_std = Clause.where(cp_form: "Asbatankvoy", parent_relation: "standard")
