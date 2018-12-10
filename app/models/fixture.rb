@@ -1,5 +1,6 @@
 class Fixture < ApplicationRecord
-  has_many :fixture_cargos, inverse_of: :fixture
+  has_many :cargoes, class_name: "FixtureCargo"
+  # has_many :fixture_cargos, inverse_of: :fixture
 
   # validates :reference_no, presence: true, numericality: { greater_than: 0 }
   # validates :vessel_name, presence: true
@@ -10,5 +11,6 @@ class Fixture < ApplicationRecord
   # validates :clause_group_id, presence: true, numericality: { greater_than: 0 }
 
   # Required for cocoon nested forms gem
-  accepts_nested_attributes_for :fixture_cargos, reject_if: :all_blank, allow_destroy: true
+  # accepts_nested_attributes_for :fixture_cargos, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :cargoes, reject_if: :all_blank, allow_destroy: true
 end
