@@ -1,5 +1,5 @@
 class Fixture < ApplicationRecord
-  has_many :cargoes, foreign_key: "fixture_id", class_name: "FixtureCargo", inverse_of: :fixture
+  has_many :cargoes, class_name: "FixtureCargo"
   # has_many :fixture_cargos, inverse_of: :fixture
 
   # validates :reference_no, presence: true, numericality: { greater_than: 0 }

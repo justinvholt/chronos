@@ -2,39 +2,39 @@
 <% read_only = "true" if page_view == "show" %>
   <div class="row" id="loading">
     <div class="col col1">
-      <%= ff.input :load_port,
+      <%= f.input :load_port,
                     input_html: {readonly: read_only, class: ""},
                     label: "Port",
                     label_html: {readonly: read_only, class: ""},
                     required: true %>
     </div>
     <div class="col col2">
-      <%= ff.input :load_terminal,
+      <%= f.input :load_terminal,
                     input_html: {readonly: read_only, class: ""},
                     label: "Terminal",
                     label_html: {readonly: read_only, class: ""},
                     required: true %>
     </div>
     <div class="col col3">
-      <%= ff.input :load_berth,
+      <%= f.input :load_berth,
                     input_html: {readonly: read_only, class: ""},
                     label: "Berth",
                     required: true %>
     </div>
     <div class="col col4">
-      <%= ff.input :obl,
+      <%= f.input :obl,
                     input_html: {readonly: read_only, class: ""},
                     label: "Obl",
                     required: true %>
     </div>
     <div class="col col5">
-      <%= ff.input :name,
+      <%= f.input :name,
                     input_html: {readonly: read_only, class: ""},
                     label: "Name",
                     required: true %>
     </div>
     <div class="col col6">
-      <%= ff.input :quantity_mts,
+      <%= f.input :quantity_mts,
                     input_html: {readonly: read_only, class: ""},
                     label: "Qty - Mts",
                     required: true %>
@@ -43,7 +43,7 @@
 
   <div class="row" id="discharge">
     <div class="col col1">
-      <%= ff.input :disch_port,
+      <%= f.input :disch_port,
                     input_html: {readonly: read_only, class: ""},
                     label: "Port",
                     label_html: {readonly: read_only, class: ""},
@@ -51,7 +51,7 @@
 
     </div>
     <div class="col col2">
-      <%= ff.input :disch_terminal,
+      <%= f.input :disch_terminal,
                     input_html: {readonly: read_only, class: ""},
                     label: "Terminal",
                     label_html: {readonly: read_only, class: ""},
@@ -59,25 +59,25 @@
 
     </div>
     <div class="col col3">
-      <%= ff.input :disch_berth,
+      <%= f.input :disch_berth,
                     input_html: {readonly: read_only, class: ""},
                     label: "Berth",
                     required: true %>
     </div>
     <div class="col col4">
-      <%= ff.input :disch_obl, as: :fake,
+      <%= f.input :disch_obl, as: :fake,
                     input_html: {value: "", readonly: true, class: ""},
                     label: "Obl",
                     required: true %>
     </div>
     <div class="col col5">
-      <%= ff.input :disch_name, as: :fake,
+      <%= f.input :disch_name, as: :fake,
                     input_html: {value: "", readonly: true, class: ""},
                     label: "Name",
                     required: true %>
     </div>
     <div class="col col6">
-      <%= ff.input :disch_quantity_mts, as: :fake,
+      <%= f.input :disch_quantity_mts, as: :fake,
                     input_html: {value: "", readonly: true, class: ""},
                     label: "Qty - Mts",
                     required: true %>

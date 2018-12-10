@@ -1,3 +1,3 @@
 class FixtureClause < ApplicationRecord
-  belongs_to :clause, inverse_of: :fixture_clauses
+  belongs_to :clause
 end

@@ -1,0 +1,14 @@
+<tr>
+  <!-- Discharge Port -->
+  <td class="align-middle"><%= cargo.disch_port unless suppressed_fields[:disch_port] %></td>
+  <!-- Discharge Terminal -->
+  <td class="align-middle"><%= cargo.disch_terminal unless suppressed_fields[:disch_terminal] %></td>
+  <!-- Discharge Berth -->
+  <td class="align-middle"><%= cargo.disch_berth unless suppressed_fields[:disch_berth] %></td>
+  <!-- Obl -->
+  <td class="align-middle"><%= cargo.id %></td>
+  <!-- Cargo Name -->
+  <td class="align-middle"><%= cargo.name %></td>
+  <!-- Qty - Mts -->
+  <td class="align-middle"><%= cargo.quantity_mts %></td>
+</tr>
