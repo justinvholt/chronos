@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :fixtures do
     collection {post :import}
-    resources :fixture_cargos, only: [:create]
+    resources :cargoes, only: [:create]
     resources :events, only: [:index, :new, :create] do
       collection {post :import}
       end

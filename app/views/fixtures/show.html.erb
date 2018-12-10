@@ -1,7 +1,59 @@
 <div class="container-fluid px-6">
-    <!-- Form for view Fixture -->
-    <h2 class="mt-5 mb-3">Fixture Details</h2>
+  <!-- Form for view Fixture -->
+  <h2 class="mt-5 mb-3">Fixture Details</h2>
 
-      <%= render "fixture_details" %>
+  <%= render "fixture_details" %>
 
+  <!-- Add cargo button -->
+
+  <%= simple_form_for @fixture_cargo, url: fixture_cargoes_path(@fixture), method: :post do |ff| %>
+    <%= ff.error_notification %>
+
+  <div class="new-fixture__add-cargo-button">
+    <%= link_to_add_association "Add Cargo", ff, :fixture_cargoes, class: "btn btn-primary mt-3 mb-3", data: { association_insertion_node: ".new-fixture__add-cargos", association_insertion_method: :append } %>
+  </div>
+
+  <!-- Loading and Discharge sub-headers -->
+
+  <!-- JavaScript uses this class to append new discharge entries -->
+
+  <div class="fixture-view__loading">
+    <h2 class="mt-3 mb-3">Loading</h2>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Port</th>
+          <th>Terminal</th>
+          <th>Berth</th>
+          <th>Obl</th>
+          <th>Name</th>
+          <th>Qty - Mts</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+      </tbody>
+    </table>
+  </div>
+
+  <hr />
+
+  <!-- JavaScript uses this class to append new discharge entries -->
+  <div class="fixture-view__discharge">
+    <h2 class="mt-3 mb-3">Discharge</h2>
+  </div>
+
+  <!--
+    Add additional FixtureCargo fields for user input partial _fixture_cargo_fields is appended to div.new-fixture__add-cargos and dynamically moved to the Loading/Discharge header
+  -->
+
+    <div class="new-fixture__add-cargos">
+      <%= ff.simple_fields_for :fixture_cargoes do |builder| %>
+        <%= render "fixture_cargo_fields", ff: builder %>
+      <% end %>
+    </div>
+
+  <% end %>
 </div>
