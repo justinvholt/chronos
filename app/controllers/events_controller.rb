@@ -98,7 +98,11 @@ class EventsController < ApplicationController
   end
 
   def calculate_demurrage
-    @demurrage = @laytime_summary[:total][:on_dem] * ( @fixture.demurrage_rate / 1440 )
+    if @laytime_summary[:total][:on_dem].nil?
+      @demurrage = 0
+    else
+      @demurrage = @laytime_summary[:total][:on_dem] * ( @fixture.demurrage_rate / 1440 )
+    end
   end
 
   ## setting up
