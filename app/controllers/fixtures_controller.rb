@@ -8,13 +8,14 @@ class FixturesController < ApplicationController
 
   def index
     @fixtures = Fixture.all
+    @fixture = Fixture.new
   end
 
   def show
+    @fixture_cargo = FixtureCargo.new
   end
 
   def new
-    @fixture = Fixture.new
   end
 
   def create
@@ -41,7 +42,7 @@ class FixturesController < ApplicationController
 
   def fixture_params
     params.fetch(:fixture, {}).permit(:charterer, :clause_group_id, :vessel_name, :voyage_number, :demurrage_rate, :allowed_laytime,
-                                    # Used for cocoon nesting forms to pass all FixtureCargo attributes and destroy method in params
-                                    fixture_cargos_attributes: FixtureCargo.attribute_names.map(&:to_sym).push(:_destroy))
+                                      # Used for cocoon nesting forms to pass all FixtureCargo attributes and destroy method in params
+                                      fixture_cargos_attributes: FixtureCargo.attribute_names.map(&:to_sym).push(:_destroy))
   end
 end

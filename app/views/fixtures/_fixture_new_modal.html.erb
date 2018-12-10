@@ -1,17 +1,6 @@
-<div class="container-fluid px-6">
-  <div class="new-fixture__form">
-    <h2 class="mt-5 mb-3">Fixture Details</h2>
-
-    <div class="import-file">
-      <%= form_tag import_fixtures_path, multipart: true do %>
-      <%= file_field_tag :file %>
-      <%= submit_tag 'Import fixture' %>
-      <% end %>
-    </div>
-
-    <!-- Button trigger modal -->
-    <button class="btn btn-primary mt-3 mb-3" type="button" data-toggle="modal" data-target="#exampleModalCenter">
-      Add Voyage
+<!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg mt-5 mb-3" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+      Add Fixture
     </button>
   </div>
 
@@ -141,45 +130,3 @@
       </div>
     </div>
   </div>
-
-  <hr />
-
-  <%#= simple_form_for @fixture, url: fixtures_path, method: :post do |f| %>
-    <%#= f.error_notification %>
-
-    <!-- Add cargo button -->
-
-    <%# unless @fixtures.nil? %>
-      <div class="new-fixture__add-cargo-button">
-        <%#= link_to_add_association "Add Cargo", f, :fixture_cargos, class: "btn btn-primary mt-3 mb-3", data: { association_insertion_node: ".new-fixture__add-cargos", association_insertion_method: :append } %>
-      </div>
-    <%# end %>
-
-
-    <!-- Loading and Discharge sub-headers -->
-
-    <%# unless @fixture_cargoes.nil? %>
-      <!-- JavaScript uses this class to append new discharge entries -->
-<!--       <div class="fixture-view__loading">
-        <h2 class="mt-3 mb-3">Loading</h2>
-      </div>
-
-      <hr />
-
-      JavaScript uses this class to append new discharge entries
-      <div class="fixture-view__discharge">
-        <h2 class="mt-3 mb-3">Discharge</h2>
-      </div>
- -->    <%# end %>
-
-    <!--
-      Add additional FixtureCargo fields for user input partial _fixture_cargo_fields is appended to div.new-fixture__add-cargos and dynamically moved to the Loading/Discharge header
-    -->
-
-    <!-- <div class="new-fixture__add-cargos"> -->
-      <%#= f.simple_fields_for :fixture_cargos do |builder| %>
-        <%#= render "fixture_cargo_fields", f: builder %>
-      <%# end %>
-    <!-- </div> -->
-  <%# end %>
-</div>
