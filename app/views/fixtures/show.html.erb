@@ -2,13 +2,18 @@
   <!-- Form for view Fixture -->
   <h2 class="mt-5 mb-3">Fixture Details</h2>
 
-  <div class="btn btn-default toggle mt-3 mb-3">
-    <div class="slide">
-      <i class="fas fa-circle"></i>
+  <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
+    <div class="btn btn-default toggle mt-3 mb-3">
+      <div class="slide">
+        <i class="fas fa-circle"></i>
+      </div>
     </div>
-  </div>
 
-    <table class="table">
+    <%= render 'fixture_fields', f: ff %>
+
+  <% end %>
+
+<!--     <table class="table">
       <thead>
         <tr>
           <th>Vessel</th>
@@ -24,10 +29,10 @@
       </thead>
     <tbody>
 
-      <%= render "fixture_show_content" %>
+      <%#= render "fixture_show_content" %>
 
     </tbody>
-  </table>
+  </table> -->
 
   <hr />
 
@@ -135,8 +140,8 @@
 
     <div class="clause-group-select">
       <%= simple_form_for @fixture do |f| %>
-        <%= f.input :clause_group_id, collection: @clause_groups, label: "Select Clause Group" %>
-        <%= f.button :submit, class: "btn btn-primary mt-3 mb-3", value: "Show Clauses", "data-disable-with": "Show Clauses" %>
+        <%= f.input :clause_group_id, collection: ClauseGroup.all, label: "Select Clause Group" %>
+        <%= f.button :submit, class: "btn btn-primary mt-3 mb-3" %>
       <% end %>
     </div>
     <div class="table-responsive">
@@ -152,7 +157,7 @@
       </thead>
 
       <tbody>
-        <% @clauses.each do |clause| %>
+        <% @fixture.clause_group.clauses.each do |clause| %>
           <tr>
             <td><%= "#{clause.cp_form.upcase}" + " " + "#{clause.parent_relation}" %></td>
             <td>
