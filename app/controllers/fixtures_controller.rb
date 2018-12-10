@@ -8,13 +8,13 @@ class FixturesController < ApplicationController
 
   def index
     @fixtures = Fixture.all
+    @fixture = Fixture.new
   end
 
   def show
   end
 
   def new
-    @fixture = Fixture.new
   end
 
   def create
