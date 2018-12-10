@@ -97,3 +97,22 @@
 
   <% end %>
 </div>
+
+<div class="container-fluid px-6">
+
+  <h2 class="mt-3 mb-3">Clauses</h2>
+  <div class="clauses-container">
+
+  <% ClauseGroupJoin.where(clause_group: @fixture.clause_group_id).each do |join_object| %>
+    <% @clauses << join_object.clause %>
+  <% end %>
+
+    <div class="clause-group-select">
+      <%= simple_form_for @fixture, remote: true do |f| %>
+        <%= f.input :clause_group_id, collection: @clause_groups, label: "Select Clause Group" %>
+        <%= f.button :submit, class: "btn btn-primary mt-3 mb-3", value: "Show Clauses", "data-disable-with": "Show Clauses" %>
+      <% end %>
+    </div>
+    <%= render partial: "shared/clauses_table" %>
+  </div>
+</div>

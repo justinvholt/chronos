@@ -1,6 +1,13 @@
 class FixturesController < ApplicationController
   before_action :set_fixture, only: %i[show edit update]
 
+  def do_something
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def import
     @fixture = ImportFixtureJob.perform_now(params[:file])
     redirect_to fixture_path(@fixture), notice: "Fixture data imported"
@@ -13,6 +20,8 @@ class FixturesController < ApplicationController
 
   def show
     @fixture_cargo = FixtureCargo.new
+     @clauses = []
+     @clause_groups = ClauseGroup.all
   end
 
   def new
