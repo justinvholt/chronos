@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       collection {post :import}
       end
     end
-  resources :clauses
+  resources :clause_groups
   resources :clauses
 end
 

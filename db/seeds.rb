@@ -318,3 +318,30 @@ end
 puts "succesfully seeded #{clause_count} clauses, should be: "
 puts "#{Clause.all.length} clauses in database"
 puts "------------------------------------------------------------"
+
+@clauses_asbatank_std = Clause.where(cp_form: "Asbatankvoy", parent_relation: "standard")
+@clausegroup_asbatank_std = ClauseGroup.create(name: "Asbatankvoy standard")
+@clauses_asbatank_std.each do |clause|
+  @clause_join = ClauseGroupJoin.new
+  @clause_join.clause_group = @clausegroup_asbatank_std
+  @clause_join.clause = clause
+  if @clause_join.save!
+    puts "#{@clause_join.clause.title} saved"
+  end
+end
+
+puts "succesfully seeded clause group: #{@clausegroup_asbatank_std.name}"
+puts "------------------------------------------------------------"
+
+# change first line
+# @clauses_asbatank_std = Clause.where(cp_form: "Asbatankvoy", parent_relation: "standard")
+# @clausegroup_lewagon_std = ClauseGroup.create(name: "LeWagon standard")
+# @clauses_lewagon_std.each do |clause|
+#   @clause_join = ClauseGroupJoin.new
+#   @clause_join.clause_group = @clausegroup_asbatank_std
+#   @clause_join.clause = clause
+#   if @clause_join.save!
+#     puts "#{@clause_join.clause.title} saved"
+#   end
+# end
+
