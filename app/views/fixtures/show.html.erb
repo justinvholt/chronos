@@ -24,7 +24,7 @@
       </thead>
     <tbody>
 
-      <%= render "fixture" %>
+      <%= render "fixture_show_content" %>
 
     </tbody>
   </table>
@@ -37,7 +37,7 @@
     <%= ff.error_notification %>
 
   <div class="new-fixture__add-cargo-button">
-    <%= link_to_add_association "Add Cargo", ff, :cargoes, class: "btn btn-primary mt-3 mb-3", data: { association_insertion_node: ".new-fixture__add-cargos", association_insertion_method: :append } %>
+    <%#= link_to_add_association "Add Cargo", ff, :cargoes, class: "btn btn-primary mt-3 mb-3", data: { association_insertion_node: ".new-fixture__add-cargos", association_insertion_method: :append } %>
   </div>
 
   <!-- Loading and Discharge sub-headers -->
@@ -45,7 +45,10 @@
   <!-- JavaScript uses this class to append new discharge entries -->
 
   <div class="fixture-view__loading">
-    <h2 class="mt-3 mb-3">Loading</h2>
+
+    <h2 class="mt-3 mb-3">Cargo</h2>
+
+    <h4 class="mt-5 mb-3">Loading</h4>
 
     <table class="table">
       <thead>
