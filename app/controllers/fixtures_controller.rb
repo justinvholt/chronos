@@ -9,6 +9,7 @@ class FixturesController < ApplicationController
 
   def index
     @fixtures = Fixture.all
+    @fixture = Fixture.new
   end
 
   def show
