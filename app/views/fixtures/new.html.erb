@@ -2,6 +2,13 @@
   <div class="new-fixture__form">
     <h2 class="mt-5 mb-3">Fixture Details</h2>
 
+    <div class="import-file">
+      <%= form_tag import_fixtures_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag 'Import fixture' %>
+      <% end %>
+    </div>
+
     <!-- Button trigger modal -->
     <button class="btn btn-primary mt-3 mb-3" type="button" data-toggle="modal" data-target="#exampleModalCenter">
       Add Voyage

@@ -1,0 +1,9 @@
+<% @sr = "total-row" if port.to_s == "Total" %>
+
+<tr class=<% @sr %>>
+  <td class="align-middle"><%= port %></td>
+  <td class="align-middle"><%= mins[:used].to_i / 60 %>:<%= mins[:used].to_i % 60 %></td>
+  <td class="align-middle"><%= mins[:allowed].to_i / 60 %>:<%= mins[:allowed].to_i % 60 %>
+  <td class="align-middle"><%= mins[:on_dem].to_i / 60 %>:<%= mins[:on_dem].to_i % 60 %>
+  </td>
+</tr>

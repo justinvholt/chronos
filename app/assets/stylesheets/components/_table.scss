@@ -1,7 +1,13 @@
 .td-top-border{
-  border-bottom: 2px solid blue;
+  border-top: 2px solid blue;
 }
 
 .td-bottom-border{
   border-bottom: 2px solid blue;
+}
+
+.total-row{
+  border-top: 2px solid black;
+  color: black;
+  font-weight: bold;
 }
