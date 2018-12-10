@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_09_220756) do
+ActiveRecord::Schema.define(version: 2018_12_10_130528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,11 +34,9 @@ ActiveRecord::Schema.define(version: 2018_12_09_220756) do
   end
 
   create_table "clause_groups", force: :cascade do |t|
-    t.bigint "clause_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.index ["clause_id"], name: "index_clause_groups_on_clause_id"
   end
 
   create_table "clauses", force: :cascade do |t|
@@ -115,7 +113,6 @@ ActiveRecord::Schema.define(version: 2018_12_09_220756) do
   add_foreign_key "cargo_handlings", "fixture_cargos"
   add_foreign_key "clause_group_joins", "clause_groups"
   add_foreign_key "clause_group_joins", "clauses"
-  add_foreign_key "clause_groups", "clauses"
   add_foreign_key "fixture_cargos", "fixtures"
   add_foreign_key "fixtures", "clause_groups"
 end
