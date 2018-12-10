@@ -9,8 +9,8 @@ import {
   flip_dialog
 } from "../views/fixture_cargo_add";
 
-createNewCargoItemForm();
-editCargoItemForm();
+// createNewCargoItemForm();
+// editCargoItemForm();
 
 // import modal_wide from "modal_wide";
 

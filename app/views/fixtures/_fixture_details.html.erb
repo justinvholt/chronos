@@ -1,7 +1,7 @@
 <!-- All the input fields for Fixture new/show/edit -->
 <%= simple_form_for @fixture, remote: true, url: fixture_path, html: { method: :patch, id: :update_fixture } do |f| %>
 
-  <div class="btn btn-default toggle mt-3 mb-3" data-toggle="modal" data-target="#show_fixture_modal">
+  <div class="btn btn-default toggle mt-3 mb-3">
     <div class="slide">
       <i class="fas fa-circle"></i>
     </div>
@@ -99,6 +99,13 @@
   </div>
 
   <hr />
+
+  <div id="cargoes">
+    <%= f.fields_for :cargoes do |cargo| %>
+      <%= render "cargo_fields", f: cargo %>
+    <% end %>
+
+  </div>
 
 <% end %>
 

@@ -1,7 +1,44 @@
 <div class="container-fluid px-6">
-    <!-- Form for view Fixture -->
-    <h2 class="mt-5 mb-3">Fixture Details</h2>
+  <!-- Form for view Fixture -->
+  <h2 class="mt-5 mb-3">Fixture Details</h2>
 
-      <%= render "fixture_details" %>
+  <%= render "fixture_details" %>
 
+  <!-- Add cargo button -->
+
+  <%= simple_form_for @fixture do |ff| %>
+    <%= ff.error_notification %>
+
+  <div class="new-fixture__add-cargo-button">
+    <%= link_to_add_association "Add Cargo", ff, :cargoes, class: "btn btn-primary mt-3 mb-3", data: { association_insertion_node: ".new-fixture__add-cargos", association_insertion_method: :append } %>
+  </div>
+
+  <!-- Loading and Discharge sub-headers -->
+
+  <!-- JavaScript uses this class to append new discharge entries -->
+  <div class="fixture-view__loading">
+    <h2 class="mt-3 mb-3">Loading</h2>
+
+    <% @fixture.cargoes.each do |cargo| %>
+      <%= render 'cargo_load_fields', cargo: cargo, prefix: :load %>
+    <% end %>
+
+  <hr />
+
+  <!-- JavaScript uses this class to append new discharge entries -->
+  <div class="fixture-view__discharge">
+    <h2 class="mt-3 mb-3">Discharge</h2>
+
+    <% @fixture.cargoes.each do |cargo| %>
+      <%= render 'cargo_discharge_fields', cargo: cargo, prefix: :disch %>
+    <% end %>
+
+      <%#= f.simple_fields_for :fixture_cargos do |builder| %>
+        <%#= render "fixture_cargo_fields", f: builder %>
+      <%# end %>
+
+  <% end %>
 </div>
+
+<hr />
+

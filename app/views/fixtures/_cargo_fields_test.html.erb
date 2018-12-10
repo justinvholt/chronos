@@ -1,5 +1,5 @@
-<% page_view = "" if local_assigns[:page_view].nil? %>
-<%# read_only = "true" if page_view == "show" %>
+<%= simple_form_for cargo, remote: true, url: fixture_path, html: { method: :patch, id: :update_fixture } do |f| %>
+
   <div class="row" id="loading">
     <div class="col col1">
       <%= f.input :load_port,
@@ -39,12 +39,12 @@
     </div>
   </div>
 
-  <div class="row" id="discharge">
+  <div class="row" id="discharging">
     <div class="col col1">
       <%= f.input :disch_port,
                     input_html: {readonly: true, class: "form-control-sm edit-input"},
                     label: "Port",
-                   required: true %>
+                    required: true %>
 
     </div>
     <div class="col col2">
@@ -62,20 +62,23 @@
     </div>
     <div class="col col4">
       <%= f.input :disch_obl, as: :fake,
-                    input_html: {value: "", readonly: true, class: "form-control-sm edit-input"},
+                    input_html: {readonly: true, class: "form-control-sm edit-input"},
                     label: "Obl",
                     required: true %>
     </div>
     <div class="col col5">
       <%= f.input :disch_name, as: :fake,
-                    input_html: {value: "", readonly: true, class: "form-control-sm edit-input"},
+                    input_html: {readonly: true, class: "form-control-sm edit-input"},
                     label: "Name",
                     required: true %>
     </div>
     <div class="col col6">
       <%= f.input :disch_quantity_mts, as: :fake,
-                    input_html: {value: "", readonly: true, class: "form-control-sm edit-input"},
+                    input_html: {readonly: true, class: "form-control-sm edit-input"},
                     label: "Qty - Mts",
                     required: true %>
     </div>
   </div>
+<% end %>
+
+<hr />
