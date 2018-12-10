@@ -31,37 +31,42 @@ class ImportSOFJob < ApplicationJob
 
   def generate_cargo_handlings
     @cargos = []
-    cargo_ops
     @cargo_handlings = []
-    @cargos.reject! { |cargo| cargo.empty? }
-    @cargos.flatten!
+
+    cargo_ops
     @cargos.each { |cargo| @cargo_handlings << CargoHandling.new(fixture_cargo: cargo) }
   end
 
   def cargo_ops
-    unless @obl == nil
-      @cargos << @fixture.fixture_cargos.where(obl: @obl)
+    if @obl != nil
+      FixtureCargo.where(fixture: @fixture).each { |cargo| @cargos << cargo if cargo.obl == @obl.to_i }
     else
       shared_beth_ops
     end
   end
 
   def shared_beth_ops
-    unless @berth == nil
-      @cargos << @fixture.fixture_cargos.where(load_berth: @berth)
-      @cargos << @fixture.fixture_cargos.where(disch_berth: @berth)
+    if @berth != nil
+      FixtureCargo.where(fixture: @fixture).each do |cargo|
+        @cargos << cargo if cargo.load_berth == @berth
+        @cargos << cargo if cargo.disch_berth == @berth
+      end
     else
       shared_terminal_ops
     end
   end
 
   def shared_terminal_ops
-    unless @terminal == nil
-      @cargos << @fixture.fixture_cargos.where(load_terminal: @terminal)
-      @cargos << @fixture.fixture_cargos.where(disch_terminal: @terminal)
+    if @terminal != nil
+      FixtureCargo.where(fixture: @fixture).each do |cargo|
+        @cargos << cargo if cargo.load_terminal == @terminal
+        @cargos << cargo if cargo.disch_terminal == @terminal
+      end
     else
-      @cargos << @fixture.fixture_cargos.where(load_port: @port)
-      @cargos << @fixture.fixture_cargos.where(disch_port: @port)
+      FixtureCargo.where(fixture: @fixture).each do |cargo|
+        @cargos << cargo if cargo.load_port == @port
+        @cargos << cargo if cargo.disch_port == @port
+      end
     end
   end
 end
