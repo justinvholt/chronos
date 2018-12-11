@@ -16,7 +16,6 @@ class EventsController < ApplicationController
     assess_events_laytime
     cumilative_laytime
     calculate_demurrage
-    binding.pry
     redirect_to fixture_events_path(@fixture), notice: "Laytime calculation updated"
   end
 
@@ -45,6 +44,7 @@ class EventsController < ApplicationController
   def assess_clauses(event, terminal_events)
     @clause_group.each do |clause|
       @event.counting = (clause.bloc_call(event, terminal_events))
+      @event.save
     end
   end
 
