@@ -6,8 +6,8 @@ class Clause < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
-  def bloc_call(event)
+  def bloc_call(event, terminal_events)
     @proc_service = ProcService.new(self)
-    @proc_service.call(event)
+    @proc_service.call(event, terminal_events)
   end
 end
