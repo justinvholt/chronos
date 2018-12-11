@@ -92,13 +92,17 @@ class EventsController < ApplicationController
     @laytime_summary.each do |port, mins|
       if mins[:used] != nil && mins[:allowed] != nil
         on_demurrage = mins[:used] - mins[:allowed]
-        @laytime_summary[port][:on_dem] = on_demurrage if on_demurrage > 0.to_f
+        @laytime_summary[port][:on_dem] = on_demurrage if on_demurrage > 0
       end
     end
   end
 
   def calculate_demurrage
-    @demurrage = @laytime_summary[:total][:on_dem] * ( @fixture.demurrage_rate / 1440 )
+    if @laytime_summary[:total][:on_dem].nil?
+      @fixture.total_demurrage = 0
+    else
+      @fixture.total_demurrage = (@laytime_summary[:total][:on_dem] * ( @fixture.demurrage_rate / 1440 )).round(2)
+    end
   end
 
   ## setting up
