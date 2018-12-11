@@ -1,12 +1,12 @@
 <div class="container-fluid px-6">
-  <div class="voy-details">
-    <h2 class="mt-5 mb-3">Voyage Details</h2>
+  <div class="events__voyage-details">
+    <h2 class="">Voyage Details</h2>
     
-  <div class="events__fixture-details">
-    <%= simple_form_for @fixture, html: { class: 'super-edit-power mt-5' } do |ff| %>
-    <%= render 'events_fixture_fields', f: ff %>
-    <% end %>
-  </div>
+    <div class="events__fixture-details">
+      <%= simple_form_for @fixture, html: { class: 'super-edit-power mt-5' } do |ff| %>
+      <%= render 'events_fixture_fields', f: ff %>
+      <% end %>
+    </div>
 
     <%# <div class="svg-wrapper"> %>
       <%# <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg"> %>
@@ -15,18 +15,18 @@
        <%# <div class="text">Run Chronos</div> %>
     <%# </div> %>
 
-    <div class="import-file mt-3 mb-5">
+    <div class="import-file">
      <%= form_tag import_fixture_events_path, multipart: true do %>
-     <span class="btn btn-large btn-primary btn-file">
+     <span class="btn btn-large btn-curious-blue btn-file">
        <%= file_field_tag :file,
                            input_html: {class: "input-file-field"} %>
        <%= submit_tag 'Upload SOF', class: "btn btn-success" %>
        <% end %>
       </span>
     </div>
-
   </div>
-  <div class="events-tables">
+
+  <div class="events__events-table">
     <% unless @port_events.nil? %>
       <% @port_events.each do |port, terminals| %>
         <%= render "events_table", port: port, terminals: terminals %>
@@ -34,32 +34,31 @@
     <% end %>
   </div>
 
-  <div class="demurrage-summary">
-    <h2 class="mt-5 mb-3">Summary</h2>
-    
-  <div class="row">
-  <div class="col-md-6">
-    <div class="summary-table">
-      <table class="table table-sm">
-        <thead class="thead-dark">
-          <tr>
-            <th class="col-md-3">port</th>
-            <th class="col-md-3">laytime used</th>
-            <th class="col-md-3">laytime allowed</th>
-            <th class="col-md-3">hours on demurrage</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @laytime_summary.each do |port, mins| %>
-            <%= render "summary_row", port: port, mins: mins %>
-          <% end %>
-        </tbody>
-      </table>
+  <div class="events__demurrage-summary">
+    <h2 class="">Summary</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="summary-table">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>port</th>
+                <th>laytime used</th>
+                <th>laytime allowed</th>
+                <th>hours on demurrage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @laytime_summary.each do |port, mins| %>
+                <%= render "summary_row", port: port, mins: mins %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
 
-      
+  .    
     <div class="row">
       <div class="col-md-6">
         <div class="demurrage-sum">
