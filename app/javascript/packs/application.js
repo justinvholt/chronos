@@ -53,6 +53,7 @@ function flipCard () {
    }, homeModalTransitionTime / 2)
 }
 
+
 // edit/update toggle
 
 $(function() {
@@ -72,6 +73,7 @@ $(function() {
     });
   });
 
+
 // Dropdown menu selection
 
 $(function(){
@@ -80,12 +82,14 @@ $(function(){
   });
 });
 
+
 // modal-wide
 
 $(".modal-wide").on("show.bs.modal", function() {
   var height = $(window).height() - 200;
   $(this).find(".modal-content").css("max-height", height);
 });
+
 
 // choose/upload file button
 
@@ -95,6 +99,7 @@ $(document).ready( function() {
         console.log(label);
     });
 });
+
 
 // disable field counters
 
@@ -106,15 +111,34 @@ $(document).ready( function() {
       });
   });
 
-  // Restore scroll on number inputs.
-  $('form').on('blur', 'input[type=number]', function(e) {
-      $(this).off('wheel');
-  });
 
-  // Disable up and down keys.
-  $('form').on('keydown', 'input[type=number]', function(e) {
-      if ( e.which == 38 || e.which == 40 )
-          e.preventDefault();
+// Restore scroll on number inputs.
+
+$('form').on('blur', 'input[type=number]', function(e) {
+    $(this).off('wheel');
+});
+
+
+// Disable up and down keys.
+
+$('form').on('keydown', 'input[type=number]', function(e) {
+  if ( e.which == 38 || e.which == 40 )
+    e.preventDefault();
   });
 });
 
+
+// make fixtures index rows into links for individual fixtures
+
+$("tr[data-link]").click(function() {
+  window.location = $(this).data("link")
+})
+
+
+// render clauses immediately
+
+$("#fastload").click(function(){
+    $.ajax({url: "clause_fields", success: function(result){
+        $(".clauses-container").html(load_clause_group);
+    }});
+});

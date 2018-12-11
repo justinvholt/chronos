@@ -1,8 +1,4 @@
-<tr>
-  <!-- + -->
-  <td class="align-middle">
-    <%= link_to "View fixture", fixture_path(fixture), class: "btn btn-curious-blue btn-sm" %>
-  </td>
+<tr data-link="<%= fixture_path(fixture) %>">
   <!-- Vessel -->
   <td class="align-middle"><%= fixture.vessel_name %></td>
   <!-- Voyage No. -->
@@ -15,18 +11,6 @@
   <td class="align-middle"><%= fixture.reference_no %></td>
   <!-- Required -->
   <td class="align-middle"><%= fixture.calculation_status %></td>
-  <!-- Documents -->
-  <td class="align-middle">
-    <div class="dropdown">
-      <button class="btn btn-niagara btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span id="selected">Documents</span>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Incomplete</a>
-        <a class="dropdown-item" href="#">Complete</a>
-      </div>
-    </div>
-  </td>
   <!-- Voyage Status -->
   <td class="align-middle">..</td>
   <!-- + -->
