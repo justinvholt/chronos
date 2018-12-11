@@ -1,0 +1,104 @@
+<!-- All the input fields for Fixture new/show/edit -->
+<div class="row">
+  <div class='col-md-2'>
+    <%= f.input :reference_no,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Reference No.",
+                required: true %>
+  </div>
+  <div class="col-md-2">
+    <%= f.input :voyage_number,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Voyage No.",
+                required: true %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :clause_group, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "CP Form*",
+                required: true %>
+  </div>
+
+  <div class="col-md-3">
+    <%= link_to "Run Chronos", nil, class: "btn btn-curious-blue" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class='col-md-2'>
+    <%= f.input :vessel_name,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Vessel Name",
+                required: true %>
+  </div>
+  <div class="col-md-2">
+    <%= f.input :charterer,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Charterer",
+                required: true %>
+  </div>
+
+  <div class="col-md-3">
+    <%= f.input :contract_type, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Contract Type*",
+                required: true %>
+  </div>
+  <div class="col-md-3">
+    <div class="dropdown">
+      <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span id="selected">Documents</span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Incomplete</a>
+        <a class="dropdown-item" href="#">Complete</a>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= f.input :vessel_dwt, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Vessel DWT*",
+                required: false %>
+  </div>
+
+  <div class="col-md-2">
+    <%= f.input :demurrage_rate,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Demurrage Rate",
+                required: false %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :contract_terms, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Contract Terms*",
+                required: false %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= f.input :total_cargo_qty, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Total Cargo Qty*",
+                required: false %>
+  </div>
+  <div class="col-md-2">
+    <%= f.input :allowed_laytime,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Allowed Laytime",
+                required: false %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :reversable, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Reversible",
+                required: false %>
+  </div>
+</div>
+

@@ -1,19 +1,26 @@
 <div class="container-fluid px-6">
   <div class="voy-details">
     <h2 class="mt-5 mb-3">Voyage Details</h2>
-    <div class="import-file">
+    
+  <div class="events__fixture-details">
+    <%= simple_form_for @fixture, html: { class: 'super-edit-power mt-5' } do |ff| %>
+    <%= render 'events_fixture_fields', f: ff %>
+    <% end %>
+  </div>
+
+    <%# <div class="svg-wrapper"> %>
+      <%# <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg"> %>
+        <%# <rect class="shape" height="60" width="320" /> %>
+      <%# </svg> %>
+       <%# <div class="text">Run Chronos</div> %>
+    <%# </div> %>
+
+    <div class="import-file mt-4 mb-5">
       <%= form_tag import_fixture_events_path, multipart: true do %>
         <%= file_field_tag :file,
                             input_html: {class: "input-file-field"} %>
         <%= submit_tag 'Upload SOF' %>
       <% end %>
-    </div>
-
-    <div class="svg-wrapper">
-      <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-        <rect class="shape" height="60" width="320" />
-      </svg>
-       <div class="text">HOVER</div>
     </div>
 
   </div>
