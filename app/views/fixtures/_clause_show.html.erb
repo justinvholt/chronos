@@ -1,10 +1,10 @@
 <div id="clauses-container">
   <div class="clause-group-select">
-    <%= simple_form_for @fixture do |f| %>
+    <%= simple_form_for @fixture, method: :patch do |f| %>
       <%#= f.select :clause_group_id, collection: ClauseGroup.all, {}, { :include_blank => '-- Select One --', onchange: "javascript: $(this).parent('form').submit();" } %>
 
       <%= f.input :clause_group_id, collection: ClauseGroup.all, label: "Select Clause Group" %>
-      <%= f.button :submit, class: "btn btn-primary mt-3 mb-3", id: "fastload" %>
+      <%= f.button :submit, class: "btn btn-primary mt-3 mb-3" %>
     <% end %>
   </div>
   <div class="table-responsive">
