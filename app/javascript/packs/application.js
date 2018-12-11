@@ -57,22 +57,33 @@ function flipCard () {
 // edit/update toggle
 
 $(function() {
-    $('.toggle').on('click', function() {
-      const form = $(this).closest('form');
-      if ($(this).hasClass('on')) {
-        $(this).removeClass('on');
-        $(".edit-input").prop('readonly', true);
-        form.addClass('super-edit-power');
-        console.log(form);
-        form.trigger("submit.rails");
-      } else {
-        $(this).addClass('on');
-        form.removeClass('super-edit-power');
-        $(".edit-input").prop('readonly', false);
-      }
-    });
+  $('.toggle').on('click', function() {
+    const form = $('.toggle').closest('form');
+    if ($('.toggle').hasClass('on')) {
+      $('.toggle').removeClass('on');
+      $(".edit-input").prop('readonly', true);
+      form.addClass('super-edit-power');
+      console.log(form);
+      form.trigger("submit.rails");
+    } else {
+      $('.toggle').addClass('on');
+      form.removeClass('super-edit-power');
+      $(".edit-input").prop('readonly', false);
+    }
   });
+});
 
+// cargo edit/show
+
+$("#edit-button").on("click", function(){
+  $(".big-edit").toggle();
+});
+
+// make all toggles on page work simultaneously
+
+// $(".toggle").click(function(){
+//   $(this).addClass('on');
+// });
 
 // Dropdown menu selection
 
