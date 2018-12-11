@@ -1,15 +1,17 @@
 <div class="container-fluid px-6">
   <!-- Form for view Fixture -->
-  <h2 class="mt-5 mb-3">Fixture Details</h2>
+  <div class="fixtures__fixture-details">
+    <h2>Fixture Details</h2>
 
-  <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
-    <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
-      <div class="slide">
-        <i class="fas fa-circle"></i>
+    <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
+      <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
+        <div class="slide">
+          <i class="fas fa-circle"></i>
+        </div>
       </div>
-    </div>
 
-    <%= render 'fixture_fields', f: ff %>
+      <%= render 'fixture_fields', f: ff %>
+  </div>
 
   <hr />
 
@@ -21,6 +23,7 @@
   -->
 
   <h2 class="mt-5 mb-4">Cargo</h2>
+
 
     <div class="big-edit" style="display: block">
       <%= render "cargo_show" %>
@@ -35,8 +38,6 @@
   <h2 class="mt-5 mb-3"><a name="clauses">Clauses</a></h2>
 
     <%= render 'clause_show' %>
-
-  </div>
 
   <% end %>
 </div>

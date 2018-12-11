@@ -144,26 +144,25 @@ end
     title: "Hoses: Moorning at sea terminals",
     paragraph: "11",
     wording: "Hoses for loading and discharging shall be furnished by the Charterer and shall be connected and disconnected by the Charterer, or, at the option of the Owner, by the Owner at the Charterer's risk and expense. Laytime shall continue until the hoses have been disconnected. When Vessel loads or discharges at a sea terminal, the Vessel shall be properly equipped at Owner's expense for loading or discharging at such place, including suitable ground tackle, mooring lines and equipment for handling submarine hoses.",
-    bloc: :stop_documents
+    bloc: :stop_hose_disconnected
     )
   clause_count += 1
 end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Laydays",
     paragraph: "5",
-    wording: "Laytime shall not commence before the date stipulated in Part I, except with the Charterer's sanction. Should the Vessel not be ready to load by 4:00 o'clock P.M. (local time) on the cancelling date stipulated in Part I, the Charterer shall have the option of cancelling this Charter by giving the Owner notice of such cancellation within twenty-four (24) hours after such cancellation date; otherwise this Charter to remain in full force and effect."
+    wording: "Laytime shall not commence before the date stipulated in Part I, except with the Charterer's sanction. Should the Vessel not be ready to load by 4:00 o'clock P.M. (local time) on the cancelling date stipulated in Part I, the Charterer shall have the option of cancelling this Charter by giving the Owner notice of such cancellation within twenty-four (24) hours after such cancellation date; otherwise this Charter to remain in full force and effect.",
+    bloc: :susp_shifting_anchorage
     )
   clause_count += 1
 end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Hours for loading and discharging",
@@ -175,7 +174,6 @@ end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Demurrage",
@@ -187,19 +185,17 @@ end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Safe berthing-shifting",
     paragraph: "9",
-    wording: "The Vessel shall load and discharge at any safe place or wharf, or alongside vessels or lighters reachable on her arrival, which shall be designated and procured by the Charterer, provided the Vessel can proceed thereto, lie at, and depart therefrom always safely afloat, any ligtherage being at the expense, risk and peril of the Charterer. The Charterer shall have the right of shifting the Vessel at ports of loading and / or discharge from one safe berth to another on payment of all towage and pilotage shifting to next berth, charges for running lines on arrival at and leaving that berth, additional agency charges and expenses, customs overtime and fees, and any other extra port charges or port expenses incurred by reason of using more than one berth. Time consumed on account of shifting shall count as used laytime except as otherwise provided in Clause 15."
+    wording: "The Vessel shall load and discharge at any safe place or wharf, or alongside vessels or lighters reachable on her arrival, which shall be designated and procured by the Charterer, provided the Vessel can proceed thereto, lie at, and depart therefrom always safely afloat, any ligtherage being at the expense, risk and peril of the Charterer. The Charterer shall have the right of shifting the Vessel at ports of loading and / or discharge from one safe berth to another on payment of all towage and pilotage shifting to next berth, charges for running lines on arrival at and leaving that berth, additional agency charges and expenses, customs overtime and fees, and any other extra port charges or port expenses incurred by reason of using more than one berth. Time consumed on account of shifting shall count as used laytime except as otherwise provided in Clause 15.",
     )
   clause_count += 1
 end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Pumping in and out",
@@ -211,7 +207,6 @@ end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "ICE",
@@ -223,7 +218,6 @@ end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "ICE",
@@ -235,7 +229,6 @@ end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Two or more ports counting as one",
@@ -251,7 +244,6 @@ end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Quarantine",
@@ -263,7 +255,6 @@ end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Fumigation",
@@ -275,7 +266,6 @@ end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "General Exceptions",
@@ -305,7 +295,6 @@ end
 
  1.times do
   Clause.create(
-    bloc: :ignore,
     cp_form: "Asbatankvoy",
     parent_relation: "standard",
     title: "Oil pollution clause",

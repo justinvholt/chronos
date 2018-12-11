@@ -7,24 +7,31 @@ class EventsController < ApplicationController
   end
 
   def run_chronos
+    ##TODO: This needs some refactoring, DRY
     all_fixture_events
     set_allowed_laytime
-    remove_dummy_events
+    reset_counting_and_dummy_events
     group_events
+
     set_clause_group
     assess_events_clauses
+
+    all_fixture_events
+    group_events
     assess_events_laytime
-    cumilative_laytime
+
+    cumulative_demurrage
     calculate_demurrage
     redirect_to fixture_events_path(@fixture), notice: "Laytime calculation updated"
   end
 
   def index
     all_fixture_events
-    set_allowed_laytime
-
+    set_allowed_laytime if @laytime_summary.nil?
     group_events
     @port_events
+    cumulative_demurrage
+    calculate_demurrage
   end
 
   private
@@ -43,13 +50,9 @@ class EventsController < ApplicationController
 
   def assess_clauses(event, terminal_events)
     @clause_group.each do |clause|
-      @event.counting = (clause.bloc_call(event, terminal_events))
-      @event.save
+      clause.bloc_call(event, terminal_events)
     end
   end
-
-  ## TODO: Why does it run twice over this method?
-
 
   def assess_events_laytime
     @port_events.each do |port, terminals|
@@ -67,10 +70,11 @@ class EventsController < ApplicationController
     @end_datetime = event.datetime if event.counting == "Laytime stops"
     if event.counting == "Laytime stops" && @start_datetime != nil
       @event.laytime = TimeDifference.between(@end_datetime, @start_datetime).in_minutes
+      @event.save
     end
   end
 
-  def cumilative_laytime
+  def cumulative_demurrage
     @total_laytime = 0.to_f
 
     @port_events.each do |port, terminals|
@@ -98,14 +102,22 @@ class EventsController < ApplicationController
   end
 
   def calculate_demurrage
-    if @laytime_summary[:total][:on_dem].nil?
-      @fixture.total_demurrage = 0
-    else
+    if @laytime_summary[:total][:on_dem] != nil
       @fixture.total_demurrage = (@laytime_summary[:total][:on_dem] * ( @fixture.demurrage_rate / 1440 )).round(2)
+      @fixture.save
     end
   end
 
   ## setting up
+
+  def set_allowed_laytime
+    @laytime_summary = Hash.new
+    @cargoes.each do |cargo|
+      @laytime_summary[cargo.load_port] = {used: 0.to_f}
+      @laytime_summary[cargo.disch_port] = {used: 0.to_f}
+    end
+    @laytime_summary[:total] = {allowed: @fixture.allowed_laytime.to_f * 60}
+  end
 
   def all_fixture_events
     @handlings = Set.new
@@ -120,9 +132,13 @@ class EventsController < ApplicationController
     @events = order_by_time(@events_set.to_a)
   end
 
-  def remove_dummy_events
+  def reset_counting_and_dummy_events
     destroyables = []
-    @events.each { |event| destroyables << event if event.dummy == true }
+    @events.each do |event|
+      destroyables << event if event.dummy == true
+      event.counting = ""
+      event.save
+    end
     @events.reject! { |event| event.dummy == true }
     destroyables.each { |dummy_event| dummy_event.destroy! }
   end
@@ -138,20 +154,11 @@ class EventsController < ApplicationController
   end
 
   def set_clause_group
-    @clause_group = Clause.all[0..1]
+    @clause_group = Clause.all[0..2]
     # @clause_group = ClauseGroup.where(fixture: @fixture).clauses
   end
 
   def set_fixture
     @fixture = Fixture.find(params[:fixture_id])
-  end
-
-  def set_allowed_laytime
-    @laytime_summary = Hash.new
-    @cargoes.each do |cargo|
-      @laytime_summary[cargo.load_port] = {used: 0.to_f}
-      @laytime_summary[cargo.disch_port] = {used: 0.to_f}
-    end
-    @laytime_summary[:total] = {allowed: @fixture.allowed_laytime.to_f * 60}
   end
 end

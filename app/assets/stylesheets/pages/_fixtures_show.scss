@@ -1,20 +1,5 @@
-.demurrage-sum {
-  width: 100%;
-}
-
-.demurrage-rate {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-}
-
-.double-underline {
-  border-bottom: 2px double;
-}
-
-.events {
-  &__voyage-details {
+.fixtures {
+  &__fixture-details {
     background-color: #fff;
     padding: 1rem 2rem 1rem 2rem;
     border-radius: 1%;
@@ -22,19 +7,17 @@
     margin-bottom: 3rem;
   }
 
-  &__events-table {
+  &__fixture-cargo {
     background-color: #fff;
     padding: 1rem 2rem 1rem 2rem;
     border-radius: 1%;
     margin-bottom: 3rem;
   }
 
-  &__demurrage-summary {
+  &__fixture-clauses {
     background-color: #fff;
     padding: 1rem 2rem 1rem 2rem;
     border-radius: 1%;
-  }
-  &__documents-button {
-    width: 8.5rem;
+    margin-bottom: 3rem;
   }
 }
