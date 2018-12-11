@@ -21,38 +21,23 @@
   For details on how to do the cocoon stuff, look at Steven's code in the show_old page below.
 
   -->
-  <div class="fixtures__fixture-cargo">
-    <h2 class="mt-3 mb-3">Cargo</h2>
 
-      <div class="big-edit" style="display: block">
-        <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
-          <div class="slide">
-            <i class="fas fa-circle"></i>
-          </div>
-        </div>
+  <h2 class="mt-5 mb-4">Cargo</h2>
 
-        <%= render "cargo_show" %>
-      </div>
 
-      <div class="big-edit" style="display: none">
-        <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
-          <div class="slide">
-            <i class="fas fa-circle"></i>
-          </div>
-        </div>
+    <div class="big-edit" style="display: block">
+      <%= render "cargo_show" %>
+    </div>
 
-        <%= render "cargo_edit", ff: ff %>
-      </div>
-  </div>
+    <div class="big-edit" style="display: none">
+      <%= render "cargo_edit", ff: ff %>
+    </div>
 
   <hr />
 
-  <div class="fixtures__fixture-clauses">
-    <h2 class="mt-3 mb-3"><a name="clauses">Clauses</a></h2>
+  <h2 class="mt-5 mb-3"><a name="clauses">Clauses</a></h2>
 
-      <%= render 'clause_show' %>
+    <%= render 'clause_show' %>
 
-    </div>
-  </div>
   <% end %>
 </div>
