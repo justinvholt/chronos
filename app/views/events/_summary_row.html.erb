@@ -1,5 +1,8 @@
 <% @sr = "total-row" if port.to_s == "Total" %>
 
+<!-- Feel free to dismiss this if it doesn't work, but this is what I was suggesting last night about plugging in the proper field or a blank one. -- JVH -->
+<%# port.to_s == "Total" ? @sr = "total-row" : sr = "" %>
+
 <tr class=<% @sr %>>
   <td class="align-middle"><%= port %></td>
   <td class="align-middle"><%= mins[:used].to_i / 60 %>:<%= mins[:used].to_i % 60 %></td>
