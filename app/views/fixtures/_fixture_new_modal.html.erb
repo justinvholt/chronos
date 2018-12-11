@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg mt-5 mb-3" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+<button class="btn btn-curious-blue btn-lg mt-5 mb-3" type="button" data-toggle="modal" data-target="#exampleModalCenter">
   Add Fixture
 </button>
 
@@ -7,7 +7,7 @@
   <div class="modal-dialog modal-dialog-centere" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Voyage Details</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add a New Fixture</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -16,105 +16,112 @@
 
           <div class="container-fluid">
 
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div class="import-file pt-2 pb-3">
-                  <%= form_tag import_fixtures_path, multipart: true do %>
-                    <%= file_field_tag :file %>
-                    <%= submit_tag "Import fixture", class: "btn btn-outline-secondary" %>
-                  <% end %>
+
+            <h3 class="mt-3 mb-3 d-flex justify-content-center">Import Fixture Spreadsheet</h3>
+
+            <div class="d-flex justify-content-center">
+              <div class="import-file my-2">
+                <%= form_tag import_fixtures_path, multipart: true do %>
+                  <%= file_field_tag :file %>
+                  <%= submit_tag "Import fixture", class: "btn btn-outline-secondary" %>
+                <% end %>
+              </div>
+            </div>
+
+            <h5 class="mt-3 mb-3 d-flex justify-content-center">--OR--</h5>
+
+            <h3 class="mt-3 mb-3 d-flex justify-content-center">Enter Fixture Manually</h3>
+
+            <div class="container">
+              <div class="d-flex justify-content-around">
+                <div class='col-md-3'>
+                  <%= f.input :reference_no,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Reference No.",
+                              required: true %>
+                </div>
+                <div class="col-md-3">
+                  <%= f.input :voyage_number,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Voyage No.",
+                              label_html: {class: ""},
+                              required: true %>
+                </div>
+                <div class="col-md-3">
+                  <%= f.input :clause_group, as: :fake,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "CP Form*",
+                              required: true %>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class='col-md-2'>
-                <%= f.input :reference_no,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Reference No.",
-                            required: true %>
-              </div>
-              <div class="col-md-2">
-                <%= f.input :voyage_number,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Voyage No.",
-                            label_html: {class: ""},
-                            required: true %>
-              </div>
-              <div class="col-md-3">
-                <%= f.input :clause_group, as: :fake,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "CP Form*",
-                            required: true %>
-              </div>
-            </div>
+              <div class="d-flex justify-content-around">
+                <div class='col-md-3'>
+                  <%= f.input :vessel_name,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Vessel Name",
+                              required: true %>
+                </div>
+                <div class="col-md-3">
+                  <%= f.input :charterer,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Charterer",
+                              required: true %>
+                </div>
 
-            <div class="row">
-              <div class='col-md-2'>
-                <%= f.input :vessel_name,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Vessel Name",
-                            required: true %>
-              </div>
-              <div class="col-md-2">
-                <%= f.input :charterer,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Charterer",
-                            required: true %>
+                <div class="col-md-3">
+                  <%= f.input :contract_type, as: :fake,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Contract Type*",
+                              label_html: {class: ""},
+                              required: true %>
+                </div>
               </div>
 
-              <div class="col-md-3">
-                <%= f.input :contract_type, as: :fake,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Contract Type*",
-                            label_html: {class: ""},
-                            required: true %>
-              </div>
-            </div>
+              <div class="d-flex justify-content-around">
+                <div class="col-md-3">
+                  <%= f.input :vessel_dwt, as: :fake,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Vessel DWT*",
+                              label_html: {class: ""},
+                              required: false %>
+                </div>
 
-            <div class="row">
-              <div class="col-md-2">
-                <%= f.input :vessel_dwt, as: :fake,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Vessel DWT*",
-                            label_html: {class: ""},
-                            required: false %>
+                <div class="col-md-3">
+                  <%= f.input :demurrage_rate,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Demurrage Rate",
+                              label_html: {class: ""},
+                              required: false %>
+                </div>
+                <div class="col-md-3">
+                  <%= f.input :contract_terms, as: :fake,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Contract Terms*",
+                              label_html: {class: ""},
+                              required: false %>
+                </div>
               </div>
 
-              <div class="col-md-2">
-                <%= f.input :demurrage_rate,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Demurrage Rate",
-                            label_html: {class: ""},
-                            required: false %>
-              </div>
-              <div class="col-md-3">
-                <%= f.input :contract_terms, as: :fake,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Contract Terms*",
-                            label_html: {class: ""},
-                            required: false %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-2">
-                <%= f.input :total_cargo_qty, as: :fake,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Total Cargo Qty*",
-                            required: false %>
-              </div>
-              <div class="col-md-2">
-                <%= f.input :allowed_laytime,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Allowed Laytime",
-                            required: false %>
-              </div>
-              <div class="col-md-3">
-                <%= f.input :reversable, as: :fake,
-                            input_html: {class: "form-control-sm edit-input"},
-                            label: "Reversible",
-                            required: false %>
+              <div class="d-flex justify-content-around">
+                <div class="col-md-3">
+                  <%= f.input :total_cargo_qty, as: :fake,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Total Cargo Qty*",
+                              required: false %>
+                </div>
+                <div class="col-md-3">
+                  <%= f.input :allowed_laytime,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Allowed Laytime",
+                              required: false %>
+                </div>
+                <div class="col-md-3">
+                  <%= f.input :reversable, as: :fake,
+                              input_html: {class: "form-control-sm edit-input"},
+                              label: "Reversible",
+                              required: false %>
+                </div>
               </div>
             </div>
 

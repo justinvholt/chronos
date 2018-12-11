@@ -12,5 +12,3 @@ Rails.application.routes.draw do
   resources :clause_groups
   resources :clauses
 end
-
-
