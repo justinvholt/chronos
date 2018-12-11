@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def run_chronos
-    ##TODO: This might need some refactoring
+    ##TODO: This needs some refactoring, DRY
     all_fixture_events
     set_allowed_laytime
     reset_counting_and_dummy_events
@@ -27,9 +27,11 @@ class EventsController < ApplicationController
 
   def index
     all_fixture_events
-    set_allowed_laytime
+    set_allowed_laytime if @laytime_summary.nil?
     group_events
     @port_events
+    cumulative_demurrage
+    calculate_demurrage
   end
 
   private
@@ -51,8 +53,6 @@ class EventsController < ApplicationController
       clause.bloc_call(event, terminal_events)
     end
   end
-
-  ## TODO: Why does it run twice over this method?
 
   def assess_events_laytime
     @port_events.each do |port, terminals|
@@ -93,7 +93,6 @@ class EventsController < ApplicationController
   end
 
   def time_on_demurrage
-    binding.pry
     @laytime_summary.each do |port, mins|
       if mins[:used] != nil && mins[:allowed] != nil
         on_demurrage = mins[:used] - mins[:allowed]
@@ -103,14 +102,22 @@ class EventsController < ApplicationController
   end
 
   def calculate_demurrage
-    if @laytime_summary[:total][:on_dem].nil?
-      @fixture.total_demurrage = 0
-    else
+    if @laytime_summary[:total][:on_dem] != nil
       @fixture.total_demurrage = (@laytime_summary[:total][:on_dem] * ( @fixture.demurrage_rate / 1440 )).round(2)
+      @fixture.save
     end
   end
 
   ## setting up
+
+  def set_allowed_laytime
+    @laytime_summary = Hash.new
+    @cargoes.each do |cargo|
+      @laytime_summary[cargo.load_port] = {used: 0.to_f}
+      @laytime_summary[cargo.disch_port] = {used: 0.to_f}
+    end
+    @laytime_summary[:total] = {allowed: @fixture.allowed_laytime.to_f * 60}
+  end
 
   def all_fixture_events
     @handlings = Set.new
@@ -153,14 +160,5 @@ class EventsController < ApplicationController
 
   def set_fixture
     @fixture = Fixture.find(params[:fixture_id])
-  end
-
-  def set_allowed_laytime
-    @laytime_summary = Hash.new
-    @cargoes.each do |cargo|
-      @laytime_summary[cargo.load_port] = {used: 0.to_f}
-      @laytime_summary[cargo.disch_port] = {used: 0.to_f}
-    end
-    @laytime_summary[:total] = {allowed: @fixture.allowed_laytime.to_f * 60}
   end
 end
