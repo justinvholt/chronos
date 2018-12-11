@@ -7,18 +7,24 @@ class EventsController < ApplicationController
   end
 
   def run_chronos
+    all_fixture_events
+    set_allowed_laytime
+    remove_dummy_events
+    group_events
     set_clause_group
     assess_events_clauses
     assess_events_laytime
     cumilative_laytime
     calculate_demurrage
+    binding.pry
+    redirect_to fixture_events_path(@fixture), notice: "Laytime calculation updated"
   end
 
   def index
     all_fixture_events
     set_allowed_laytime
+
     group_events
-    run_chronos
     @port_events
   end
 
@@ -27,29 +33,23 @@ class EventsController < ApplicationController
   def assess_events_clauses
     @port_events.each do |port, terminals|
       terminals.each do |terminal, events|
+        @terminal_events = events
         events.each do |event|
           @event = event
-          assess_clauses(event)
+          assess_clauses(event, @terminal_events)
         end
       end
     end
   end
 
-  def assess_clauses(event)
+  def assess_clauses(event, terminal_events)
     @clause_group.each do |clause|
-      read_response(clause.bloc_call(event))
+      @event.counting = (clause.bloc_call(event, terminal_events))
     end
   end
 
   ## TODO: Why does it run twice over this method?
-  def read_response(response)
-    case response[:message]
-    when "mutate event"
-      @event.counting = response[:mutation]
-    when "insert event"
-      @events << response[:event]
-    end
-  end
+
 
   def assess_events_laytime
     @port_events.each do |port, terminals|
@@ -65,7 +65,7 @@ class EventsController < ApplicationController
   def calculate_laytime(event)
     @start_datetime = event.datetime if event.counting == "Laytime starts"
     @end_datetime = event.datetime if event.counting == "Laytime stops"
-    if event.counting == "Laytime stops"
+    if event.counting == "Laytime stops" && @start_datetime != nil
       @event.laytime = TimeDifference.between(@end_datetime, @start_datetime).in_minutes
     end
   end
@@ -118,6 +118,13 @@ class EventsController < ApplicationController
 
     @handlings.each { |handling| @events_set << handling.event } if @handlings.length > 0
     @events = order_by_time(@events_set.to_a)
+  end
+
+  def remove_dummy_events
+    destroyables = []
+    @events.each { |event| destroyables << event if event.dummy == true }
+    @events.reject! { |event| event.dummy == true }
+    destroyables.each { |dummy_event| dummy_event.destroy! }
   end
 
   def group_events

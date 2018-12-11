@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     collection {post :import}
     resources :cargoes, only: [:create, :update]
     resources :events, only: [:index, :new, :create] do
-      collection {post :import}
+      collection { post :import, :run_chronos }
       end
     end
   resources :clause_groups
