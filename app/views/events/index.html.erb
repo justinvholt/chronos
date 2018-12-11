@@ -15,12 +15,14 @@
        <%# <div class="text">Run Chronos</div> %>
     <%# </div> %>
 
-    <div class="import-file mt-4 mb-5">
-      <%= form_tag import_fixture_events_path, multipart: true do %>
-        <%= file_field_tag :file,
-                            input_html: {class: "input-file-field"} %>
-        <%= submit_tag 'Upload SOF' %>
-      <% end %>
+    <div class="import-file mt-3 mb-5">
+     <%= form_tag import_fixture_events_path, multipart: true do %>
+     <span class="btn btn-large btn-primary btn-file">
+       <%= file_field_tag :file,
+                           input_html: {class: "input-file-field"} %>
+       <%= submit_tag 'Upload SOF', class: "btn btn-success" %>
+       <% end %>
+      </span>
     </div>
 
   </div>
@@ -35,14 +37,16 @@
   <div class="demurrage-summary">
     <h2 class="mt-5 mb-3">Summary</h2>
     
+  <div class="row">
+  <div class="col-md-6">
     <div class="summary-table">
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th style="width: 160px">port</th>
-            <th style="width: 24px">laytime used</th>
-            <th style="width: 24px">laytime allowed</th>
-            <th style="width: 24px">hours on demurrage</th>
+            <th class="col-md-3">port</th>
+            <th class="col-md-3">laytime used</th>
+            <th class="col-md-3">laytime allowed</th>
+            <th class="col-md-3">hours on demurrage</th>
           </tr>
         </thead>
         <tbody>
@@ -51,15 +55,19 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+  </div>
+
       
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="demurrage-sum">
-          <div class="demurrage-rate">
+          <div class="demurrage-rate mt-1">
             <h5>Demurrage rate</h5>
             <h5 class="double-underline">$ <%= number_with_precision(@fixture.demurrage_rate, precision: 2, delimiter: ',') %></h5>
           </div>
-        <div class="demurrage-rate">
+        <div class="demurrage-rate mt-3">
           <h4>Invoice amount</h4>
           <h4>$ <%= number_with_precision(@fixture.total_demurrage, precision: 2, delimiter: ',') %></h4>
         </div>
