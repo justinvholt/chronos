@@ -57,11 +57,11 @@
         <div class="demurrage-sum">
           <div class="demurrage-rate">
             <h5>Demurrage rate</h5>
-            <h5 class="double-underline">$ <%= @fixture.demurrage_rate %></h5>
+            <h5 class="double-underline">$ <%= number_with_precision(@fixture.demurrage_rate, precision: 2, delimiter: ',') %></h5>
           </div>
         <div class="demurrage-rate">
           <h4>Invoice amount</h4>
-          <h4>$ <%= @fixture.total_demurrage %></h4>
+          <h4>$ <%= number_with_precision(@fixture.total_demurrage, precision: 2, delimiter: ',') %></h4>
         </div>
       </div>
     </div>
