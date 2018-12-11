@@ -4,9 +4,11 @@
 @import "clauses_new";
 @import "clauses_edit";
 @import "events_index";
+@import "fixtures_show";
 
 /* Hide HTML5 Up and Down arrows. */
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
