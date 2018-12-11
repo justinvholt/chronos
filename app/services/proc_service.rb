@@ -3,35 +3,67 @@ class ProcService
     @clause = clause
   end
 
-  def call(event)
+  def call(event, terminal_events)
     @event = event
-    @event_title = @event.title.strip.downcase
+    hashify_events(terminal_events)
     send(@clause.bloc)
   end
 
-  def response(package = nil)
-    response = Hash.new
-    if package.class == String
-      response[:message] = "mutate event"
-      response[:mutation] = package
-    elsif package.class == Event
-      reponse[:message] = "insert event"
-      response[:event] = package
-    else
-      response[:message] = "no action required"
-    end
-    return response
+  def hashify_events(events)
+    @terminal_events = Hash.new
+    events.each { |event| @terminal_events[event.title] = event }
+  end
+
+  def response(message = "")
+    return message
   end
 
   ## method missing / ghost method
 
   private
 
-  def nor_6_asbatankvoy
-    @event_title == "nor tendered" ? response("Laytime starts") : response()
+  ### COMMENCEMENT###
+
+  def start_nor_6
+    if @event.title == "NOR tendered"
+      @nor_6_handlings = []
+      @event.cargo_handlings.each do |handling|
+        @nor_6_handlings << CargoHandling.create(fixture_cargo: handling.fixture_cargo)
+      end
+
+      @event.datetime + 6.hour < @terminal_events["Berthed"].datetime
+      nor_6 = Event.create(
+        title: "NOR Tendered + 6",
+        datetime: @event.datetime + 6.hour,
+        port: @event.port,
+        terminal: @event.terminal,
+        berth: @event.berth,
+        vessel_name: @event.vessel_name,
+        voyage_number: @event.voyage_number,
+        counting: "Laytime starts",
+        laytime: 0.0,
+        cargo_handlings: @nor_6_handlings,
+        dummy: true
+        )
+      response("notice time starts")
+    else
+      response()
+    end
   end
 
-  def hoses_11_asbatankvoy
-    @event_title == "cargo documents on board" ? response("Laytime stops") : response()
+  def start_nor
+    @event.title == "NOR tendered" ? response("Laytime starts") : response()
+  end
+
+  ### COMMENCEMENT###
+
+  # def stop_shifting_anchorage
+  #   @event.title == "Anchor Aweigh" ? response("Laytime stops") : response()
+  # end
+
+  def stop_documents
+    @event.title == "Cargo Documents on Board" ? response("Laytime stops") : response()
   end
 end
+
+

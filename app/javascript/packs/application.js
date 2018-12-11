@@ -138,7 +138,9 @@ $("tr[data-link]").click(function() {
 // render clauses immediately
 
 $("#fastload").click(function(){
-    $.ajax({url: "clause_fields", success: function(result){
-        $(".clauses-container").html(load_clause_group);
+    $.ajax({url: "<%= @fixture.id %>", success: function(result){
+        $(".clauses-container").html(result);
     }});
 });
+
+
