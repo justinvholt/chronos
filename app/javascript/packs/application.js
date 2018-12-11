@@ -59,14 +59,15 @@ function flipCard () {
 $(function() {
   $('.toggle').on('click', function() {
     const form = $('.toggle').closest('form');
-    if ($('.toggle').hasClass('on')) {
+    if ($(this).hasClass('on')) {
       $('.toggle').removeClass('on');
       $(".edit-input").prop('readonly', true);
       form.addClass('super-edit-power');
-      console.log(form);
+      console.log($(".edit-input"));
       form.trigger("submit.rails");
     } else {
       $('.toggle').addClass('on');
+      console.log($(".edit-input"));
       form.removeClass('super-edit-power');
       $(".edit-input").prop('readonly', false);
     }
@@ -75,7 +76,7 @@ $(function() {
 
 // cargo edit/show
 
-$("#edit-button").on("click", function(){
+$(".toggle").on("click", function(){
   $(".big-edit").toggle();
 });
 
