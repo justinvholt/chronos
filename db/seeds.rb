@@ -132,7 +132,7 @@ clause_count = 0
     title: "Notice of Readiness",
     paragraph: "6",
     wording: "Upon arrival at customary anchorage at each port of loading or discharge, the Master or his agent shall give the Charterer or his agent notice by letter, telegraph, wireless or telephone that the Vessel is ready to load or discharge cargo, berth or no berth, and laytime, as hereinafter provided, shall commence upon the expiration of six (6) hours after receipt of such notice, or upon the Vessel's arrival in berth (i.e. finished mooring when at a sealoading or discharging terminal and all fast when loading or discharging alongside a wharf), whichever first occur. However, where delay is caused to Vessel getting into berth after giving notice of readiness for any reason over which Charterer has no control, such delay shall not count as used laytime.",
-    bloc: :nor_6_asbatankvoy
+    bloc: :start_nor_6
     )
   clause_count += 1
 end
@@ -144,7 +144,7 @@ end
     title: "Hoses: Moorning at sea terminals",
     paragraph: "11",
     wording: "Hoses for loading and discharging shall be furnished by the Charterer and shall be connected and disconnected by the Charterer, or, at the option of the Owner, by the Owner at the Charterer's risk and expense. Laytime shall continue until the hoses have been disconnected. When Vessel loads or discharges at a sea terminal, the Vessel shall be properly equipped at Owner's expense for loading or discharging at such place, including suitable ground tackle, mooring lines and equipment for handling submarine hoses.",
-    bloc: :hoses_11_asbatankvoy
+    bloc: :stop_documents
     )
   clause_count += 1
 end
