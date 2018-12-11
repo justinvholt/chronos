@@ -3,10 +3,19 @@
     <h2 class="mt-5 mb-3">Voyage Details</h2>
     <div class="import-file">
       <%= form_tag import_fixture_events_path, multipart: true do %>
-        <%= file_field_tag :file %>
+        <%= file_field_tag :file,
+                            input_html: {class: "input-file-field"} %>
         <%= submit_tag 'Upload SOF' %>
       <% end %>
     </div>
+
+    <div class="svg-wrapper">
+      <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+        <rect class="shape" height="60" width="320" />
+      </svg>
+       <div class="text">HOVER</div>
+    </div>
+
   </div>
   <div class="events-tables">
     <% unless @port_events.nil? %>
@@ -41,7 +50,7 @@
       </div>
       <div class="demurrage-rate">
         <h4>Invoice amount</h4>
-        <h4>$ <%= @demurrage.round(2) %></h4>
+        <h4>$ <%= @fixture.total_demurrage %></h4>
       </div>
     </div>
   </div>
