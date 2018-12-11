@@ -32,7 +32,7 @@ class FixturesController < ApplicationController
   def update
     @fixture.update(fixture_params)
 
-    redirect_to fixture_path(@fixture)
+    redirect_to fixture_path(@fixture, :anchor => "clauses")
   end
 
   private
