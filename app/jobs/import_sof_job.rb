@@ -4,11 +4,14 @@ class ImportSOFJob < ApplicationJob
   def perform(file, fixture)
     return if (file.nil?)
     CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
+      # return if (@fixture.vessel_name != row[:vessel] && @fixture.voyage_number != row[:voy])
+
       @port = row[:port]
       @terminal = row[:terminal]
       @berth = row[:berth]
       @obl = row[:obl]
       @fixture = fixture
+
       generate_cargo_handlings
 
       arguments = {
