@@ -86,8 +86,11 @@ class ProcService
   def stop_hose_disconnected
     if @event.title == "Hose Disconnected"
       hose_off_events = @terminal_events["Hose Disconnected"]
-      last_disconnect = hose_off_events.max_by(&:datetime)
-
+      if hose_off_events.class == Array
+        last_disconnect = hose_off_events.max_by(&:datetime)
+      else
+        last_disconnect = hose_off_events
+      end
       last_disconnect.counting = "Laytime stops"
       last_disconnect.save
     end
