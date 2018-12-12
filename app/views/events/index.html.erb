@@ -1,12 +1,14 @@
-<div class="container-fluid px-6">
+<div class="container-fluid px-6 pb-3">
+
   <div class="events__voyage-details">
-    <h2 class="">Voyage Details</h2>
-    
+    <h2 class="pb-3">Voyage Details</h2>
+
     <div class="events__fixture-details">
-      <%= simple_form_for @fixture, html: { class: 'super-edit-power mt-5' } do |ff| %>
-      <%= render 'events_fixture_fields', f: ff %>
+      <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
+        <%= render 'events_fixture_fields', f: ff %>
       <% end %>
     </div>
+  </div>
 
     <%# <div class="svg-wrapper"> %>
       <%# <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg"> %>
@@ -15,18 +17,18 @@
        <%# <div class="text">Run Chronos</div> %>
     <%# </div> %>
 
-    <div class="import-file">
-     <%= form_tag import_fixture_events_path, multipart: true do %>
-     <span class="btn btn-large btn-curious-blue btn-file">
-       <%= file_field_tag :file,
-                           input_html: {class: "input-file-field"} %>
-       <%= submit_tag 'Upload SOF', class: "btn btn-success" %>
-       <% end %>
-      </span>
-    </div>
-  </div>
-
   <div class="events__events-table">
+    <h2 class="pb-3">Port Events</h2>
+
+    <div class="import-file mb-3">
+      <%= form_tag import_fixture_events_path, multipart: true do %>
+        <span class="outset">
+          <%= file_field_tag :file %>
+          <%= submit_tag 'Upload SOF', class: "btn btn-curious-blue" %>
+      <% end %>
+        </span>
+    </div>
+
     <% unless @port_events.nil? %>
       <% @port_events.each do |port, terminals| %>
         <%= render "events_table", port: port, terminals: terminals %>
@@ -36,8 +38,9 @@
 
   <div class="events__demurrage-summary">
     <h2 class="">Summary</h2>
+
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="summary-table">
           <table class="table table-sm">
             <thead>
@@ -58,20 +61,20 @@
       </div>
     </div>
 
-  .    
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="demurrage-sum">
           <div class="demurrage-rate mt-1">
             <h5>Demurrage rate</h5>
             <h5 class="double-underline">$ <%= number_with_precision(@fixture.demurrage_rate, precision: 2, delimiter: ',') %></h5>
           </div>
-        <div class="demurrage-rate mt-3">
-          <h4>Invoice amount</h4>
-          <h4>$ <%= number_with_precision(@fixture.total_demurrage, precision: 2, delimiter: ',') %></h4>
+          <div class="demurrage-rate mt-3">
+            <h4>Invoice amount</h4>
+            <h4>$ <%= number_with_precision(@fixture.total_demurrage, precision: 2, delimiter: ',') %></h4>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
+
 </div>
