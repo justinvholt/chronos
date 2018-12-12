@@ -18,18 +18,6 @@
                 label: "CP Form*",
                 required: true %>
   </div>
-
-  <div class="col-md-4">
-    <%= link_to run_chronos_fixture_events_path, method: :post, class: "btn", id: "hover-btn" do %>
-      <div class="svg-wrapper">
-        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="60" width="320" />
-          <div class="hover-text">RUN CHRONOS</div>
-        </svg>
-      </div>
-    <% end %>
-  </div>
-
 </div>
 
 <div class="row">
@@ -52,18 +40,16 @@
                 label: "Contract Type*",
                 required: true %>
   </div>
-<!--   <div class="col-md-3">
-    <div class="dropdown">
-      <button class="btn btn-ship-cove dropdown-toggle events__documents-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span id="selected">Documents</span>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Incomplete</a>
-        <a class="dropdown-item" href="#">Complete</a>
+  <div class="col-md-4 mt-3">
+    <%= link_to run_chronos_fixture_events_path, method: :post, class: "btn", id: "hover-btn" do %>
+      <div class="svg-wrapper">
+        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+          <rect class="shape" height="60" width="320" />
+          <div class="hover-text">RUN CHRONOS</div>
+        </svg>
       </div>
-    </div>
-  </div> -->
-
+    <% end %>
+  </div>
 
 </div>
 

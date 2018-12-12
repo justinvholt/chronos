@@ -1,19 +1,20 @@
 <div class="container-fluid px-6">
   <!-- Form for view Fixture -->
   <div class="card">
-    <h2>Fixture Details</h2>
+    <div class="d-flex justify-content-between">
+      <h2 class="mb-2">Fixture Details</h2>
 
-    <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
-      <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
-        <div class="slide">
-          <i class="fas fa-circle"></i>
+      <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
+        <div class="btn btn-default toggle" id="edit-button">
+          <div class="slide">
+            <i class="fas fa-circle"></i>
+          </div>
         </div>
-      </div>
+    </div>
 
-      <%= render 'fixture_fields', f: ff %>
+        <%= render 'fixture_fields', f: ff %>
   </div>
 
-  <hr />
 
   <!-- Add cargo button
 
@@ -21,9 +22,16 @@
   For details on how to do the cocoon stuff, look at Steven's code in the show_old page below.
 
   -->
+  
   <div class="card">
-    <h2 class="mb-4">Cargo</h2>
-
+    <div class="d-flex justify-content-between">
+      <h2 class="mb-2">Cargo Details</h2>
+      <div class="btn btn-default toggle" id="edit-button">
+        <div class="slide">
+          <i class="fas fa-circle"></i>
+        </div>
+      </div>
+    </div>
 
     <div class="big-edit" style="display: block">
       <%= render "cargo_show" %>
@@ -34,10 +42,15 @@
     </div>
   </div>
 
-  <hr />
-
   <div class="card">
-    <h2 class="mb-3"><a name="clauses">Clauses</a></h2>
+    <div class="d-flex justify-content-between">
+      <h2 class="mb-3"><a name="clauses">Contract Details</a></h2>
+      <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
+        <div class="slide">
+          <i class="fas fa-circle"></i>
+        </div>
+      </div>
+    </div>
 
     <%= render 'clause_show' %>
   <% end %>
