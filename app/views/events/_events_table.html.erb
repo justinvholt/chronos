@@ -1,8 +1,8 @@
 <div class="port-events">
- <table class="table table-sm table-condensed table-hover">
-  <h2><%= port %></h2>
+ <table class="table table-sm table-striped table-hover">
+  <h2 class="pt-2"><%= port %></h2>
     <% terminals.each do |terminal, events| %>
-      <h4><%= terminal %></h4>
+      <h4 class="mt-2"><%= terminal %></h4>
       <%= render "events_table_body", events: events %>
     <% end %>
   </table>

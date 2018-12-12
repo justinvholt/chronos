@@ -8,7 +8,7 @@
       Demurrage Report
     </h2>
 
-    <div class="events__fixture-details">
+    <div class="">
       <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
         <%= render 'events_fixture_fields', f: ff %>
       <% end %>
@@ -18,7 +18,7 @@
   <div class="events__events-table">
     <h2 class="pb-3">Port Events</h2>
 
-    <div class="import-file mb-3">
+    <div class="import-file mb-4">
       <%= form_tag import_fixture_events_path, multipart: true do %>
         <span class="outset">
           <%= file_field_tag :file %>
@@ -27,10 +27,11 @@
         </span>
     </div>
 
+
     <% unless @port_events.nil? %>
-      <% @port_events.each do |port, terminals| %>
-        <%= render "events_table", port: port, terminals: terminals %>
-      <% end %>
+        <% @port_events.each do |port, terminals| %>
+          <%= render "events_table", port: port, terminals: terminals %>
+        <% end %>
     <% end %>
   </div>
 
@@ -40,13 +41,13 @@
     <div class="row">
       <div class="col-md-8">
         <div class="summary-table">
-          <table class="table table-sm">
+          <table class="table table-sm table-striped">
             <thead>
               <tr>
-                <th>port</th>
-                <th>laytime used</th>
-                <th>laytime allowed</th>
-                <th>hours on demurrage</th>
+                <th>Port</th>
+                <th>Laytime Used</th>
+                <th>Laytime Allowed</th>
+                <th>Hours on Demurrage</th>
               </tr>
             </thead>
             <tbody>
@@ -64,7 +65,7 @@
         <div class="demurrage-sum">
           <div class="demurrage-rate mt-1">
             <h5>Demurrage rate</h5>
-            <h5 class="double-underline">$ <%= number_with_precision(@fixture.demurrage_rate, precision: 2, delimiter: ',') %></h5>
+            <h5 class="double-underline">$ <%= number_with_precision(@fixture.demurrage_rate, precision: 2, delimiter: ',') %> USD pdpr</h5>
           </div>
           <div class="demurrage-rate mt-3">
             <h4>Invoice amount</h4>
