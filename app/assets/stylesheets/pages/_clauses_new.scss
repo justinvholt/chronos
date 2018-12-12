@@ -1,13 +1,18 @@
- .button-positioning {
-    margin-top: 5rem;
+.button-positioning {
+  margin-top: 5rem;
 }
-
 
 .id-positioning {
   margin-top: 3rem;
 }
 
-
-.custom-box {
-    padding-bottom: 4rem;
-  }
+.text {
+  text-align: left !important;
+  color: #212529 !important;
+  font-family: "Open Sans", "Helvetica", "sans-serif" !important;
+  font-size: 1.125rem !important;
+  line-height: 1.5rem !important;
+  position: relative !important;
+  letter-spacing: 0px !important;
+  top: 0 !important;
+}
