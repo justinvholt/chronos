@@ -1,7 +1,12 @@
 <div class="container-fluid px-6 pb-3">
 
   <div class="events__voyage-details">
-    <h2 class="pb-3">Voyage Details</h2>
+    <h2 class="pb-3">
+      <%= link_to fixture_path(@fixture) do %>
+        <i class='fas fa-chevron-left'></i>
+      <% end %>&nbsp;&nbsp;
+      Demurrage Report
+    </h2>
 
     <div class="events__fixture-details">
       <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>

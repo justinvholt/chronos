@@ -1,11 +1,5 @@
 <h4 class="mt-4 mb-3">Loading</h4>
 
-<div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
-  <div class="slide">
-    <i class="fas fa-circle"></i>
-  </div>
-</div>
-
 <table class="table">
   <thead>
     <tr>
@@ -23,19 +17,10 @@
         <%= render 'cargo_fields', f: cargo, prefix: 'load' %>
       <% end %>
     </div>
-
-    <hr />
-
   </tbody>
 </table>
 
 <h4 class="mt-4 mb-3">Discharge</h4>
-
-<div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
-  <div class="slide">
-    <i class="fas fa-circle"></i>
-  </div>
-</div>
 
 <table class="table">
   <thead>
@@ -54,9 +39,6 @@
         <%= render 'cargo_fields', f: cargo, prefix: 'disch' %>
       <% end %>
     </div>
-
-    <hr />
-
   </tbody>
 </table>
 

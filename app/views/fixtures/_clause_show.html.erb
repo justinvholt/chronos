@@ -1,58 +1,53 @@
 <div id="clauses-container">
   <div class="clause-group-select">
     <%= simple_form_for @fixture do |f| %>
-
       <%= f.input :clause_group_id, collection: ClauseGroup.all, label: "Select Clause Group" %>
-
-      <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
-        <div class="slide">
-          <i class="fas fa-circle"></i>
-        </div>
-      </div>
-
     <% end %>
   </div>
-  <div class="table-responsive">
-  <table class="table-striped table borderless" id="load_clause_group">
-    <thead>
-      <tr>
-        <th>Parent</th>
-        <th>Title</th>
-        <th>Wording</th>
-        <th class="adjust-width">Clause ID</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <% @fixture.clause_group&.clauses&.each do |clause| %>
+  <div class="table-responsive">
+    <table class="table-striped table borderless" id="load_clause_group">
+      <thead>
         <tr>
-          <td><%= "#{clause.cp_form.upcase}" + " " + "#{clause.parent_relation}" %></td>
-          <td>
-            <div class=row">
-              <div class="col">
-                <%= "#{clause.title.titleize}" %>
+          <th>Parent</th>
+          <th>Title</th>
+          <th>Wording</th>
+          <th class="adjust-width">Clause ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @fixture.clause_group&.clauses&.each do |clause| %>
+          <tr>
+            <td><%= "#{clause.cp_form.upcase}" + " " + "#{clause.parent_relation}" %></td>
+            <td>
+              <div class=row">
+                <div class="col">
+                  <%= "#{clause.title.titleize}" %>
+                </div>
+                <div class="col">
+                  <%= "#{clause.paragraph}" %>
+                </div>
               </div>
-              <div class="col">
-                <%= "#{clause.paragraph}" %>
+            </td>
+            <td><%= clause.wording %></td>
+            <td><%= clause.id %></td>
+            <td>
+               <button id="btnGroupDrop1" type="button" class="btn btn-curious-blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+
+               <div class="dropdown-menu" role="menu">
+                <%= link_to "Amend details", edit_clause_path(clause), class: "dropdown-item" %>
+                <%= link_to 'Delete',
+                clause_path(clause),
+                method: :delete,
+                data: { confirm: 'Are you sure you want to delete this item?' }, class: "dropdown-item" %>
+                <%= link_to "Request bloc change", new_clause_path, class: "dropdown-item" %>
               </div>
-          </div>
-        </td>
-        <td><%= clause.wording %></td>
-        <td><%= clause.id %></td>
-        <td>
-         <button id="btnGroupDrop1" type="button" class="btn btn-curious-blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-         <div class="dropdown-menu" role="menu">
-          <%= link_to "Amend details", edit_clause_path(clause), class: "dropdown-item" %>
-          <%= link_to 'Delete',
-          clause_path(clause),
-          method: :delete,
-          data: { confirm: 'Are you sure you want to delete this item?' }, class: "dropdown-item" %>
-          <%= link_to "Request bloc change", new_clause_path, class: "dropdown-item" %>
-        </div>
-      </td>
-    </tr>
-    <% end %>
-   </tbody>
-  </table>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
