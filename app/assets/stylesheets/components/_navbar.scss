@@ -17,8 +17,16 @@
   color: white !important;
 }
 
+.logo-url:hover {
+  color: transparent !important;
+}
+
 .logo-col {
   color: white !important;
+  }
+
+.logo-col:focus {
+  outline: 0 !important;
 }
 
 .navbar {

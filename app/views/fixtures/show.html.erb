@@ -1,20 +1,18 @@
 <div class="container-fluid px-6">
   <!-- Form for view Fixture -->
-  <div class="card">
-    <div class="d-flex justify-content-between">
-      <h2 class="mb-2">Fixture Details</h2>
+  <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
 
-      <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
+    <div class="card">
+      <div class="d-flex justify-content-between">
+        <h2 class="mb-2">Fixture Details</h2>
         <div class="btn btn-default toggle" id="edit-button">
           <div class="slide">
             <i class="fas fa-circle"></i>
           </div>
         </div>
+      </div>
+      <%= render 'fixture_fields', f: ff %>
     </div>
-
-        <%= render 'fixture_fields', f: ff %>
-  </div>
-
 
   <!-- Add cargo button
 
@@ -22,37 +20,38 @@
   For details on how to do the cocoon stuff, look at Steven's code in the show_old page below.
 
   -->
-  
-  <div class="card">
-    <div class="d-flex justify-content-between">
-      <h2 class="mb-2">Cargo Details</h2>
-      <div class="btn btn-default toggle" id="edit-button">
-        <div class="slide">
-          <i class="fas fa-circle"></i>
+
+    <div class="card">
+      <div class="d-flex justify-content-between">
+        <h2 class="mb-2">Cargo Details</h2>
+        <div class="btn btn-default toggle" id="edit-button">
+          <div class="slide">
+            <i class="fas fa-circle"></i>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="big-edit" style="display: block">
-      <%= render "cargo_show" %>
-    </div>
+      <div class="big-edit" style="display: block">
+        <%= render "cargo_show" %>
+      </div>
 
-    <div class="big-edit" style="display: none">
-      <%= render "cargo_edit", ff: ff %>
-    </div>
+      <div class="big-edit" style="display: none">
+        <%= render "cargo_edit", ff: ff %>
+      </div>
+
   </div>
 
-  <div class="card">
-    <div class="d-flex justify-content-between">
-      <h2 class="mb-3"><a name="clauses">Contract Details</a></h2>
-      <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
-        <div class="slide">
-          <i class="fas fa-circle"></i>
+    <div class="card">
+      <div class="d-flex justify-content-between">
+        <h2 class="mb-3"><a name="clauses">Contract Details</a></h2>
+        <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
+          <div class="slide">
+            <i class="fas fa-circle"></i>
+          </div>
         </div>
       </div>
+      <%= render 'clause_show' %>
     </div>
-
-    <%= render 'clause_show' %>
   <% end %>
-  </div>
+
 </div>

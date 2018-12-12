@@ -6,7 +6,6 @@ window.$ = $;
 import {
   createNewCargoItemForm,
   editCargoItemForm,
-  flip_dialog
 } from "../views/fixture_cargo_add";
 
 // createNewCargoItemForm();
@@ -14,24 +13,7 @@ import {
 
 // import modal_wide from "modal_wide";
 
-// modal_wide();
-
-// import {
-//   flip_dialog
-// } from "../views/fixture_cargo_add";
-
-// $(function() {
-//   $('#flip1').click(function() {
-//       flip_dialog();
-//   });
-
-//   $('#flip2').click(function() {
-//       flip_dialog();
-//   });
-
-// });
-
-// home page sign-in/forgot password flip modal flip (STILL TINKERING
+// home page sign-in/forgot password flip modal flip (STILL TINKERING)
 
 let homeModalTransitionTime = 500;
 
@@ -75,6 +57,7 @@ $(function() {
     }
   });
 });
+
 
 // cargo edit/show
 
