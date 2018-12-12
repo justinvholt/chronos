@@ -1,0 +1,118 @@
+<div class="container-fluid px-6">
+  <!-- Form for view Fixture -->
+  <h2 class="mt-5 mb-3">Fixture Details</h2>
+
+  <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
+    <div class="btn btn-default toggle mt-3 mb-3">
+      <div class="slide">
+        <i class="fas fa-circle"></i>
+      </div>
+    </div>
+
+    <%= render 'fixture_fields', f: ff %>
+
+  <% end %>
+
+  <hr />
+
+  <!-- Add cargo button -->
+
+  <%= simple_form_for @fixture do |ff| %>
+    <%= ff.error_notification %>
+
+  <div class="new-fixture__add-cargo-button">
+    <%#= link_to_add_association "Add Cargo", ff, :cargoes, class: "btn btn-primary mt-3 mb-3", data: { association_insertion_node: ".new-fixture__add-cargos", association_insertion_method: :append } %>
+  </div>
+
+  <!-- Loading and Discharge sub-headers -->
+
+  <!-- JavaScript uses this class to append new discharge entries -->
+
+  <div class="fixture-view__loading">
+
+    <h2 class="mt-3 mb-3">Cargo</h2>
+
+    <h4 class="mt-5 mb-3">Loading</h4>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Port</th>
+          <th>Terminal</th>
+          <th>Berth</th>
+          <th>Obl</th>
+          <th>Name</th>
+          <th>Qty - Mts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% last_port = nil %>
+        <% last_terminal = nil %>
+        <% last_berth = nil %>
+        <% @fixture.cargoes.each do |cargo| %>
+          <% suppressed_fields = { load_port: cargo.load_port == last_port,
+                                   load_terminal: cargo.load_terminal == last_terminal,
+                                   load_berth: cargo.load_berth == last_berth } %>
+          <% last_port = cargo.load_port %>
+          <% last_terminal = cargo.load_terminal %>
+          <% last_berth = cargo.load_berth %>
+          <%= render 'cargo_loading_row', cargo: cargo, suppressed_fields: suppressed_fields %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <hr />
+
+  <!-- JavaScript uses this class to append new discharge entries -->
+  <div class="fixture-view__discharge">
+    <h4 class="mt-5 mb-3">Discharge</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Port</th>
+          <th>Terminal</th>
+          <th>Berth</th>
+          <th>Obl</th>
+          <th>Name</th>
+          <th>Qty - Mts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% last_port = nil %>
+        <% last_terminal = nil %>
+        <% last_berth = nil %>
+        <% @fixture.cargoes.each do |cargo| %>
+          <% suppressed_fields = { disch_port: cargo.disch_port == last_port,
+                                   disch_terminal: cargo.disch_terminal == last_terminal,
+                                   disch_berth: cargo.disch_berth == last_berth } %>
+          <% last_port = cargo.disch_port %>
+          <% last_terminal = cargo.disch_terminal %>
+          <% last_berth = cargo.disch_berth %>
+          <%= render 'cargo_discharge_row', cargo: cargo, suppressed_fields: suppressed_fields %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <hr />
+
+  <!--
+    Add additional FixtureCargo fields for user input partial _fixture_cargo_fields is appended to div.new-fixture__add-cargos and dynamically moved to the Loading/Discharge header
+  -->
+
+    <div class="new-fixture__add-cargos">
+      <%#= ff.simple_fields_for :fixture_cargoes do |builder| %>
+        <%#= render "fixture_cargo_fields", ff: builder %>
+      <%# end %>
+    </div>
+
+  <% end %>
+
+  <h2 class="mt-3 mb-3">Clauses</h2>
+
+  <%= render 'clause_show' %>
+
+  </div>
+</div>

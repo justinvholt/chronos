@@ -1,0 +1,59 @@
+<h4 class="mt-4 mb-3">Loading</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Port</th>
+      <th>Terminal</th>
+      <th>Berth</th>
+      <th>Obl</th>
+      <th>Name</th>
+      <th>Qty - Mts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% last_port = nil %>
+    <% last_terminal = nil %>
+    <% last_berth = nil %>
+    <% @fixture.cargoes.each do |cargo| %>
+      <% suppressed_fields = { load_port: cargo.load_port == last_port,
+                               load_terminal: cargo.load_terminal == last_terminal,
+                               load_berth: cargo.load_berth == last_berth } %>
+      <% last_port = cargo.load_port %>
+      <% last_terminal = cargo.load_terminal %>
+      <% last_berth = cargo.load_berth %>
+      <%= render 'cargo_loading_row', cargo: cargo, suppressed_fields: suppressed_fields %>
+    <% end %>
+  </tbody>
+</table>
+
+<h4 class="mt-4 mb-3">Discharge</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Port</th>
+      <th>Terminal</th>
+      <th>Berth</th>
+      <th>Obl</th>
+      <th>Name</th>
+      <th>Qty - Mts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% last_port = nil %>
+    <% last_terminal = nil %>
+    <% last_berth = nil %>
+    <% @fixture.cargoes.each do |cargo| %>
+      <% suppressed_fields = { disch_port: cargo.disch_port == last_port,
+                               disch_terminal: cargo.disch_terminal == last_terminal,
+                               disch_berth: cargo.disch_berth == last_berth } %>
+      <% last_port = cargo.disch_port %>
+      <% last_terminal = cargo.disch_terminal %>
+      <% last_berth = cargo.disch_berth %>
+      <%= render 'cargo_discharge_row', cargo: cargo, suppressed_fields: suppressed_fields %>
+    <% end %>
+  </tbody>
+</table>
+
+

@@ -1,0 +1,20 @@
+<tr data-link="<%= fixture_path(fixture) %>">
+  <!-- Vessel -->
+  <td class="align-middle"><%= fixture.vessel_name %></td>
+  <!-- Voyage No. -->
+  <td class="align-middle"><%= fixture.voyage_number %></td>
+  <!-- Charterer -->
+  <td class="align-middle"><%= fixture.charterer %></td>
+  <!-- Demurrage Est. -->
+  <td class="align-middle"><%= fixture.total_demurrage %></td>
+  <!-- Fixture (Ref. No) -->
+  <td class="align-middle"><%= fixture.reference_no %></td>
+  <!-- Required -->
+  <td class="align-middle"><%= fixture.calculation_status %></td>
+  <!-- Voyage Status -->
+  <td class="align-middle">..</td>
+  <!-- + -->
+  <td class="align-middle">
+    <%= link_to "Demurrage Report", fixture_events_path(fixture), class: "btn demurrage-btn-outline" %>
+  </td>
+</tr>

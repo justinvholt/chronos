@@ -1,5 +1,6 @@
 class Fixture < ApplicationRecord
-  has_many :cargoes, class_name: "FixtureCargo"
+  has_many :cargoes, class_name: "FixtureCargo", dependent: :destroy
+  belongs_to :clause_group, optional: true
   # has_many :fixture_cargos, inverse_of: :fixture
 
   # validates :reference_no, presence: true, numericality: { greater_than: 0 }

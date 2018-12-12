@@ -9,6 +9,37 @@
   flex-direction: row;
 }
 
-.double-underline{
+.double-underline {
   border-bottom: 2px double;
+}
+
+.events {
+  &__voyage-details {
+    background-color: #fff;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 1%;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  &__events-table {
+    background-color: #fff;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 1%;
+    margin-bottom: 3rem;
+  }
+
+  &__demurrage-summary {
+    background-color: #fff;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 1%;
+  }
+  &__documents-button {
+    width: 8.5rem;
+  }
+}
+
+.outset {
+  padding: 20px;
+  border-style: outset;
 }

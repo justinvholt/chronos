@@ -1,0 +1,8 @@
+# config/meta.yml
+
+meta_product_name: "Chronos Laytime"
+meta_title: "Chronos Laytime - Fully-automated laytime management system"
+meta_description: "An automated method to calculate demurrage faster and with fewer errors"
+meta_type: "CHAR"
+meta_url: "https://chronos-laytime.herokuapp.com"
+meta_image: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Container_Ship.jpg"

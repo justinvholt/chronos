@@ -54,6 +54,7 @@ class ClausesController < ApplicationController
 
   private
 
+
   def set_clause
     @clause = Clause.find(params[:id])
   end

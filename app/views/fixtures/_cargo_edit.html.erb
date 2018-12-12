@@ -1,0 +1,44 @@
+<h4 class="mt-4 mb-3">Loading</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Port</th>
+      <th>Terminal</th>
+      <th>Berth</th>
+      <th>Obl</th>
+      <th>Name</th>
+      <th>Qty - Mts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <div id="cargoes">
+      <%= ff.fields_for :cargoes do |cargo| %>
+        <%= render 'cargo_fields', f: cargo, prefix: 'load' %>
+      <% end %>
+    </div>
+  </tbody>
+</table>
+
+<h4 class="mt-4 mb-3">Discharge</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Port</th>
+      <th>Terminal</th>
+      <th>Berth</th>
+      <th>Obl</th>
+      <th>Name</th>
+      <th>Qty - Mts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <div id="cargoes">
+      <%= ff.fields_for :cargoes do |cargo| %>
+        <%= render 'cargo_fields', f: cargo, prefix: 'disch' %>
+      <% end %>
+    </div>
+  </tbody>
+</table>
+

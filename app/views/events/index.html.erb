@@ -1,48 +1,78 @@
-<div class="container-fluid px-6">
-  <div class="voy-details">
-    <h2 class="mt-5 mb-3">Voyage Details</h2>
-    <div class="import-file">
-      <%= form_tag import_fixture_events_path, multipart: true do %>
-        <%= file_field_tag :file %>
-        <%= submit_tag 'Upload SOF' %>
+<div class="container-fluid px-6 pb-3">
+
+  <div class="events__voyage-details">
+    <h2 class="pb-3">
+      <%= link_to fixture_path(@fixture) do %>
+        <i class='fas fa-chevron-left'></i>
+      <% end %>&nbsp;&nbsp;
+      Demurrage Report
+    </h2>
+
+    <div class="events__fixture-details">
+      <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
+        <%= render 'events_fixture_fields', f: ff %>
       <% end %>
     </div>
   </div>
-  <div class="events-tables">
+
+  <div class="events__events-table">
+    <h2 class="pb-3">Port Events</h2>
+
+    <div class="import-file mb-3">
+      <%= form_tag import_fixture_events_path, multipart: true do %>
+        <span class="outset">
+          <%= file_field_tag :file %>
+          <%= submit_tag 'Upload SOF', class: "btn btn-curious-blue" %>
+      <% end %>
+        </span>
+    </div>
+
     <% unless @port_events.nil? %>
       <% @port_events.each do |port, terminals| %>
         <%= render "events_table", port: port, terminals: terminals %>
       <% end %>
     <% end %>
   </div>
-  <div class="demurrage-summary">
-    <h2 class="mt-5 mb-3">Summary</h2>
-    <div class="summary-table">
-      <table class="table table-sm">
-      <thead class="thead-dark">
-        <tr>
-          <th style="width: 160px">port</th>
-          <th style="width: 24px">laytime used</th>
-          <th style="width: 24px">laytime allowed</th>
-          <th style="width: 24px">hours on demurrage</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @laytime_summary.each do |port, mins| %>
-          <%= render "summary_row", port: port, mins: mins %>
-        <% end %>
-      </tbody>
-      </table>
-    </div>
-    <div class="demurrage-sum">
-      <div class="demurrage-rate">
-        <h5>Demurrage rate</h5>
-        <h5 class="double-underline">$ <%= @fixture.demurrage_rate %></h5>
+
+  <div class="events__demurrage-summary">
+    <h2 class="">Summary</h2>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="summary-table">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>port</th>
+                <th>laytime used</th>
+                <th>laytime allowed</th>
+                <th>hours on demurrage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @laytime_summary.each do |port, mins| %>
+                <%= render "summary_row", port: port, mins: mins %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="demurrage-rate">
-        <h4>Invoice amount</h4>
-        <h4>$ <%= @demurrage.round(2) %></h4>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="demurrage-sum">
+          <div class="demurrage-rate mt-1">
+            <h5>Demurrage rate</h5>
+            <h5 class="double-underline">$ <%= number_with_precision(@fixture.demurrage_rate, precision: 2, delimiter: ',') %></h5>
+          </div>
+          <div class="demurrage-rate mt-3">
+            <h4>Invoice amount</h4>
+            <h4>$ <%= number_with_precision(@fixture.total_demurrage, precision: 2, delimiter: ',') %></h4>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
 </div>

@@ -1,0 +1,98 @@
+<!-- All the input fields for Fixture new/show/edit -->
+<div class="row">
+  <div class='col-md-2'>
+    <%= f.input :reference_no,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Reference No.",
+                required: true %>
+  </div>
+  <div class="col-md-2">
+    <%= f.input :voyage_number,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Voyage No.",
+                required: true %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :clause_group, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "CP Form*",
+                required: true %>
+  </div>
+</div>
+
+<div class="row">
+  <div class='col-md-2'>
+    <%= f.input :vessel_name,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Vessel Name",
+                required: true %>
+  </div>
+  <div class="col-md-2">
+    <%= f.input :charterer,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Charterer",
+                required: true %>
+  </div>
+
+  <div class="col-md-3">
+    <%= f.input :contract_type, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Contract Type*",
+                required: true %>
+  </div>
+  <div class="col-md-4 mt-3">
+    <%= link_to run_chronos_fixture_events_path, method: :post, class: "btn", id: "hover-btn" do %>
+      <div class="svg-wrapper">
+        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+          <rect class="shape" height="60" width="320" />
+          <div class="hover-text">RUN CHRONOS</div>
+        </svg>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= f.input :vessel_dwt, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Vessel DWT*",
+                required: false %>
+  </div>
+
+  <div class="col-md-2">
+    <%= f.input :demurrage_rate,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Demurrage Rate",
+                required: false %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :contract_terms, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Contract Terms*",
+                required: false %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= f.input :total_cargo_qty, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Total Cargo Qty*",
+                required: false %>
+  </div>
+  <div class="col-md-2">
+    <%= f.input :allowed_laytime,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Allowed Laytime",
+                required: false %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :reversable, as: :fake,
+                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                label: "Reversible",
+                required: false %>
+  </div>
+</div>
+

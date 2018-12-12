@@ -9,8 +9,8 @@ import {
   flip_dialog
 } from "../views/fixture_cargo_add";
 
-createNewCargoItemForm();
-editCargoItemForm();
+// createNewCargoItemForm();
+// editCargoItemForm();
 
 // import modal_wide from "modal_wide";
 
@@ -53,20 +53,38 @@ function flipCard () {
    }, homeModalTransitionTime / 2)
 }
 
+
 // edit/update toggle
 
 $(function() {
-    $('.toggle').on('click', function() {
-      if ($(this).hasClass('on')) {
-        $(this).removeClass('on');
-        $(".edit-input").prop('readonly', true);
-        $("form#update_fixture").trigger("submit.rails");
-      } else {
-        $(this).addClass('on');
-        $(".edit-input").prop('readonly', false);
-      }
-    });
+  $('.toggle').on('click', function() {
+    const form = $('.toggle').closest('form');
+    if ($(this).hasClass('on')) {
+      $('.toggle').removeClass('on');
+      $(".edit-input").prop('readonly', true);
+      form.addClass('super-edit-power');
+      console.log($(".edit-input"));
+      form.trigger("submit.rails");
+    } else {
+      $('.toggle').addClass('on');
+      console.log($(".edit-input"));
+      form.removeClass('super-edit-power');
+      $(".edit-input").prop('readonly', false);
+    }
   });
+});
+
+// cargo edit/show
+
+$(".toggle").on("click", function(){
+  $(".big-edit").toggle();
+});
+
+// make all toggles on page work simultaneously
+
+// $(".toggle").click(function(){
+//   $(this).addClass('on');
+// });
 
 // Dropdown menu selection
 
@@ -76,12 +94,14 @@ $(function(){
   });
 });
 
+
 // modal-wide
 
 $(".modal-wide").on("show.bs.modal", function() {
   var height = $(window).height() - 200;
   $(this).find(".modal-content").css("max-height", height);
 });
+
 
 // choose/upload file button
 
@@ -91,6 +111,7 @@ $(document).ready( function() {
         console.log(label);
     });
 });
+
 
 // disable field counters
 
@@ -102,14 +123,49 @@ $(document).ready( function() {
       });
   });
 
-  // Restore scroll on number inputs.
-  $('form').on('blur', 'input[type=number]', function(e) {
-      $(this).off('wheel');
-  });
 
-  // Disable up and down keys.
-  $('form').on('keydown', 'input[type=number]', function(e) {
-      if ( e.which == 38 || e.which == 40 )
-          e.preventDefault();
+// Restore scroll on number inputs.
+
+$('form').on('blur', 'input[type=number]', function(e) {
+    $(this).off('wheel');
+});
+
+
+// Disable up and down keys.
+
+$('form').on('keydown', 'input[type=number]', function(e) {
+  if ( e.which == 38 || e.which == 40 )
+    e.preventDefault();
   });
 });
+
+
+// make fixtures index rows into links for individual fixtures
+
+$("tr[data-link]").click(function() {
+  window.location = $(this).data("link")
+})
+
+
+// render clauses immediately
+
+$("#fastload").click(function(){
+    $.ajax({url: "<%= @fixture.id %>", success: function(result){
+        $(".clauses-container").html(result);
+    }});
+});
+
+
+// timed alert window
+
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 2000);
+
+window.setTimeout(function() {
+    $(".notice").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 2000);
