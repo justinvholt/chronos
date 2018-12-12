@@ -1,6 +1,6 @@
 <div class="container-fluid px-6">
   <!-- Form for view Fixture -->
-  <div class="fixtures__fixture-details">
+  <div class="card">
     <h2>Fixture Details</h2>
 
     <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
@@ -21,7 +21,7 @@
   For details on how to do the cocoon stuff, look at Steven's code in the show_old page below.
 
   -->
-  <div class="fixtures__fixture-cargo">
+  <div class="card">
     <h2 class="mb-4">Cargo</h2>
 
 
@@ -36,12 +36,10 @@
 
   <hr />
 
-  <div class="fixtures__fixture-clauses">
-    <div class="row">
+  <div class="card">
     <h2 class="mb-3"><a name="clauses">Clauses</a></h2>
 
     <%= render 'clause_show' %>
-    </div>
   <% end %>
   </div>
 </div>
