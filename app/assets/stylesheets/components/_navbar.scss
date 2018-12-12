@@ -1,7 +1,16 @@
+#navbar-title {
+  font-size: 36px;
+  font-family: 'Ubuntu', sans-serif;
+  letter-spacing: 0.5rem;
+  font-weight: 700;
+}
+
 .custom-col {
+  font-size: 20px;
   background-color: $dark-gray;
   border-bottom: 2px solid #78C0E0;
-
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
 }
 
 .nav-link {
@@ -12,3 +21,7 @@
   color: white !important;
 }
 
+.navbar {
+  align-items: center !important;
+  padding: 0.5rem 0rem;
+}
