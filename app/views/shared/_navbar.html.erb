@@ -1,9 +1,12 @@
 <!-- Fixed navbar -->
 <div class="container-fluid px-6">
 <nav class="navbar navbar-expand-lg navbar-light custom-col">
-  <%= image_link_to("hourglass_logo.png", root_path, { id: "logo", class: "d-inline align-middle", alt: "Logo", style: "width: 60; height: 60px" }, { class: "navbar-brand" }) %>
+  <%= link_to root_path do %>
+
+  <%= image_tag("hourglass_logo.png", { id: "logo", class: "navbar-brand d-inline align-middle", alt: "Logo", style: "width: 60; height: 60px" } ) %>
 
   <span class="navbar-brand font-weight-bold logo-col d-inline align-middle" id="navbar-title">CHRONOS</span>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
