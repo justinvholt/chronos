@@ -1,3 +1,4 @@
+<!-- All the input fields for Fixture new/show/edit -->
 <div class="row">
   <div class='col-md-2'>
     <%= f.input :reference_no,
@@ -19,6 +20,7 @@
   </div>
 </div>
 
+
 <div class="row">
   <div class='col-md-2'>
     <%= f.input :vessel_name,
@@ -39,15 +41,8 @@
                 label: "Contract Type*",
                 required: true %>
   </div>
-  <div class="col-md-4 mt-3">
-    <%= link_to run_chronos_fixture_events_path, method: :post, class: "btn", id: "hover-btn" do %>
-      <div class="svg-wrapper">
-        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="60" width="320" />
-          <div class="hover-text">RUN CHRONOS</div>
-        </svg>
-      </div>
-    <% end %>
+  <div class="col-md-3 offset-md-1 mt-3">
+    <%= link_to "Demurrage Report", fixture_events_path(@fixture), class: "btn btn-lg demurrage-btn-outline" %>
   </div>
 
 </div>
