@@ -1,26 +1,27 @@
 <!-- Begin page content -->
 <div class="container-fluid px-6">
   <%= render "fixture_new_modal" %>
+  <div class="card">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Vessel</th>
+          <th>Voy</th>
+          <th>Charterer</th>
+          <th>Demurrage</th>
+          <th>Fixture</th>
+          <th>Required</th>
+          <th>Voyage Status</th>
+          <th>+</th>
+        </tr>
+      </thead>
+      <tbody id="fixtures-table">
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Vessel</th>
-        <th>Voy</th>
-        <th>Charterer</th>
-        <th>Demurrage</th>
-        <th>Fixture</th>
-        <th>Required</th>
-        <th>Voyage Status</th>
-        <th>+</th>
-      </tr>
-    </thead>
-    <tbody id="fixtures-table">
+        <% @fixtures.each do |fixture| %>
+          <%= render "fixture_index_row", fixture: fixture %>
+        <% end %>
 
-      <% @fixtures.each do |fixture| %>
-        <%= render "fixture_index_row", fixture: fixture %>
-      <% end %>
-
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>
