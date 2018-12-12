@@ -9,8 +9,8 @@ class EventsController < ApplicationController
   def run_chronos
     ##TODO: This needs some refactoring, DRY
     all_fixture_events
+    reset_events_attributes
     set_allowed_laytime
-    reset_counting_and_dummy_events
     group_events
 
     set_clause_group
@@ -132,11 +132,12 @@ class EventsController < ApplicationController
     @events = order_by_time(@events_set.to_a)
   end
 
-  def reset_counting_and_dummy_events
+  def reset_events_attributes
     destroyables = []
     @events.each do |event|
       destroyables << event if event.dummy == true
       event.counting = ""
+      event.laytime = 0.to_f
       event.save
     end
     @events.reject! { |event| event.dummy == true }
@@ -154,8 +155,7 @@ class EventsController < ApplicationController
   end
 
   def set_clause_group
-    @clause_group = Clause.all[0..2]
-    # @clause_group = ClauseGroup.where(fixture: @fixture).clauses
+    @clause_group = @fixture.clause_group.clauses
   end
 
   def set_fixture

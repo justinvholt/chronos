@@ -105,4 +105,7 @@ class ProcService
       berthed.save
     end
   end
+
+  def no_method
+  end
 end
