@@ -3,7 +3,12 @@ class EventsController < ApplicationController
 
   def import
     ImportSOFJob.perform_now(params[:file], @fixture)
-    redirect_to fixture_events_path(@fixture), notice: "SOF data imported"
+    if params[:file].nil?
+      message = "SOF import failed"
+    else
+      message = "SOF data imported"
+    end
+    redirect_to fixture_events_path(@fixture), notice: message
   end
 
   def run_chronos

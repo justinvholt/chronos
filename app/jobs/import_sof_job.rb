@@ -2,6 +2,7 @@ class ImportSOFJob < ApplicationJob
   queue_as :default
 
   def perform(file, fixture)
+    return if (file.nil?)
     CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
       @port = row[:port]
       @terminal = row[:terminal]
