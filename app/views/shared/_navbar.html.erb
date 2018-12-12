@@ -39,16 +39,22 @@
           Settings
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out dropdown-item"><%= t(".sign_out", default: "Log out") %></i>
+          <% end %>
+        </div>
+
+        <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
-            <%= link_to "#" do %>
+            <%#= link_to "#" do %>
               <i class="fa fa-cog dropdown-item"> <%= t(".settings", default: "Settings") %></i>
-            <% end %>
-            <%= link_to destroy_user_session_path, method: :delete do %>
+            <%# end %>
+            <%#= link_to destroy_user_session_path, method: :delete do %>
               <i class="fa fa-sign-out dropdown-item"><%= t(".sign_out", default: "Log out") %></i>
-            <% end %>
-         </div>
+            <%# end %>
+         </div> -->
       </li>
     </ul>
   </div>
