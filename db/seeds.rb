@@ -17,8 +17,8 @@ puts "seeding fixtures"
 fixture_count = 0
 
 5.times do
-  vesname = ["ms Canard", "ms Macaw", "ms Eagle", "ms Razorbill", "ms Albatros", "ms Goose", "ms Hornbill", "ms Toucan"].sample
-  charterer = ["Petrochem", "SPL", "Chemtrade", "Bahia tradecorp", "Shell", "Riofiber", "Samba Marine", "Dow", "BASF", "Unilever"].sample
+  vesname = ["ms Eagle", "ms Razorbill", "ms Albatros", "ms Goose", "ms Hornbill", "ms Toucan"].sample
+  charterer = ["Petrochem", "Chemtrade", "Shell", "Dow Chemicals", "BASF", "Unilever"].sample
 
   if Fixture.where(vessel_name: vesname) == []
     voynum = rand(20..250)
@@ -33,20 +33,10 @@ fixture_count = 0
     voyage_number: voynum,
     demurrage_rate: rand(200..400) * 100,
     allowed_laytime: rand(20..60),
-    calculation_status: "validate"
+    calculation_status: ["validate", "update details", " - " ].sample
     )
   fixture_count += 1
 end
-
-wagon_fixture = Fixture.create(
-  reference_no: "4839" + rand(100..500).to_s,
-  charterer: "Le Wagon",
-  vessel_name: "ms Macaw",
-  voyage_number: 42,
-  demurrage_rate: 45000,
-  allowed_laytime: 120,
-  calculation_status: "validate"
-  )
 
 puts "succesfully seeded #{fixture_count} fixtures"
 puts "#{Fixture.all.length} fixtures in database"
@@ -480,8 +470,64 @@ puts "------------------------------------------------------------"
 
 Fixture.all.each do |fixture|
   fixture.clause_group = @clausegroup_lewagon_std
-  fixture.save
+  puts "assigned clause_group to fixture" if fixture.save!
 end
 
+if @wagon_fixture = Fixture.create!(
+  reference_no: "4839" + rand(100..500).to_s,
+  charterer: "Le Wagon",
+  vessel_name: "ms Macaw",
+  voyage_number: 126,
+  demurrage_rate: 45000,
+  allowed_laytime: 74,
+  calculation_status: "update details",
+  clause_group: @clausegroup_lewagon_std
+  )
+
+  puts "succesfully seeded presentation fixture LeWagon"
+  puts "------------------------------------------------------------"
+
+end
+
+FixtureCargo.create!(
+  name: "Caipirinha",
+  quantity_mts: 2000,
+  obl: 1,
+  load_port: "Rio de Janeiro",
+  load_terminal: "Copersucar",
+  load_berth: "B",
+  disch_port: "Le Havre",
+  disch_terminal: "Total",
+  disch_berth: "3A",
+  fixture: @wagon_fixture
+)
+cargo_count += 1
+
+FixtureCargo.create!(
+  name: "Ethanol",
+  obl: 2,
+  quantity_mts: 2000,
+  load_port: "Rio de Janeiro",
+  load_terminal: "Copersucar",
+  load_berth: "B",
+  disch_port: "Le Havre",
+  disch_terminal: "Total",
+  disch_berth: "3A",
+  fixture: @wagon_fixture
+)
+cargo_count += 1
+
+FixtureCargo.create!(
+  name: "Diesel",
+  obl: 3,
+  quantity_mts: 4000,
+  load_port: "Santos",
+  load_terminal: "Petrobras",
+  load_berth: "North-5",
+  disch_port: "Le Havre",
+  disch_terminal: "Total",
+  disch_berth: "3A",
+  fixture: @wagon_fixture
+)
 
 
