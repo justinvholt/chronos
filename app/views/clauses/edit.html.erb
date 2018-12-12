@@ -1,72 +1,52 @@
-<%= simple_form_for @clause do |f| %>
 <div class="container-fluid px-6">
- <div class="table-responsive">
-    <table class="table-striped table borderless">
-       <thead>
-         <tr>
-           <th>Parent</th>
-           <th>Title</th>
-           <th>Wording</th>
-           <th class="adjust-width">Clause ID</th>
-           <th>Actions</th>
-         </tr>
-       </thead>
 
-       <tbody>
+  <h2 class="mt-5 mb-3">Clause Details</h2>
 
-
-
-        <tbody>
-    <%= simple_form_for @clause, url: clauses_path, :method => :patch do |f| %>
-     <tr>
-      <td>
+  <%= simple_form_for @clause, url: clauses_path, method: :post do |f| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
         <%= f.input :cp_form,
-        input_html: {class: ""},
-        label: "CP-Form",
-        required: true %>
-      </td>
+                    input_html: {class: "form-control"},
+                    label: "CP-Form",
+                    required: true %>
 
-      <td>
-        <div class="row">
-          <div class="col">
+      </div>
+
+      <div class="col-xs-12 col-sm-2">
         <%= f.input :title,
-        input_html: {class: ""},
-        label: 'Title',
-        required: true %>
-        </div>
+                    input_html: {class: "form-control"},
+                    label: "Title",
+                    required: true %>
+
+        <%= f.input :paragraph,
+                     input_html: {class: "form-control"},
+                     label: "Paragraph",
+                     required: true %>
       </div>
-      <div class="row">
-        <div class="col">
-           <%= f.input :paragraph,
-        input_html: {class: ""},
-        label: 'Paragraph',
-        required: true %>
-        </div>
-        </div>
-            </div>
-        </td>
-      <td>
+
+      <div class="col-xs-12 col-sm-6">
         <%= f.input :wording,
-        input_html: {class: "test", rows: "4"},
-        label: 'wording',
-        required: true %>
-      </td>
-      <td>
-        <div class="id-positioning">
-        <%= @clause.id %>
+                    input_html: {class: ""},
+                    label: "Wording",
+                    required: true %>
+
       </div>
-    </td>
-     <td>
-            <%= f.button :button, class: "btn btn-primary btn-curious-blue button-positioning" do %>
-                Submit Amendment
-            <% end %>
+
+      <div class="col-xs-12 col-sm-1">
+        <td>
+          <%= f.input :id,
+                      input_html: { disabled: "disabled" },
+                      label: "Chronos ID",
+                      required: true %>
         </td>
+      </div>
 
-      </tr>
-       <% end %>
-     </tbody>
-    </table>
-  </div>
+      <div class="col-xs-12 col-sm-2 offset-sm-9">
+        <%= f.button :button, class: "btn btn-primary btn-curious-blue button-positioning" do %>
+          Submit Single Clause
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
 </div>
- <% end %>
-
