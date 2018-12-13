@@ -10,6 +10,9 @@ class PagesController < ApplicationController
   def about
   end
 
+  def presentation
+  end
+
   def definitions
   end
 end
