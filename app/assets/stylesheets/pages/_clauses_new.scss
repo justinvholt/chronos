@@ -1,12 +1,9 @@
-.button-positioning {
-  margin-top: 5rem;
-}
-
-.id-positioning {
-  margin-top: 3rem;
-}
-
-#clause-container .text {
+div.form-group.text.required.clause_wording,
+div.form-group.text.required.clause_wording.form-group-valid,
+label.form-control-label.text,
+label.form-control-label.text.required,
+textarea.form-control.is-valid.text.required,
+textarea#clause_wording.form-control.text.required {
   text-align: left !important;
   color: #212529 !important;
   font-family: "Open Sans", "Helvetica", "sans-serif" !important;

@@ -1,45 +1,42 @@
 <div class="container-fluid px-6">
 
- <div class="card">
-  <h2 class="mb-2">Clause Details</h2>
+  <div class="card">
+    <h2 class="mb-2">Clause Details</h2>
 
-  <%= simple_form_for @clause, url: clauses_path, method: :post do |f| %>
-  <div class="row" id="clause-container">
-    <div class="col-xs-12 col-sm-3">
-      <%= f.input :cp_form,
-      input_html: {class: "form-control"},
-      label: "CP-Form",
-      required: true %>
+      <%= simple_form_for @clause, url: clauses_path, method: :post do |f| %>
 
-    </div>
+      <div id="clause-container">
+        <div class="d-flex justify-content-between">
+          <%= f.input :cp_form,
+                      input_html: { class: "form-control" },
+                      label: "CP-Form",
+                      required: true %>
 
-    <div class="col-xs-12 col-sm-2">
-      <%= f.input :title,
-      input_html: {class: "form-control"},
-      label: "Title",
-      required: true %>
+          <%= f.input :title,
+                      input_html: { class: "form-control" },
+                      label: "Title",
+                      required: true %>
 
-      <%= f.input :paragraph,
-      input_html: {class: "form-control"},
-      label: "Paragraph",
-      required: true %>
-    </div>
+          <%= f.input :paragraph,
+                      input_html: { class: "form-control" },
+                      label: "Paragraph",
+                      required: true %>
+        </div>
 
-    <div class="col-xs-12 col-sm-6">
-      <%= f.input :wording,
-      input_html: {class: ""},
-      label: "Wording",
-      required: true %>
+        <div class="flex">
+          <%= f.input :wording,
+                      input_html: { rows: 12 },
+                      label: "Wording",
+                      required: true %>
+        </div>
+      </div>
 
-    </div>
+      <div class="text-right">
+        <%= f.button :button, class: "btn btn-primary btn-curious-blue" do %>
+        Submit Single Clause
+        <% end %>
+      </div>
 
-    <div class="col-xs-12 col-sm-2 offset-sm-9">
-      <%= f.button :button, class: "btn btn-primary btn-curious-blue button-positioning" do %>
-      Submit Single Clause
       <% end %>
-
-    </div>
   </div>
-  <% end %>
-</div>
 </div>

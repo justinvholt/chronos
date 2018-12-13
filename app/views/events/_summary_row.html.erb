@@ -1,30 +1,34 @@
 <tr>
+  <!-- Port -->
   <td class="align-middle"><%= port %></td>
+  <!-- Laytime Used -->
   <td class="align-middle">
     <% if mins[:used].nil? %>
       <%= "" %>
     <% elsif mins[:used] == 0.0 %>
       <%= "-" %>
     <% else %>
-      <%= "#{mins[:used].to_i / 60 }:#{mins[:used].to_i % 60}" %>
+      <%= "#{mins[:used].to_i / 60 }hrs:#{mins[:used].to_i % 60}min" %>
     <% end %>
   </td>
+  <!-- Laytime Allowed -->
   <td class="align-middle">
     <% if mins[:allowed].nil? %>
       <%= "" %>
     <% elsif mins[:allowed] == 0.0 %>
       <%= "-" %>
     <% else %>
-      <%= "#{mins[:allowed].to_i / 60 }:#{mins[:allowed].to_i % 60}" %>
+      <%= "#{mins[:allowed].to_i / 60 }hrs:#{mins[:allowed].to_i % 60}min" %>
     <% end %>
   </td>
+  <!-- Hours on Demurrage -->
   <td class="align-middle">
     <% if mins[:on_dem].nil? %>
       <%= "" %>
     <% elsif mins[:on_dem] == 0.0 %>
       <%= "-" %>
     <% else %>
-      <%= "#{mins[:on_dem].to_i / 60 }:#{mins[:on_dem].to_i % 60}" %>
+      <%= "#{mins[:on_dem].to_i / 60 }hrs:#{mins[:on_dem].to_i % 60}min" %>
     <% end %>
   </td>
 </tr>

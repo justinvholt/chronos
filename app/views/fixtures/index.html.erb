@@ -4,27 +4,27 @@
   <div class="card">
     <h2>Fixtures</h2>
     <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Vessel</th>
-          <th>Voy</th>
-          <th>Charterer</th>
-          <th>Demurrage</th>
-          <th>Fixture</th>
-          <th>Required</th>
-          <th>Voyage Status</th>
-          <th>+</th>
-        </tr>
-      </thead>
-      <tbody id="fixtures-table">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Vessel</th>
+            <th>Voy</th>
+            <th>Charterer</th>
+            <th>Demurrage</th>
+            <th>Fixture</th>
+            <th>Required</th>
+            <th>Voyage Status</th>
+            <th>+</th>
+          </tr>
+        </thead>
+        <tbody id="fixtures-table">
 
-        <% @fixtures.each do |fixture| %>
-          <%= render "fixture_index_row", fixture: fixture %>
-        <% end %>
+          <% @fixtures.each do |fixture| %>
+            <%= render "fixture_index_row", fixture: fixture %>
+          <% end %>
 
-      </tbody>
-    </table>
-  </div>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
