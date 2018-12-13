@@ -2,12 +2,17 @@
   input {
     height: calc(2.4375rem + 2px) !important;
     font-size: 1.125rem;
-    color: black !important;
+    color: $bright-blue !important;
     border: none;
     background: transparent !important;
     padding-left: 0;
   }
+
   label {
     font-weight: bold;
+  }
+
+  ::placeholder{
+    color: $bright-blue !important;
   }
 }
