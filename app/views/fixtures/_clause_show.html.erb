@@ -1,7 +1,7 @@
 <div id="clauses-container">
   <div class="clause-group-select">
     <%= simple_form_for @fixture do |f| %>
-      <%= f.input :clause_group_id, collection: ClauseGroup.all, label: "Select Clause Group" %>
+      <%= f.input :clause_group_id, collection: ClauseGroup.all, label: "Select Contract Clauses" %>
     <% end %>
   </div>
 
@@ -13,7 +13,7 @@
           <th>Title</th>
           <th>Wording</th>
           <th class="adjust-width">Clause ID</th>
-          <th>Actions</th>
+          <th>+</th>
         </tr>
       </thead>
 
