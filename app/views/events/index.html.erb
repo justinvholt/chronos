@@ -16,7 +16,7 @@
   </div>
 
   <div class="events__events-table">
-    <h2 class="mb-3">Port Events</h2>
+    <h2 class="mb-3 pb-3">Port Events</h2>
 
     <div class="import-file mb-4">
       <%= form_tag import_fixture_events_path, multipart: true do %>
@@ -69,7 +69,7 @@
           </div>
           <div class="demurrage-rate mt-3">
             <h4>Invoice Amount</h4>
-            <h4>$ <%= number_with_precision(@fixture.total_demurrage, precision: 2, delimiter: ',') USD %></h4>
+            <h4>$ <%= number_with_precision(@fixture.total_demurrage, precision: 2, delimiter: ',') %> USD</h4>
           </div>
         </div>
       </div>
