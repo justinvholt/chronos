@@ -1,13 +1,14 @@
 <div class="container-fluid px-6">
 
-  <form class="form-inline">
-    <%= link_to "ADD SINGLE CLAUSE", new_clause_path, class: "btn btn-primary btn-lg form-group mt-5 mb-3 mr-6" %>
+  <form class="form-inline mt-3 py-1 mb-3">
+    <%= link_to "ADD SINGLE CLAUSE", new_clause_path, class: "btn btn-curious-blue btn-lg form-group mr-4" %>
     <div class="active-cyan-4">
-      <input class="form-control form-group mt-5 mb-3" type="text" placeholder="Search" aria-label="Search" name="query">
+      <input class="form-control form-group" type="text" placeholder="Search" aria-label="Search" name="query">
     </div>
   </form>
 
   <div class="card">
+    <h2>Clauses</h2>
     <div class="table-responsive">
       <table class="table-striped table borderless">
         <thead>
@@ -16,7 +17,7 @@
             <th>Title</th>
             <th>Wording</th>
             <th class="adjust-width">Clause ID</th>
-            <th>Actions</th>
+            <th>+</th>
           </tr>
         </thead>
 
@@ -37,7 +38,7 @@
             <td><%= clause.wording %></td>
             <td><%= clause.id %></td>
             <td>
-             <button id="btnGroupDrop1" type="button" class="btn btn-curious-blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</button>
+             <button id="btnGroupDrop1" type="button" class="btn btn-curious-blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
              <div class="dropdown-menu" role="menu">
               <%= link_to "Amend details", edit_clause_path(clause), class: "dropdown-item" %>
               <%= link_to 'Delete',

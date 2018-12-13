@@ -155,6 +155,13 @@ window.setTimeout(function() {
     });
 }, 2000);
 
+//
+
+$( "#modalManualBtn" ).click(function() {
+  $( ".modal-hidden" ).fadeIn(1200, function() {
+  });
+});
+
 // CLAUSE EDIT SELECTION AND BUTTONS
 ///////////////////////////////////////////////////////////////
 
