@@ -6,11 +6,15 @@
 
   &__word {
     text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   &__text {
     margin-left: 3rem;
     z-index: 999;
+    letter-spacing: 0.1rem;
   }
 
   &__quotes {
@@ -21,8 +25,11 @@
     &:before {
       content: "\201C";
       position: absolute;
+
+      // Position quotes
       top: -6rem;
-      left: 0.5rem;
+      left: 0rem;
+
       color: darken($white-smoke, 55%);
       font-size: 6em;
       z-index: -1;
