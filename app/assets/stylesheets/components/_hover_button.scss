@@ -12,8 +12,8 @@
   text-align: center;
 }
 
-.shape {
-  fill: transparent;
+.shape-chronos {
+  fill: transparent !important;
   stroke-dasharray: 140 540;
   stroke-dashoffset: -474;
   stroke-width: 8px;
@@ -44,7 +44,7 @@
   }
 }
 
-.svg-wrapper:hover .shape {
+.svg-wrapper:hover .shape-chronos {
   -webkit-animation: 0.5s draw linear forwards;
   animation: 0.5s draw linear forwards;
 }
