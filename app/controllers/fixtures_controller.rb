@@ -7,7 +7,7 @@ class FixturesController < ApplicationController
   end
 
   def index
-    @fixtures = Fixture.all
+    @fixtures = Fixture.all.sort_by{ |fixture| fixture.days_until_completion }
     @fixture = Fixture.new
   end
 

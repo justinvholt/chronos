@@ -16,7 +16,34 @@ puts "------------------------------------------------------------"
 puts "seeding fixtures"
 fixture_count = 0
 
-5.times do
+1.times do
+
+  vesname = ["ms Eagle", "ms Razorbill", "ms Albatros", "ms Goose", "ms Hornbill", "ms Toucan"].sample
+  charterer = ["Petrochem", "Chemtrade", "Shell", "Dow Chemicals", "BASF", "Unilever"].sample
+
+  if Fixture.where(vessel_name: vesname) == []
+    voynum = rand(20..250)
+  else
+    voynum = Fixture.where(vessel_name: vesname).last.voyage_number + 1
+  end
+
+  Fixture.create(
+    reference_no: "4837" + rand(100..500).to_s,
+    charterer: charterer,
+    vessel_name: vesname,
+    voyage_number: voynum,
+    demurrage_rate: rand(200..400) * 100,
+    total_demurrage: 12430,
+    allowed_laytime: rand(20..60),
+    required_action: "Invoicing",
+    voyage_status: "Voyage complete",
+    days_until_completion: 0
+    )
+  fixture_count += 1
+end
+
+1.times do
+
   vesname = ["ms Eagle", "ms Razorbill", "ms Albatros", "ms Goose", "ms Hornbill", "ms Toucan"].sample
   charterer = ["Petrochem", "Chemtrade", "Shell", "Dow Chemicals", "BASF", "Unilever"].sample
 
@@ -33,10 +60,87 @@ fixture_count = 0
     voyage_number: voynum,
     demurrage_rate: rand(200..400) * 100,
     allowed_laytime: rand(20..60),
-    calculation_status: ["validate", "update details", " - " ].sample
+    required_action: "",
+    voyage_status: "Enroute discharge port",
+    days_until_completion: 4
     )
   fixture_count += 1
 end
+
+1.times do
+
+  vesname = ["ms Eagle", "ms Razorbill", "ms Albatros", "ms Goose", "ms Hornbill", "ms Toucan"].sample
+  charterer = ["Petrochem", "Chemtrade", "Shell", "Dow Chemicals", "BASF", "Unilever"].sample
+
+  if Fixture.where(vessel_name: vesname) == []
+    voynum = rand(20..250)
+  else
+    voynum = Fixture.where(vessel_name: vesname).last.voyage_number + 1
+  end
+
+  Fixture.create(
+    reference_no: "4837" + rand(100..500).to_s,
+    charterer: charterer,
+    vessel_name: vesname,
+    voyage_number: voynum,
+    demurrage_rate: rand(200..400) * 100,
+    required_action: "",
+    voyage_status: "At discharge port",
+    days_until_completion: 12
+    )
+  fixture_count += 1
+end
+
+1.times do
+
+  vesname = ["ms Eagle", "ms Razorbill", "ms Albatros", "ms Goose", "ms Hornbill", "ms Toucan"].sample
+  charterer = ["Petrochem", "Chemtrade", "Shell", "Dow Chemicals", "BASF", "Unilever"].sample
+
+  if Fixture.where(vessel_name: vesname) == []
+    voynum = rand(20..250)
+  else
+    voynum = Fixture.where(vessel_name: vesname).last.voyage_number + 1
+  end
+
+  Fixture.create(
+    reference_no: "4837" + rand(100..500).to_s,
+    charterer: charterer,
+    vessel_name: vesname,
+    voyage_number: voynum,
+    demurrage_rate: rand(200..400) * 100,
+    allowed_laytime: rand(20..60),
+    required_action: "Validate",
+    voyage_status: "Enroute loadport 2/2",
+    days_until_completion: 14
+    )
+  fixture_count += 1
+end
+
+1.times do
+
+  vesname = ["ms Eagle", "ms Razorbill", "ms Albatros", "ms Goose", "ms Hornbill", "ms Toucan"].sample
+  charterer = ["Petrochem", "Chemtrade", "Shell", "Dow Chemicals", "BASF", "Unilever"].sample
+
+  if Fixture.where(vessel_name: vesname) == []
+    voynum = rand(20..250)
+  else
+    voynum = Fixture.where(vessel_name: vesname).last.voyage_number + 1
+  end
+
+  Fixture.create(
+    reference_no: "4837" + rand(100..500).to_s,
+    charterer: charterer,
+    vessel_name: vesname,
+    voyage_number: voynum,
+    demurrage_rate: rand(200..400) * 100,
+    allowed_laytime: rand(20..60),
+    required_action: "",
+    voyage_status: "Voyage to commence",
+    days_until_completion: 27
+    )
+  fixture_count += 1
+end
+
 
 puts "succesfully seeded #{fixture_count} fixtures"
 puts "#{Fixture.all.length} fixtures in database"
@@ -481,7 +585,10 @@ if @wagon_fixture = Fixture.create!(
   demurrage_rate: 45000,
   allowed_laytime: 74,
   calculation_status: "update details",
-  clause_group: @clausegroup_lewagon_std
+  clause_group: @clausegroup_lewagon_std,
+  required_action: "Complete Data",
+  voyage_status: "voyage complete",
+  days_until_completion: 0
   )
 
   puts "succesfully seeded presentation fixture LeWagon"

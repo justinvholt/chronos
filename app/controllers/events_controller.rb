@@ -27,6 +27,8 @@ class EventsController < ApplicationController
 
     cumulative_demurrage
     calculate_demurrage
+    #only for presentation
+    @fixture.required_action = "Invoicing"
     redirect_to fixture_events_path(@fixture), notice: "Laytime calculation updated"
   end
 
