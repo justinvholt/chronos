@@ -1,0 +1,54 @@
+.member-card {
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  color: white;
+  position: relative;
+  margin-bottom: 5rem;
+  padding-top: 2%;
+  width: 15vw;
+  height: 15vw;
+}
+
+
+.foto-wrap {
+  background-color: white;
+  color: white;
+  margin-bottom: 5rem;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 0.3rem;
+}
+
+
+.member-name {
+  color: black;
+  position: absolute;
+  display: block;
+  bottom: 2%;
+}
+
+
+#CEO {
+ background-image: url("https://avatars0.githubusercontent.com/u/31623987");
+ background-size: contain;
+}
+
+#Steven {
+ background-image: url("https://avatars2.githubusercontent.com/u/22715037?v=4");
+ background-size: contain;
+}
+
+#Justin {
+ background-image: url("https://avatars2.githubusercontent.com/u/30933701");
+ background-size: contain;
+}
+
+
+#Manuel {
+ background-image: url("https://avatars1.githubusercontent.com/u/43183811");
+ background-size: contain;
+}
+
+
