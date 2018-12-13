@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: [:home, :definitions]
 
   def home
     if user_signed_in?
@@ -8,5 +8,8 @@ class PagesController < ApplicationController
   end
 
   def about
+  end
+
+  def definitions
   end
 end
