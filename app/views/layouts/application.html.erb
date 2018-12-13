@@ -33,11 +33,11 @@
   </head>
   <body id="site">
     <%= render "shared/flashes" %>
-    <% unless action_name == "home" %>
+    <% unless action_name == "home" || "definitions" %>
       <%= render "/shared/navbar" %>
     <% end %>
     <div id="wrap"><%= yield %></div>
-    <% unless action_name == "home" %>
+    <% unless action_name == "home" || "definitions" %>
       <%= render "/shared/footer" %>
     <% end %>
 
