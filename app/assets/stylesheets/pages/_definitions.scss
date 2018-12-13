@@ -1,8 +1,19 @@
+// .definitions-container {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   margin-top: -50px;
+//   margin-left: -100px;
+// }
+
 .definitions {
   color: $white-smoke;
-  margin-top: 10rem;
-  margin-left: 13rem;
-  width: 70rem;
+  width: 70%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
 
   &__word {
     text-transform: uppercase;
