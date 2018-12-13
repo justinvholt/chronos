@@ -6,4 +6,7 @@ class PagesController < ApplicationController
       redirect_to fixtures_path
     end
   end
+
+  def about
+  end
 end
