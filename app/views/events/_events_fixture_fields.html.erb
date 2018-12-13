@@ -61,7 +61,7 @@
   <div class="col-md-2">
     <%= f.input :demurrage_rate, as: :fake,
                 label: "Demurrage Rate",
-                placeholder: number_to_currency(@fixture.demurrage_rate, precision: 0, delimiter: ' ', unit: "USD pdpr", format: "$%n %u") %>
+                placeholder: number_to_currency(@fixture.demurrage_rate, precision: 0, delimiter: ' ', unit: "USD/day", format: "%n %u") %>
   </div>
 
   <div class="col-md-3">

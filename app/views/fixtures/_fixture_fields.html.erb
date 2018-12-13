@@ -4,18 +4,21 @@
     <%= f.input :reference_no,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Reference No.",
+                placeholder: @fixture.reference_no,
                 required: true %>
   </div>
   <div class="col-md-2">
     <%= f.input :voyage_number,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Voyage No.",
+                placeholder: @fixture.voyage_number.to_s,
                 required: true %>
   </div>
   <div class="col-md-3">
     <%= f.input :clause_group, as: :fake,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "CP Form",
+                placeholder: @cp_form,
                 required: true %>
   </div>
 </div>
@@ -26,12 +29,14 @@
     <%= f.input :vessel_name,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Vessel Name",
+                placeholder: @fixture.vessel_name,
                 required: true %>
   </div>
   <div class="col-md-2">
     <%= f.input :charterer,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Charterer",
+                placeholder: @fixture.charterer,
                 required: true %>
   </div>
 
@@ -39,6 +44,7 @@
     <%= f.input :contract_type, as: :fake,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Contract Type",
+                placeholder: "SPOT",
                 required: true %>
   </div>
   <div class="col-md-3 offset-md-1 mt-3">
@@ -51,7 +57,8 @@
   <div class="col-md-2">
     <%= f.input :vessel_dwt, as: :fake,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
-                label: "Vessel DWT",
+                label: "Vessel Capacity",
+                placeholder: "35 000 mts",
                 required: false %>
   </div>
 
@@ -65,27 +72,34 @@
     <%= f.input :contract_terms, as: :fake,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Contract Terms",
+                placeholder: @clause_group.nil? ? "" : @clause_group.name,
                 required: false %>
   </div>
 </div>
+
+<% @total_cargo = 0 %>
+<% FixtureCargo.where(fixture: @fixture).each {|cargo| @total_cargo += cargo.quantity_mts } %>
 
 <div class="row">
   <div class="col-md-2">
     <%= f.input :total_cargo_qty, as: :fake,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Total Cargo",
+                placeholder: @total_cargo.to_s + " mts",
                 required: false %>
   </div>
   <div class="col-md-2">
     <%= f.input :allowed_laytime,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Allowed Laytime",
+                placeholder: @fixture.allowed_laytime.to_s + " hours total",
                 required: false %>
   </div>
   <div class="col-md-3">
     <%= f.input :reversable, as: :fake,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Reversible",
+                placeholder: "yes",
                 required: false %>
   </div>
 </div>
