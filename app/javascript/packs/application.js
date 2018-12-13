@@ -65,12 +65,6 @@ $(".toggle").on("click", function() {
   $(".big-edit").toggle();
 });
 
-// make all toggles on page work simultaneously
-
-// $(".toggle").click(function(){
-//   $(this).addClass('on');
-// });
-
 // Dropdown menu selection
 
 $(function() {
@@ -155,12 +149,38 @@ window.setTimeout(function() {
     });
 }, 2000);
 
-//
+// expand manual entry fields in new fixture modal
 
 $( "#modalManualBtn" ).click(function() {
   $( ".modal-hidden" ).fadeIn(1200, function() {
   });
 });
+
+// strikethrough presentation definitions
+
+let oldDefs = document.querySelectorAll(".old-def")
+
+oldDefs.forEach(element => {
+  element.addEventListener("click", (event) => {
+    const oldElement = event.currentTarget
+    const blockquote = oldElement.closest('blockquote')
+    const newElement = blockquote.querySelector('.new-def')
+    oldElement.style.textDecoration = "line-through";
+    newElement.style.display = "block";
+  });
+})
+
+// $("#strikethrough").click(function() {
+//   $(".old-def").
+
+//   text-decoration: line-through;
+
+
+//   $( ".new-def" ).show() {
+//   });
+// });
+
+
 
 // CLAUSE EDIT SELECTION AND BUTTONS
 ///////////////////////////////////////////////////////////////
