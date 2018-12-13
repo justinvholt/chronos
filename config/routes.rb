@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get '/about' => 'pages#about'
 
   resources :fixtures do
     collection {post :import}
