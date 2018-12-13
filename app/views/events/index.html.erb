@@ -65,12 +65,12 @@
         <div class="demurrage-sum">
           <div class="demurrage-rate mt-1">
             <h5>Demurrage Rate</h5>
-            <h5 class="double-underline"><%= number_to_currency(@fixture.demurrage_rate, precision: 2, delimiter: ',', unit: "USD pdpr", format: "$%n %u") %></h5>
+            <h5 class="double-underline"><%= number_to_currency(@fixture.demurrage_rate, precision: 0, delimiter: ' ', unit: "USD pdpr", format: "$%n %u") %></h5>
           </div>
           <div class="demurrage-rate mt-3">
             <h4>Invoice Amount</h4>
-            <h4><%= number_to_currency(@fixture.total_demurrage, precision: 2, delimiter: ',', unit: "USD", format: "$%n %u") %>
-             USD</h4>
+            <h4><%= number_to_currency(@fixture.total_demurrage, precision: 2, delimiter: ' ', unit: "USD", format: "$%n %u") %>
+            </h4>
           </div>
         </div>
       </div>
