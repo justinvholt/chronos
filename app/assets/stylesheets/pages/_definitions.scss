@@ -1,0 +1,31 @@
+.definitions {
+  color: $white-smoke;
+  margin-top: 5rem;
+  margin-left: 13rem;
+  width: 70rem;
+
+  &__word {
+    text-transform: uppercase;
+  }
+
+  &__text {
+    margin-left: 3rem;
+    z-index: 999;
+  }
+
+  &__quotes {
+    position: relative;
+    font-size: 2rem;
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+    &:before {
+      content: "\201C";
+      position: absolute;
+      top: -6rem;
+      left: 0.5rem;
+      color: darken($white-smoke, 55%);
+      font-size: 6em;
+      z-index: -1;
+    }
+  }
+}
