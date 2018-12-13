@@ -8,9 +8,14 @@ body {
   background-color: $dark-gray;
 }
 
+h2 {
+  letter-spacing: 0.3rem;
+  line-height: 4rem;
+}
+
 #fixtures-table tr:hover td {
   box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
-  background-color: #FFFF66;
+  background-color: #ffff66;
   // background-color: $bright-blue;
   cursor: pointer;
 }
