@@ -582,7 +582,7 @@ if @wagon_fixture = Fixture.create!(
   charterer: "Le Wagon",
   vessel_name: "ms Macaw",
   voyage_number: 126,
-  demurrage_rate: 45000,
+  demurrage_rate: 40000,
   allowed_laytime: 74,
   calculation_status: "update details",
   clause_group: @clausegroup_lewagon_std,
@@ -625,7 +625,7 @@ FixtureCargo.create!(
 cargo_count += 1
 
 FixtureCargo.create!(
-  name: "Diesel",
+  name: "Brahma lager",
   obl: 3,
   quantity_mts: 4000,
   load_port: "Santos",
