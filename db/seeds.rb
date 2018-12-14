@@ -625,7 +625,7 @@ FixtureCargo.create!(
 cargo_count += 1
 
 FixtureCargo.create!(
-  name: "Diesel",
+  name: "Brahma lager",
   obl: 3,
   quantity_mts: 4000,
   load_port: "Santos",
