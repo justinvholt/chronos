@@ -1,0 +1,49 @@
+.fixture-details label { font-weight: bold }
+
+.fixture-details {
+  display: flex;
+}
+
+.fixture-details-container {
+  width: 60%;
+}
+
+.fixture-buttons-container {
+  width: 40%;
+
+  #chronos-btn { margin-top: 120px; }
+  #demurrage-btn { margin-top: 120px; }
+}
+
+.autofill {
+  border: none;
+}
+
+.details-group {
+  position: relative;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  margin-bottom: 16px;
+}
+
+.details-label {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.details-value {
+  display: block;
+  text-align: left;
+  color: $bright-blue !important;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 8px;
+  padding-left: 0px;
+  margin: 0px;
+}
+
+
+
+
+
