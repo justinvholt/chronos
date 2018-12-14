@@ -1,17 +1,27 @@
 <div class="container-fluid px-6 pb-3">
 
   <div class="events__voyage-details">
-    <h2 class="pb-3">
+    <h2 class="mb-2">
       <%= link_to fixture_path(@fixture) do %>
         <i class='fas fa-chevron-left'></i>
       <% end %>&nbsp;&nbsp;
       Demurrage Report
     </h2>
 
-    <div class="">
-      <%= simple_form_for @fixture, html: { class: 'super-edit-power' } do |ff| %>
-        <%= render 'events_fixture_fields', f: ff %>
-      <% end %>
+    <div class="fixture-details">
+      <div class="fixture-details-container">
+        <%= render 'shared/fixture_details', fixture: @fixture %>
+      </div>
+      <div class="fixture-buttons-container">
+        <%= link_to run_chronos_fixture_events_path, method: :post, class: "btn hover-btn", id: "chronos-btn" do %>
+          <div class="svg-wrapper">
+            <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+              <rect class="shape-chronos" height="60" width="320" />
+              <div class="hover-text">RUN CHRONOS</div>
+            </svg>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 

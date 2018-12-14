@@ -1,38 +1,42 @@
-<!-- All the input fields for Fixture new/show/edit -->
+<% clause_group = @fixture.clause_group %>
+<% join = ClauseGroupJoin.where(clause_group: clause_group).first %>
+
+<% total_cargo = 0 %>
+<% FixtureCargo.where(fixture: @fixture).each {|cargo| total_cargo += cargo.quantity_mts } %>
+
 <div class="row">
-  <div class='col-md-2'>
+  <div class='col-md-3'>
     <%= f.input :reference_no,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Reference No.",
                 placeholder: @fixture.reference_no,
                 required: true %>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%= f.input :voyage_number,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Voyage No.",
                 placeholder: @fixture.voyage_number.to_s,
                 required: true %>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <%= f.input :clause_group, as: :fake,
-                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                input_html: {readonly: true, class: "form-control-sm edit-input autofill"},
                 label: "CP Form",
-                placeholder: @cp_form,
+                placeholder: join.clause.cp_form,
                 required: true %>
   </div>
 </div>
 
-
 <div class="row">
-  <div class='col-md-2'>
+  <div class='col-md-3'>
     <%= f.input :vessel_name,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Vessel Name",
                 placeholder: @fixture.vessel_name,
                 required: true %>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%= f.input :charterer,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Charterer",
@@ -40,21 +44,17 @@
                 required: true %>
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-4">
     <%= f.input :contract_type, as: :fake,
-                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                input_html: {readonly: true, class: "form-control-sm edit-input autofill"},
                 label: "Contract Type",
                 placeholder: "SPOT",
                 required: true %>
   </div>
-  <div class="col-md-3 offset-md-1 mt-3">
-    <%= link_to "Demurrage Report", fixture_events_path(@fixture), class: "btn btn-lg special-btn-outline" %>
-  </div>
-
 </div>
 
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%= f.input :vessel_dwt, as: :fake,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Vessel Capacity",
@@ -62,40 +62,37 @@
                 required: false %>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%= f.input :demurrage_rate,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Demurrage Rate",
                 required: false %>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <%= f.input :contract_terms, as: :fake,
-                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                input_html: {readonly: true, class: "form-control-sm edit-input autofill"},
                 label: "Contract Terms",
-                placeholder: @clause_group.nil? ? "" : @clause_group.name,
+                placeholder: clause_group.nil? ? "" : clause_group.name,
                 required: false %>
   </div>
 </div>
 
-<% @total_cargo = 0 %>
-<% FixtureCargo.where(fixture: @fixture).each {|cargo| @total_cargo += cargo.quantity_mts } %>
-
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%= f.input :total_cargo_qty, as: :fake,
-                input_html: {readonly: true, class: "form-control-sm edit-input"},
+                input_html: {readonly: true, class: "form-control-sm edit-input autofill"},
                 label: "Total Cargo",
-                placeholder: @total_cargo.to_s + " mts",
+                placeholder: total_cargo.to_s + " mts",
                 required: false %>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%= f.input :allowed_laytime,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Allowed Laytime",
                 placeholder: @fixture.allowed_laytime.to_s + " hours total",
                 required: false %>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <%= f.input :reversable, as: :fake,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Reversible",

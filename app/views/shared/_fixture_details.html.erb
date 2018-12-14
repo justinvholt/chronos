@@ -1,0 +1,91 @@
+<% clause_group = fixture.clause_group %>
+<% join = ClauseGroupJoin.where(clause_group: clause_group).first %>
+
+<% total_cargo = 0 %>
+<% FixtureCargo.where(fixture: fixture).each {|cargo| total_cargo += cargo.quantity_mts } %>
+
+<div class="details-container">
+  <div class="row">
+    <div class='col-md-3'>
+      <div class="details-group">
+        <p class="details-label">Reference No.</p>
+        <p class="details-value"><%= fixture.reference_no %></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="details-group">
+        <p class="details-label">Voyage No.</p>
+        <p class="details-value"><%= fixture.voyage_number %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="details-group">
+        <p class="details-label">CP Form</p>
+        <p class="details-value"><%= join.clause.cp_form %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-md-3'>
+      <div class="details-group">
+        <p class="details-label">Vessel Name</p>
+        <p class="details-value"><%= fixture.vessel_name %></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="details-group">
+        <p class="details-label">Charterer</p>
+        <p class="details-value"><%= fixture.charterer %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="details-group">
+        <p class="details-label">Contract Type</p>
+        <p class="details-value">SPOT</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="details-group">
+        <p class="details-label">Vessel Capacity</p>
+        <p class="details-value">35 000 mts</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="details-group">
+        <p class="details-label">Demurrage Rate</p>
+        <p class="details-value"><%= number_to_currency(fixture.demurrage_rate, precision: 0, delimiter: ' ', unit: "USD/day", format: "%n %u") %>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="details-group">
+        <p class="details-label">Contract Terms</p>
+        <p class="details-value"><%= clause_group.name %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="details-group">
+        <p class="details-label">Total Cargo</p>
+        <p class="details-value"><%= number_with_delimiter(total_cargo, delimiter: " ").to_s + " mts" %></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="details-group">
+        <p class="details-label">Allowed Laytime</p>
+        <p class="details-value"><%= fixture.allowed_laytime.to_s + " hours total" %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="details-group">
+        <p class="details-label">Reversible</p>
+        <p class="details-value">Yes</p>
+      </div>
+    </div>
+  </div>
+</div>

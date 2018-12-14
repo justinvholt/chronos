@@ -11,47 +11,55 @@
           </div>
         </div>
       </div>
-      <%= render 'fixture_fields', f: ff %>
-    </div>
-
-  <!-- Add cargo button
-
-  TO BE ADDED AS A MODEL OR A COCOON EVENT LATER
-  For details on how to do the cocoon stuff, look at Steven's code in the show_old page below.
-
-  -->
-
-    <div class="card">
-      <div class="d-flex justify-content-between">
-        <h2 class="mb-2">Cargo Details</h2>
-        <div class="btn btn-default toggle" id="edit-button">
-          <div class="slide">
-            <i class="fas fa-circle"></i>
+      <div class="fixture-details">
+        <div class="fixture-details-container">
+          <div class="big-edit" style="display: block">
+            <%= render "shared/fixture_details", fixture: @fixture %>
+          </div>
+          <div class="big-edit" style="display: none">
+            <%= render "fixture_fields", f: ff %>
           </div>
         </div>
+          <div class="fixture-buttons-container">
+            <%= link_to "Demurrage Report", fixture_events_path(@fixture), class: "btn btn-lg special-btn-outline", id: "demurrage-btn" %>
+          </div>
       </div>
+    </div>
 
+  <div class="card">
+    <div class="d-flex justify-content-between">
+      <h2 class="mb-2">Cargo Details</h2>
+      <div class="btn btn-default toggle" id="edit-button">
+        <div class="slide">
+          <i class="fas fa-circle"></i>
+        </div>
+      </div>
+    </div>
       <div class="big-edit" style="display: block">
         <%= render "cargo_show" %>
       </div>
-
       <div class="big-edit" style="display: none">
         <%= render "cargo_edit", ff: ff %>
       </div>
-
   </div>
 
-    <div class="card">
-      <div class="d-flex justify-content-between">
-        <h2 class="mb-3"><a name="clauses">Contract Details</a></h2>
-        <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
-          <div class="slide">
-            <i class="fas fa-circle"></i>
-          </div>
+  <div class="card">
+    <div class="d-flex justify-content-between">
+      <h2 class="mb-3"><a name="clauses">Contract Details</a></h2>
+      <div class="btn btn-default toggle mt-3 mb-3" id="edit-button">
+        <div class="slide">
+          <i class="fas fa-circle"></i>
         </div>
       </div>
-      <%= render 'clause_show' %>
     </div>
+    <%= render 'clause_show' %>
+  </div>
   <% end %>
-
 </div>
+
+<!-- Add cargo button
+
+TO BE ADDED AS A MODAL OR A COCOON EVENT LATER
+For details on how to do the cocoon stuff, look at Steven's code in the show_old page below.
+
+-->
