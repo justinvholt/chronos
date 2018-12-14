@@ -21,7 +21,7 @@
     <div class="col-md-4">
       <div class="details-group">
         <p class="details-label">CP Form</p>
-        <p class="details-value"><%= join.clause.cp_form %></p>
+        <p class="details-value"><%= join.nil? ? "" : join.clause.cp_form %></p>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@
     <div class="col-md-4">
       <div class="details-group">
         <p class="details-label">Contract Terms</p>
-        <p class="details-value"><%= clause_group.name %></p>
+        <p class="details-value"><%= clause_group.nil? ? "" : clause_group.name %></p>
       </div>
     </div>
   </div>
@@ -78,7 +78,7 @@
     <div class="col-md-3">
       <div class="details-group">
         <p class="details-label">Allowed Laytime</p>
-        <p class="details-value"><%= fixture.allowed_laytime.to_s + " hours total" %></p>
+        <p class="details-value"><%= fixture.allowed_laytime.nil? ? "" : fixture.allowed_laytime.to_s + " hours total" %></p>
       </div>
     </div>
     <div class="col-md-4">
