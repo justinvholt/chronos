@@ -582,7 +582,7 @@ if @wagon_fixture = Fixture.create!(
   charterer: "Le Wagon",
   vessel_name: "ms Macaw",
   voyage_number: 126,
-  demurrage_rate: 45000,
+  demurrage_rate: 42000,
   allowed_laytime: 74,
   calculation_status: "update details",
   clause_group: @clausegroup_lewagon_std,
