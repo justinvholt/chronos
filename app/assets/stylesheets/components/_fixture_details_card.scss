@@ -11,8 +11,13 @@
 .fixture-buttons-container {
   width: 40%;
 
-  #chronos-btn { margin-top: 120px; }
-  #demurrage-btn { margin-top: 120px; }
+  #chronos-btn {
+    margin-top: 120px;
+  }
+  #demurrage-btn {
+    margin-top: 110px;
+    margin-left: 50px
+  }
 }
 
 .autofill {
