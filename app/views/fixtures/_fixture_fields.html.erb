@@ -23,7 +23,7 @@
     <%= f.input :clause_group, as: :fake,
                 input_html: {readonly: true, class: "form-control-sm edit-input autofill"},
                 label: "CP Form",
-                placeholder: join.clause.cp_form,
+                placeholder: join.nil? ? "" : join.clause.cp_form,
                 required: true %>
   </div>
 </div>
@@ -89,7 +89,7 @@
     <%= f.input :allowed_laytime,
                 input_html: {readonly: true, class: "form-control-sm edit-input"},
                 label: "Allowed Laytime",
-                placeholder: @fixture.allowed_laytime.to_s + " hours total",
+                placeholder: @fixture.allowed_laytime.nil? ? "" : @fixture.allowed_laytime.to_s + " hours total",
                 required: false %>
   </div>
   <div class="col-md-4">
